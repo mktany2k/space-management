@@ -7,14 +7,6 @@
 	<property name="distro" location="distro"/>
 	<property name="tomcat-lib" value="${project.web.path}\WEB-INF\lib"/>
 	
-	<!-- Delete the ${build} and ${dist} directory trees
-	<target name="clean" description="clean up" >
-		<delete dir="${distro}"/>
-	</target>
-
-	<target name="compile" description="compile the source" depends="clean">
-	-->
-	
 	<target name="compile" description="compile the source">
 		<ant antfile="build.xml" dir="../Framework_Factory"/>
 		<ant antfile="build.xml" dir="../Framework_Command"/>
