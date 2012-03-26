@@ -2,8 +2,6 @@
 	<description>Web</description>
 
 	<property file="build.properties"/>
-
-	<!-- set global properties for this build -->
 	
 	<target name="clean" description="clean web container">
 		<delete dir="${project.container.path}/web-space"/>
