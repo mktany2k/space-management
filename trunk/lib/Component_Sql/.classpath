@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="resource"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/hibernate3.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/hibernate3.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Business"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Sql"/>
 	<classpathentry kind="output" path="bin"/>
