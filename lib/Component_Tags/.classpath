@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/standard.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Constant"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/jsp-api.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

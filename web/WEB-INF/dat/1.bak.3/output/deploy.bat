@@ -1,0 +1,2 @@
+del /Q "C:\Utilities\apache-tomcat-6.0.24\webapps\svg\WEB-INF\meta\1\processed\*.*"
+copy C:\Utilities\apache-tomcat-6.0.24\webapps\svg\WEB-INF\meta\1.bak.1\raw\sample.xml C:\Utilities\apache-tomcat-6.0.24\webapps\svg\WEB-INF\meta\1\input

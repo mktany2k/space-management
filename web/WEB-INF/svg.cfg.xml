@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+	<entry key="com.scwcd.enterprise.config.svg.listener.threads">1</entry>
+	<entry key="com.scwcd.enterprise.config.svg.listener.poll">5000</entry>
+</properties>
