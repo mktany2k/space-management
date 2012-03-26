@@ -1,0 +1,60 @@
+<project name="SVG" default="install" basedir=".">
+	<description>SVG-Component-View</description>
+
+	<!-- set global properties for this build -->
+	<property name="jarname" value="SVG-Component-View"/>
+	<property name="version" value="1.0.0"/>
+	<property name="src" location="src"/>
+	<property name="bin" location="bin"/>
+	<property name="distro" location="distro"/>
+
+	<path id="libraries">
+		<fileset dir="../SVG_Parent/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../SVG_Parent/distro">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+		<classpath>
+			<fileset dir="lib" includes="*.jar" />
+		</classpath>
+	</taskdef>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${bin}"/>
+	</target>
+
+	<target name="compileXJC" depends="init" description="compile the view.xsd">
+		<!-- Delete generated java files -->
+		<delete dir="src/com/scwcd/component/view/core"/>
+		
+		<!-- Compile schema and generate java files -->
+		<xjc schema="resource/com/scwcd/component/view/schema/view.xsd" destdir="src" package="com.scwcd.component.view.core"/>
+	</target>
+
+	<target name="compile" depends="compileXJC" description="compile the source">
+		<!-- Compile the java code from ${src} into ${bin} -->
+		<javac srcdir="${src}" destdir="${bin}" classpathref="libraries"/>
+	</target>
+
+	<target name="install" depends="compile" description="generate the distribution" >
+		<!-- Create the distribution directory -->
+		<mkdir dir="${distro}"/>
+
+		<!-- Put everything in ${bin} into the ${jarname}-${version}.jar file -->
+		<jar jarfile="${distro}/${jarname}-${version}.jar" basedir="${bin}"/>
+		<copy file="${distro}/${jarname}-${version}.jar" tofile="../SVG_Parent/distro/${jarname}-${version}.jar"/>
+	</target>
+
+	<target name="clean" description="clean up" >
+		<!-- Delete the ${bin} and ${distro} directory trees -->
+		<delete dir="${bin}"/>
+		<delete dir="${distro}"/>
+	</target>
+</project>

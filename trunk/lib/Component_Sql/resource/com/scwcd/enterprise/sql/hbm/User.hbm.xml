@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.scwcd.enterprise.sql.hbm">
+	<class name="User" table="USER">
+		<id name="username" column="Username" type="java.lang.String"/>
+		<property name="password" column="Password" type="char[]" length="20"/>
+        <property name="name" column="Name" type="java.lang.String"/>
+        <property name="description" column="Description" type="java.lang.String"/>
+        <property name="dtCreated" column="DTCreated" type="java.util.Date"/>
+        <property name="dtModified" column="DTModified" type="java.util.Date"/>
+        <property name="updatedBy" column="UpdatedBy" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

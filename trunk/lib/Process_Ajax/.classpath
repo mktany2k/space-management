@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Component_Sql"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Business"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Command"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Sql"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/mysql-connector-java-5.1.15-bin.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/standard.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/json_simple-1.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Component_View"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Deployment"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

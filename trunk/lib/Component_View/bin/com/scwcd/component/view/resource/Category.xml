@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<viewId>1</viewId>
+	<name>Category</name>
+	<description>Type of business</description>
+	<icon>category.png</icon>
+	<metadata type="fixed">
+		<blocks>
+			<id>1</id>
+			<name>Apparel</name>
+			<value>apparel</value>
+			<description>Clothing, boutiques, fashion</description>
+			<color>#ff0000</color>
+		</blocks>
+		<blocks>
+			<id>2</id>
+			<name>Restaurants</name>
+			<value>restaurant</value>
+			<description>Eateries, bar, bistro, cafes</description>
+			<color>#00ff00</color>
+		</blocks>
+		<blocks>
+			<id>3</id>
+			<name>Departmental Store</name>
+			<value>dept-store</value>
+			<description>ISetan, Jusco, Carrefour, Cold Storage</description>
+			<color>#0000ff</color>
+		</blocks>
+		<blocks>
+			<id>4</id>
+			<name>Electronics</name>
+			<value>electronics</value>
+			<description>Computers, netbooks, mobile phone, camera</description>
+			<color>#00ffff</color>
+		</blocks>
+		<blocks>
+			<id>5</id>
+			<name>Watch</name>
+			<value>watch</value>
+			<description>Rolex, Casio, Swatch, Fossil, Tissot, Gucci</description>
+			<color>#ffff00</color>
+		</blocks>
+		<blocks>
+			<id>6</id>
+			<name>Fast food</name>
+			<value>fast-food</value>
+			<description>McDonald's, KFC, Wendy's, Subway, Domino's, Taco Bell</description>
+			<color>#000000</color>
+		</blocks>
+	</metadata>
+</view>

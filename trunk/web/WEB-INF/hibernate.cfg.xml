@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+		<!-- Database connection settings -->
+		<!-- HSQLDB
+        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <property name="connection.url">jdbc:hsqldb:hsql://localhost</property>
+        <property name="connection.username">SA</property>
+        <property name="connection.password"></property>
+		-->
+
+		<!-- MySQL -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--
+        <property name="connection.url">jdbc:mysql://localhost:3306/svg</property>
+        -->
+        <!--
+        -->
+        <property name="connection.url">jdbc:mysql://localhost:3306/svg_test</property>
+        
+
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">30</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+
+		<!-- If timestamp in DB is zero, convert to null -->
+        <property name="hibernate.connection.zeroDateTimeBehavior">convertToNull</property>
+
+        <!-- class mapping -->
+        <mapping resource="com/scwcd/enterprise/sql/hbm/Project.hbm.xml"/>
+        <mapping resource="com/scwcd/enterprise/sql/hbm/Plan.hbm.xml"/>
+        <mapping resource="com/scwcd/enterprise/sql/hbm/User.hbm.xml"/>
+        <mapping resource="com/scwcd/enterprise/sql/hbm/Lot.hbm.xml"/>
+        <mapping resource="com/scwcd/enterprise/sql/hbm/LotPrice.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

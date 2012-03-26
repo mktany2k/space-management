@@ -1,0 +1,46 @@
+<project name="SVG" default="install" basedir=".">
+	<description>SVG-Component-Servlet</description>
+
+	<!-- set global properties for this build -->
+	<property name="jarname" value="SVG-Component-Servlet"/>
+	<property name="version" value="1.0.0"/>
+	<property name="src" location="src"/>
+	<property name="bin" location="bin"/>
+	<property name="distro" location="distro"/>
+
+	<path id="libraries">
+		<fileset dir="../SVG_Parent/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../SVG_Parent/distro">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${bin}"/>
+	</target>
+
+	<target name="compile" depends="init" description="compile the source">
+		<!-- Compile the java code from ${src} into ${bin} -->
+		<javac srcdir="${src}" destdir="${bin}" classpathref="libraries"/>
+	</target>
+
+	<target name="install" depends="compile" description="generate the distribution" >
+		<!-- Create the distribution directory -->
+		<mkdir dir="${distro}"/>
+
+		<!-- Put everything in ${bin} into the ${jarname}-${version}.jar file -->
+		<jar jarfile="${distro}/${jarname}-${version}.jar" basedir="${bin}"/>
+		<copy file="${distro}/${jarname}-${version}.jar" tofile="../SVG_Parent/distro/${jarname}-${version}.jar"/>
+	</target>
+
+	<target name="clean" description="clean up" >
+		<!-- Delete the ${bin} and ${distro} directory trees -->
+		<delete dir="${bin}"/>
+		<delete dir="${distro}"/>
+	</target>
+</project>
