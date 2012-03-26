@@ -1,18 +1,18 @@
-<project name="SVG" default="install" basedir=".">
-	<description>SVG-Framework-Business</description>
+<project name="Space-Management" default="install" basedir=".">
+	<description>Framework-Business</description>
 
 	<!-- set global properties for this build -->
-	<property name="jarname" value="SVG-Framework-Business"/>
+	<property name="jarname" value="space-management-framework-business"/>
 	<property name="version" value="1.0.0"/>
 	<property name="src" location="src"/>
 	<property name="bin" location="bin"/>
 	<property name="distro" location="distro"/>
 
 	<path id="libraries">
-		<fileset dir="../SVG_Parent/lib">
+		<fileset dir="../Parent/lib">
 			<include name="*.jar"/>
 		</fileset>
-		<fileset dir="../SVG_Parent/distro">
+		<fileset dir="../Parent/distro">
 			<include name="*.jar"/>
 		</fileset>
 	</path>
@@ -35,7 +35,7 @@
 
 		<!-- Put everything in ${bin} into the ${jarname}-${version}.jar file -->
 		<jar jarfile="${distro}/${jarname}-${version}.jar" basedir="${bin}"/>
-		<copy file="${distro}/${jarname}-${version}.jar" tofile="../SVG_Parent/distro/${jarname}-${version}.jar"/>
+		<copy file="${distro}/${jarname}-${version}.jar" tofile="../Parent/distro/${jarname}-${version}.jar"/>
 	</target>
 
 	<target name="clean" description="clean up" >
