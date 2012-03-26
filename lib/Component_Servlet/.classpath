@@ -2,6 +2,20 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/hibernate3.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/camel-spring-2.5.0.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/camel-core-2.5.0.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/camel-servlet-2.5.0.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/camel-http-2.5.0.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/spring-web-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/spring-beans-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/freemarker-2.3.15.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/logback-access-0.9.28.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/logback-classic-0.9.28.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/logback-core-0.9.28.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="var" path="SM_HOME/lib/Parent/lib/stax-api-1.0.1.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Factory"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Component_Tags"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Business"/>
@@ -15,19 +29,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Component_Sql"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Framework_Deployment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Process_Maintenance"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/camel-spring-2.5.0.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/camel-core-2.5.0.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/camel-servlet-2.5.0.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/camel-http-2.5.0.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/spring-web-3.0.4.RELEASE.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/spring-beans-3.0.4.RELEASE.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/freemarker-2.3.15.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/logback-access-0.9.28.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/logback-classic-0.9.28.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/logback-core-0.9.28.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/slf4j-api-1.6.1.jar"/>
-	<classpathentry kind="lib" path="D:/Developer/SVG/SVG_Parent/lib/stax-api-1.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
