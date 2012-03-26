@@ -1,0 +1,18 @@
+<project name="Space-Management" default="install" basedir=".">
+	<description>Web</description>
+
+	<property file="build.properties"/>
+
+	<!-- set global properties for this build -->
+	
+	<target name="clean" description="clean web container">
+		<delete dir="${project.container.path}/web-space"/>
+	</target>
+
+	<target name="install" depends="clean" description="move project to web container" >
+		<mkdir dir="${project.container.path}/web-space"/>
+		<copy todir="${project.container.path}/web-space">
+			<fileset dir="." excludes="svn,build.bat,build.properties,build.xml,.classpath,.project"/>
+		</copy>
+	</target>
+</project>
