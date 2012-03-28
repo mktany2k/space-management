@@ -17,7 +17,7 @@
 			<tr>
 				<td class="svg-body">
 					Index Page<br/>
-					<a href="https://localhost:8443/svg/login">Login</a>
+					<a href="https://localhost:8443/web-space/login">Login</a>
 				</td>
 			</tr>
 			<tr>
