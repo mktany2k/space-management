@@ -7,7 +7,11 @@
 		<delete dir="${project.container.path}/web-space"/>
 	</target>
 
-	<target name="install" depends="clean" description="move project to web container" >
+	<target name="compile" depends="clean" description="compile libraries" >
+		<ant antfile="build.xml" dir="../lib/Parent"/>
+	</target>
+
+	<target name="install" depends="compile" description="move project to web container" >
 		<mkdir dir="${project.container.path}/web-space"/>
 		<copy todir="${project.container.path}/web-space">
 			<fileset dir="." excludes="svn,build.bat,build.properties,build.xml,.classpath,.project"/>
