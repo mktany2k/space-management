@@ -1,0 +1,1 @@
+insert into user values('admin', 'password', 'Space Man', 'System Administrator', now(), now(), 'System');
