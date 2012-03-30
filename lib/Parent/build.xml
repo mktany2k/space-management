@@ -6,8 +6,12 @@
 	<!-- set global properties for this build -->
 	<property name="distro" location="distro"/>
 	<property name="tomcat-lib" value="${project.web.path}\WEB-INF\lib"/>
-	
-	<target name="compile" description="compile the source">
+
+	<target name="clean" description="clean jar files in distro directory">
+		<delete file="${distro}/*.jar"/>
+	</target>
+
+	<target name="compile" depends="clean" description="compile the source">
 		<ant antfile="build.xml" dir="../Framework_Factory"/>
 		<ant antfile="build.xml" dir="../Framework_Command"/>
 		<ant antfile="build.xml" dir="../Framework_Sql"/>
