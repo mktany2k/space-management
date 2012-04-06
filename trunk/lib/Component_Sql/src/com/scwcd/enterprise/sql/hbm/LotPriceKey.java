@@ -1,8 +1,6 @@
 package com.scwcd.enterprise.sql.hbm;
 
-
 import java.io.Serializable;
-
 
 public class LotPriceKey extends LotKey implements Serializable {
 
