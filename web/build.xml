@@ -14,7 +14,7 @@
 	<target name="install" depends="compile" description="move project to web container" >
 		<mkdir dir="${project.container.path}/web-space"/>
 		<copy todir="${project.container.path}/web-space">
-			<fileset dir="." excludes="svn,build.bat,build.properties,build.xml,.classpath,.project"/>
+			<fileset dir="." excludes="**/src/**,**/svn/**,build.bat,build.properties,build.xml,.classpath,.project"/>
 		</copy>
 	</target>
 </project>
