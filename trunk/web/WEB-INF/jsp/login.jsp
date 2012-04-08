@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title><c:out value="${page_title}" escapeXml="false"/></title>
-		<link rel="shortcut icon" href="images/svg.ico"/>
+		<link rel="shortcut icon" href="images/osm.ico"/>
 		<link rel="stylesheet" href="css/default.css" type="text/css"/>
 	</head>
 	<body>
