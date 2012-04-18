@@ -26,14 +26,12 @@ public enum Month {
 	
 	public static String getMonth(int m) {
 		final Month[] months = values();
-		String s = null;
 		for (Month month : months) {
 			if (month.month == m) {
-				s = month.toString();
-				break;
+				return month.toString();
 			}
 		}
-		return s;
+		return null;
 	}
 
 	public int value() {
