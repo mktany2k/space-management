@@ -11,9 +11,7 @@ import com.scwcd.framework.sql.core.DAOFactory;
 class ServiceSelectLot extends AbstractBusinessService<Lot> {
 
 	private int projectId;
-
 	private int planId;
-
 	private int lotId;
 
 	void setProjectId(final int projectId) {

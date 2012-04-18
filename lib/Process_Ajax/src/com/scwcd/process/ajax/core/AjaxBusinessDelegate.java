@@ -97,7 +97,7 @@ public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 		}
 		viewDetails.append("] ");
 
-		// start of JSON
+		// end of JSON
 		viewDetails.append("}");
 
 		return viewDetails.toString().getBytes();
@@ -119,8 +119,6 @@ public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 		final Lot lot = (Lot) session.removeCache();
 		lot.setName(lotName);
 		lot.setDescription(lotDescription);
-		//lot.setAccountCode(null);
-		//lot.setImage("");
 		lot.setDtModified(dtModified);
 		lot.setUpdatedBy(updatedBy);
 

@@ -16,9 +16,6 @@ public class CommandUpdateLot extends AbstractServletCommand {
 	public String execute(final HttpServletRequest request, final HttpServletResponse response) 
 			throws IOException {
 		
-//		final String image = request.getParameter("i");
-//		System.out.println(image);
-
 		final ApplicationSession appSession = getSession(request);
 		final AjaxBusinessDelegate bizDelegate = new AjaxBusinessDelegate(appSession, new ServiceUpdateLot());
 		final Map<String, String> rcCodes = bizDelegate.updateLot(request.getParameter("n"),
@@ -26,7 +23,6 @@ public class CommandUpdateLot extends AbstractServletCommand {
 																  new Date(),
 																  request.getParameter("u"));
 		request.setAttribute(ApplicationSession.RCCODES, rcCodes);
-		//try { Thread.sleep(5000); } catch (Exception e) { }
 
 		return null;
 	}

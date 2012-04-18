@@ -13,8 +13,7 @@ class ServiceSelectView extends AbstractBusinessService<View> {
 	@Override
 	public void perform() {
 		final ViewFactory viewFactory = ViewFactory.getInstance();
-		final View view = viewFactory.getInstance(viewId);
-		setOutput(view);
+		setOutput(viewFactory.getInstance(viewId));
 	}
 
 	void setViewId(final int viewId) {
