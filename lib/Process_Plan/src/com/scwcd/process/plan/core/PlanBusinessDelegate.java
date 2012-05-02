@@ -48,8 +48,6 @@ class PlanBusinessDelegate extends AbstractBusinessDelegate {
 		service.setParser(parser);
 		service.setUnit(unit);
 		service.perform();
-		final int projectId = service.getOutput();
-		
-		return projectId;
+		return service.getOutput();
 	}
 }

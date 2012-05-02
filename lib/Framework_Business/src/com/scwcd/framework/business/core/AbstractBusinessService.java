@@ -9,7 +9,6 @@ import java.util.Map;
 public abstract class AbstractBusinessService<O> implements BusinessService {
 
 	private O object;
-
 	private List<Integer> codeIds;
 
 	protected AbstractBusinessService() {
@@ -27,9 +26,7 @@ public abstract class AbstractBusinessService<O> implements BusinessService {
 		for (int i = 0; i < _codeIds.length; i++) {
 			_codeIds[i] = codeIds.get(i);
 		}
-		BusinessResource businessResource = BusinessResource.getInstance();
-		Map<String, String> rcCodes = businessResource.getCode(_codeIds);
-		return rcCodes;
+		return BusinessResource.getInstance().getCode(_codeIds);
 	}
 
 	@Override
