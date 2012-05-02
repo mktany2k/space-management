@@ -11,8 +11,6 @@ class ServiceSelectView extends AbstractBusinessService<List<View>> {
 
 	@Override
 	public void perform() {
-		final ViewFactory viewFactory = ViewFactory.getInstance();
-		final List<View> views = viewFactory.list();
-		setOutput(views);
+		setOutput(ViewFactory.getInstance().list());
 	}
 }

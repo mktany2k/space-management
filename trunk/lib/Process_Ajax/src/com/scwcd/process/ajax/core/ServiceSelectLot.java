@@ -28,10 +28,7 @@ class ServiceSelectLot extends AbstractBusinessService<Lot> {
 
 	@Override
 	public void perform() {
-		final DAOFactory factory = DAOFactory.getInstance();
-		final DAOLot dao = (DAOLot) factory.getInstance(DAOLot.class);
-		final Lot result = dao.doSelect(new LotParameter(projectId, planId, lotId));
-		
-		setOutput(result);
+		final DAOLot dao = (DAOLot) DAOFactory.getInstance().getInstance(DAOLot.class);
+		setOutput(dao.doSelect(new LotParameter(projectId, planId, lotId)));
 	}
 }

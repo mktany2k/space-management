@@ -7,7 +7,6 @@ import com.scwcd.framework.command.core.ApplicationSession;
 public abstract class AbstractBusinessDelegate implements BusinessDelegate {
 
 	private ApplicationSession session;
-
 	private BusinessService service;
 
 	protected AbstractBusinessDelegate(final ApplicationSession session, final BusinessService service) {
@@ -16,8 +15,7 @@ public abstract class AbstractBusinessDelegate implements BusinessDelegate {
 	}
 
 	protected final AbstractBusinessService<?> getService() {
-		DefaultServiceLocator locator = DefaultServiceLocator.getInstance();
-		return (AbstractBusinessService<?>) locator.locate(this);
+		return (AbstractBusinessService<?>) DefaultServiceLocator.getInstance().locate(this);
 	}
 
 	@Override
