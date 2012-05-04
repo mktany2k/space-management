@@ -67,8 +67,7 @@ public class DefaultDeploymentProcessor implements Processor {
 								  + WebContext.OUTPUT_PATH);
 			outputPath.mkdir();
 	
-			final Message message = exchange.getIn();
-			final GenericFile<?> genericFile = (GenericFile<?>) message.getBody();
+			final GenericFile<?> genericFile = (GenericFile<?>) exchange.getIn().getBody();
 			final File file = (File) genericFile.getFile();
 			final String filename = file.getName();
 			final String xsl = xsltTemplate.getFilename();
