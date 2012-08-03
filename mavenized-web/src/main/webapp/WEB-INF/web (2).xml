@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"
+         xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
+
+	<!--
+    <servlet>
+        <servlet-name>DefaultServlet</servlet-name>
+        <servlet-class>com.scwcd.enterprise.servlet.DefaultServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DefaultServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+        <url-pattern>/logout</url-pattern>
+        <url-pattern>/secure/*</url-pattern>
+    </servlet-mapping>
+    -->
+
+	<!-- SecurityFilter: /secure/* 
+	<filter>
+		<filter-name>SecurityFilter</filter-name>
+		<filter-class>com.scwcd.enterprise.servlet.filter.SecurityFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/secure/*</url-pattern>
+	</filter-mapping>
+	-->
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+    <filter>
+    	<filter-name>Struts2Filter</filter-name>
+    	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+	<filter-mapping>
+		<filter-name>Struts2Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!--
+	<listener>
+	    <listener-class>com.scwcd.enterprise.servlet.listener.DefaultListener</listener-class>
+	</listener>
+	-->
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
+</web-app>
