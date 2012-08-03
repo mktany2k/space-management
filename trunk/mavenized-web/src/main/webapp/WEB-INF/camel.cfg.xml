@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+       					   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<!-- Processor for demo - proof of concept -->
+	<bean id="processor-1" class="com.scwcd.enterprise.listener.svg.SvgDeploymentProcessor">
+		<property name="parser" ref="parser-1"/>
+		<property name="projectId" value="1"/>
+		<property name="projectPath" value="C:\Utilities\apache-tomcat-6.0.24\webapps\svg\WEB-INF"/>
+		<property name="hashtable">
+			<map>
+				<entry key="1-floor.svg" value="1"/>
+				<entry key="g-floor.svg" value="3"/>
+				<entry key="2-floor.svg" value="2"/>
+			</map>
+		</property>
+	</bean>
+	<bean id="parser-1" class="com.scwcd.enterprise.listener.svg.Visio2007Parser"/>
+
+	<camel:camelContext id="camelContext">
+    	<camel:endpoint id="svgFileListenerEndPoint-1" uri="file://C:\Utilities\apache-tomcat-6.0.24\webapps\svg\WEB-INF\dat\1\input?delay=5000&amp;move=../processed/${date:now:yyyyMMddHHmmssSSS}-${file:onlyname}&amp;moveFailed=../error/${date:now:yyyyMMddHHmmssSSS}-${file:onlyname}"/>
+
+		<!-- Listener route for demo -->
+        <camel:route id="svgFileListenerRoute-1">
+            <camel:from ref="svgFileListenerEndPoint-1"/>
+            <camel:process ref="processor-1"/>
+        </camel:route>
+
+    </camel:camelContext>
+</beans>

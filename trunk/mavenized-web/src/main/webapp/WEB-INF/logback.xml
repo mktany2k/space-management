@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- always a good activate OnConsoleStatusListener 
+	<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+	-->
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="ch.qos.logback.classic.PatternLayout">
+				<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+			</layout>
+		</encoder>
+    </appender>
+
+	<!--
+	-->
+	<appender name="svgAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/system.log</file>
+
+		<!--
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator name="myEval">
+                <expression>message.contains("[main]")</expression>
+            </evaluator>
+            <OnMismatch>ACCEPT</OnMismatch>
+            <OnMatch>DENY</OnMatch>
+        </filter>
+		-->
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>system.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="ch.qos.logback.classic.PatternLayout">
+				<Pattern>%date %level [%thread] %logger{10} [%file : %line] %msg%n</Pattern>
+			</layout>
+		</encoder>
+	</appender>
+
+    <logger name="com.scwcd" level="info">
+        <appender-ref ref="svgAppender" />
+    </logger>
+
+    <logger name="org.apache.camel" level="info">
+        <appender-ref ref="stdout" />
+    </logger>
+</configuration>
