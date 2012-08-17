@@ -23,6 +23,7 @@ package com.osm.example;
 
 public class Login extends ExampleSupport {
 
+    @Override
     public String execute() throws Exception {
 
         if (isInvalid(getUsername())) return INPUT;
@@ -33,7 +34,7 @@ public class Login extends ExampleSupport {
     }
 
     private boolean isInvalid(String value) {
-        return (value == null || value.length() == 0);
+        return (value == null || value.isEmpty());
     }
 
     private String username;
