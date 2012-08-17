@@ -26,13 +26,11 @@ import com.opensymphony.xwork2.config.RuntimeConfiguration;
 import com.opensymphony.xwork2.config.entities.ActionConfig;
 import com.opensymphony.xwork2.config.entities.ResultConfig;
 import com.opensymphony.xwork2.config.providers.XmlConfigurationProvider;
-
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
+import org.apache.struts2.StrutsSpringTestCase;
 
-import org.apache.struts2.StrutsTestCase;
-
-public class ConfigTest extends StrutsTestCase {
+public class ConfigTest extends StrutsSpringTestCase {
 
     protected void assertSuccess(String result) throws Exception {
         assertTrue("Expected a success result!",
@@ -84,8 +82,9 @@ public class ConfigTest extends StrutsTestCase {
         ResultConfig result = (ResultConfig) results.get(result_name);
         Map params = result.getParams();
         String value = (String) params.get("actionName");
-        if (value == null)
+        if (value == null) {
             value = (String) params.get("location");
+        }
         assertTrue("Wrong result value: [" + value + "]",
                 result_value.equals(value));
     }
@@ -93,5 +92,4 @@ public class ConfigTest extends StrutsTestCase {
     public void testConfig() throws Exception {
         assertNotNull(configurationManager);
     }
-
 }

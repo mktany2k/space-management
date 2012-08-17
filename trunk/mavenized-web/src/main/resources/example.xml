@@ -8,17 +8,17 @@
 -->
 <struts>
   <package name="example" namespace="/example" extends="struts-default">
-    <action name="HelloWorld" class="com.osm.example.HelloWorld">
-      <result>/example/HelloWorld.jsp</result>
+    <action name="HelloWorld" class="HelloWorld">
+      <result>/WEB-INF/jsp/login.jsp</result>
     </action>
 
-    <action name="Login_*" method="{1}" class="com.osm.example.Login">
-      <result name="input">/example/Login.jsp</result>
+    <action name="Login_*" method="{1}" class="Login">
+      <result name="input">/WEB-INF/example/Login.jsp</result>
       <result type="redirectAction">Menu</result>
     </action>
 
-    <action name="*" class="com.osm.example.ExampleSupport">
-      <result>/example/{1}.jsp</result>
+    <action name="*" class="ExampleSupport">
+      <result>/WEB-INF/jsp/{1}.jsp</result>
     </action>
     
     <!-- Add additional "example" package actions here. -->
