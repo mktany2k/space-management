@@ -2,19 +2,19 @@
 <html>
 	<head>
 		<title><c:out value="${page_title}" escapeXml="false"/></title>
-		<link rel="shortcut icon" href="../images/svg.ico"/>
-		<link rel="stylesheet" href="../css/default.css" type="text/css"/>
-		<script type="text/javascript" src="../js/jquery-1.6.1.min.js"></script>
-		<script type="text/javascript" src="../js/fn-menu.js"></script>
-		<style type="text/css">@import "../js/jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css";</style>
-		<script type="text/javascript" src="../js/jquery-ui-1.8.13.custom/js/jquery-ui-1.8.13.custom.min.js"></script>
+		<link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/images/svg.ico"/>
+		<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/default.css" type="text/css"/>
+		<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/jquery-1.6.1.min.js"></script>
+		<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/fn-menu.js"></script>
+		<style type="text/css">@import "${pageContext.servletContext.contextPath}/js/jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css";</style>
+		<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/jquery-ui-1.8.13.custom/js/jquery-ui-1.8.13.custom.min.js"></script>
 
 		<!-- jquery-blueimp starts -->
-		<link rel="stylesheet" href="../js/blueimp/jquery.fileupload-ui.css" type="text/css"/>
-		<script type="text/javascript" src="../js/blueimp/jquery.fileupload.js"></script>
-		<script type="text/javascript" src="../js/blueimp/jquery.fileupload-ui.js"></script>
-		<script type="text/javascript" src="../js/blueimp/jquery.iframe-transport.js"></script>
-		<script type="text/javascript"  src="../js/jquery.tmpl.min.js"></script>
+		<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/js/blueimp/jquery.fileupload-ui.css" type="text/css"/>
+		<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/blueimp/jquery.fileupload.js"></script>
+		<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/blueimp/jquery.fileupload-ui.js"></script>
+		<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/blueimp/jquery.iframe-transport.js"></script>
+		<script type="text/javascript"  src="${pageContext.servletContext.contextPath}/js/jquery.tmpl.min.js"></script>
 		<!-- jquery-blueimp ends -->
 		<script type="text/javascript">
 			$(document).ready(function() {
