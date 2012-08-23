@@ -14,7 +14,7 @@
 
     <action name="Login_*" method="{1}" class="Login">
       <result name="input">/WEB-INF/example/Login.jsp</result>
-      <result type="redirectAction">Menu</result>
+      <result type="redirectAction">menu</result>
     </action>
 
     <action name="*" class="ExampleSupport">
