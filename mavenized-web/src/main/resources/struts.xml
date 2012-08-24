@@ -3,8 +3,13 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-  <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-  <constant name="struts.devMode" value="true"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
   
-  <include file="example.xml"/>
+    <include file="example.xml"/>
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="*" class="ExampleSupport">
+            <result>/WEB-INF/jsp/{1}.jsp</result>
+        </action>
+    </package>
 </struts>
