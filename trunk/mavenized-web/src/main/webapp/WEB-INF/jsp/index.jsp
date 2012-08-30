@@ -5,16 +5,14 @@
 <html>
     <head>
         <title>Bootstrap 101 Template</title>
-        <link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
+        <link href="<s:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
         <style type="text/css">
             body {
                 padding-top: 60px;
                 padding-bottom: 40px;
             }
         </style>
-        <link href="${pageContext.servletContext.contextPath}/css/bootstrap-responsive.css" rel="stylesheet">
-
-        <link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/ico/favicon.ico">
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -85,8 +83,8 @@
 
         </div> <!-- /container -->
 
-        
-        <script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
+        <script src="<s:url value="/js/jquery-1.8.0.min"/>"></script>
+        <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
 
     </body>
 </body>
