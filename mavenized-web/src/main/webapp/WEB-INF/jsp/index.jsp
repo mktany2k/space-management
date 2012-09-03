@@ -37,12 +37,8 @@
                                 </ul>
                             </li>
                         </ul>
-                        <s:form action="login" cssClass="navbar-form pull-right" theme="simple">
-                            <s:textfield cssClass="span2" placeholder="Username" key="username"/>
-                            <s:password cssClass="span2" placeholder="Password" key="password"/>
-                            <s:submit cssClass="btn" value="Login"/>
-                        </s:form>
                     </div><!--/.nav-collapse -->
+                    <s:a action="login" cssClass="btn btn-primary pull-right">Login</s:a>
                 </div>
             </div>
         </div>
@@ -83,7 +79,7 @@
 
         </div> <!-- /container -->
 
-        <script src="<s:url value="/js/jquery-1.8.0.min"/>"></script>
+        <script src="<s:url value="/js/jquery-1.8.0.min.js"/>"></script>
         <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
 
     </body>
