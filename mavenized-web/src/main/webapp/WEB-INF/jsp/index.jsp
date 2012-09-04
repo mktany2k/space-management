@@ -1,4 +1,4 @@
-<%@page pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
@@ -74,7 +74,13 @@
             <hr>
 
             <footer>
-                <p>FOOTER &copy; Company 2012</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <p>FOOTER &copy; Company 2012</p>
+                        </div>
+                    </div>
+                </div>
             </footer>
 
         </div> <!-- /container -->

@@ -1,12 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
-        <link href="<s:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
+        <link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/ico/favicon.ico">
+        <link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <style type="text/css">
             body {
                 padding-top: 60px;
