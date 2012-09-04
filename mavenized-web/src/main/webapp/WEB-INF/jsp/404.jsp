@@ -1,5 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" isErrorPage="true"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
@@ -13,12 +13,12 @@
                 padding-bottom: 40px;
             }
         </style>
-        <title>HTTP 404 File Not Found</title>
+        <title>HTTP 404 File Not Found!</title>
     </head>
     <body>
         <div class="container">
             <div class="hero-unit">
-                <h1>Your Just Got 404'D</h1>
+                <h1>Your Just Got 404'D!</h1>
             </div>
         </div>
     </body>

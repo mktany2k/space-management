@@ -79,7 +79,7 @@
 
         </div> <!-- /container -->
 
-        <script src="<s:url value="/js/jquery-1.8.0.min.js"/>"></script>
+        <script src="<s:url value="/js/jquery-1.8.1.min.js"/>"></script>
         <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
 
     </body>
