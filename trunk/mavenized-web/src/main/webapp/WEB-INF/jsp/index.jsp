@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bootstrap 101 Template</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
         <link href="<s:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
         <style type="text/css">
@@ -13,6 +13,7 @@
                 padding-bottom: 40px;
             }
         </style>
+        <title>Bootstrap 101 Template</title>
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
