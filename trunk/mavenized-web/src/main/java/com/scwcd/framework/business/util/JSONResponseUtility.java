@@ -41,7 +41,7 @@ public class JSONResponseUtility {
 		
 		// build application-context and messages
 		state.append("\"ac\": { \"mv\": ").append(CommandUtility.MAX_CACHE);
-		state.append(", \"mm\": [\"").append("Only ").append(CommandUtility.MAX_CACHE).append(" floor").append(CommandUtility.MAX_CACHE > 1 ? "s" : "").append(" can be loaded at a time.");
+		state.append(", \"mm\": [\"").append("Only ").append(CommandUtility.MAX_CACHE).append(" floor").append("s").append(" can be loaded at a time.");
 		state.append("\", \"").append("Changes will be lost. Are you sure?");
 		state.append("\", \"").append("Changes updated");
 		state.append("\"], \"mt\": [\"").append("Error");

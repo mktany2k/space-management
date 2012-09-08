@@ -1,8 +1,7 @@
 package com.scwcd.enterprise.sql.hbm;
 
-import java.io.Serializable;
 
-public class LotPriceKey extends LotKey implements Serializable {
+public class LotPriceKey extends LotKey {
 
 	private static final long serialVersionUID = 1001L;
 
@@ -23,7 +22,8 @@ public class LotPriceKey extends LotKey implements Serializable {
 		return priceId;
 	}
 
-	public int hashCode() {
+	@Override
+    public int hashCode() {
 		final int hashCode = super.hashCode();
 		return hashCode + priceId;
 	}
