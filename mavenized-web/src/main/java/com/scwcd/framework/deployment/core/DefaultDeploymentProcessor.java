@@ -3,12 +3,13 @@ package com.scwcd.framework.deployment.core;
 
 import java.io.File;
 import java.util.Hashtable;
+
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
 import org.apache.camel.Exchange;
-import org.apache.camel.Message;
 import org.apache.camel.Processor;
 import org.apache.camel.component.file.GenericFile;
 import org.slf4j.Logger;

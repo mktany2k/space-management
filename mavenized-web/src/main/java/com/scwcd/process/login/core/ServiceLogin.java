@@ -31,14 +31,13 @@ class ServiceLogin extends AbstractBusinessService<User> {
 		if (password.length != _password.length) {
 			setRcCode(2001);
 			return;
-		} else {
-			for (int i = 0; i < password.length; i++) {
-				if (password[i] != _password[i]) {
-					setRcCode(2001);
-					return;
-				}
-			}
 		}
+        for (int i = 0; i < password.length; i++) {
+        	if (password[i] != _password[i]) {
+        		setRcCode(2001);
+        		return;
+        	}
+        }
 
 		// no error
 		setRcCode(0);

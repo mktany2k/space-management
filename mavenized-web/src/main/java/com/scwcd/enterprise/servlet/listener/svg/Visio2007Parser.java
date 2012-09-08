@@ -39,7 +39,8 @@ public class Visio2007Parser extends SvgDefaultParser {
 
 	private static final String MAP_PREFIX = "m_";
 
-	public void parse(final Object ... object) {
+	@Override
+    public void parse(final Object ... object) {
 		// initialize variables
 		final Document document = (Document) object[0];
 		final int projectId = (Integer) object[1];
@@ -142,7 +143,7 @@ public class Visio2007Parser extends SvgDefaultParser {
 			}
 
 			for (int i = 0; i < nodes.getLength(); i++) {
-				final Node node = (Node) nodes.item(i);
+				final Node node = nodes.item(i);
 				node.getParentNode().removeChild(node);
 			}
 		}

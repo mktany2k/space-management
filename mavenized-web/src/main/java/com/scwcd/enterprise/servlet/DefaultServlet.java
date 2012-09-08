@@ -56,8 +56,7 @@ public class DefaultServlet extends HttpServlet {
         }
     }
 
-    public static void setGlobalValues(final HttpServletRequest request)
-            throws ServletException, IOException {
+    public static void setGlobalValues(final HttpServletRequest request) {
 
         final String page_title = "Space Management";
         request.setAttribute("page_title", page_title);
@@ -73,7 +72,7 @@ public class DefaultServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    protected String getCommandKey(final HttpServletRequest request) {
+    protected static String getCommandKey(final HttpServletRequest request) {
         final String commandKey = request.getParameter(COMMAND_KEY);
         if (commandKey == null) {
             return request.getRequestURI();
