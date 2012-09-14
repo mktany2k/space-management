@@ -4,22 +4,14 @@
 <html>
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
-        <link href="<s:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
-        <style type="text/css">
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
         <title>Login</title>
     </head>
     <body>
         <div class="container">
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="span4 pull-right">
+            <div class="row">
+                <div class="hero-unit">
+                    <h2>Welcome</h2>
+                    <div class="pull-right">
                         <h2>Login</h2>
                         <s:form action="signin" theme="simple" cssClass="form-horizontal">
                             <s:label key="username"/>
