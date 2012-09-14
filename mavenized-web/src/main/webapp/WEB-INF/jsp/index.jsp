@@ -4,45 +4,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
-        <link href="<s:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
-        <style type="text/css">
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
         <title>Bootstrap 101 Template</title>
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="#">Project name</a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li class="nav-header">Nav header</li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                    <s:a action="login" cssClass="btn btn-primary pull-right">Login</s:a>
-                </div>
-            </div>
-        </div>
+
 
         <div class="container">
 
@@ -71,24 +36,7 @@
                     <p><a class="btn" href="#">View details &raquo;</a></p>
                 </div>
             </div>
-
-            <hr>
-
-            <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="span12">
-                            <p>FOOTER &copy; Company 2012</p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-
         </div> <!-- /container -->
-
-        <script src="<s:url value="/js/jquery-1.8.1.min.js"/>"></script>
-        <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
-
     </body>
 </body>
 </html>
