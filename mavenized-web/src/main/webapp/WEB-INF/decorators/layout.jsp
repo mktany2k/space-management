@@ -1,9 +1,8 @@
-<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%> 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-<%@page contentType="text/html; charset=UTF-8" %> 
-
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html> 
 <html> 
     <head> 
@@ -18,13 +17,13 @@
             }
         </style>
         <decorator:head/> 
-    </head> 
-
+    </head>
     <body> 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="#">Office Space Management</a>
+                    <!--
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="active"><a href="#">Home</a></li>
@@ -32,8 +31,10 @@
                             <li><a href="#contact">Contact</a></li>
 
                         </ul>
-                    </div><!--/.nav-collapse -->
+                    </div>
+                    --><!--/.nav-collapse -->
                     <%--<shiro:authenticated>--%>
+                    <!--
                     <div class="nav-collapse collapse pull-right">
                         <ul class="nav">
                             <li class="dropdown">
@@ -50,15 +51,22 @@
                             </li>
                         </ul>
                     </div>
+                    -->
                     <%--</shiro:authenticated>--%>
                     <%--<shiro:notAuthenticated>--%>
+                    <div class="nav-collapse collapse pull-right">
+		                <s:form action="signin" theme="simple" cssClass="form-horizontal">
+		                    <s:textfield placeholder="username" key="username"/>
+		                    <s:password placeholder="password" key="password"/>
+		                    <s:a cssClass="btn btn-primary" action="">Login</s:a>
+		                </s:form>
+		            </div>
+		            <!--
                     <s:a action="login" cssClass="btn btn-primary pull-right">Login</s:a>
+                    -->
                     <%--</shiro:notAuthenticated>--%>
-
-
                 </div>
             </div>
-
         </div>
         <decorator:body/> 
         <div class="container">
