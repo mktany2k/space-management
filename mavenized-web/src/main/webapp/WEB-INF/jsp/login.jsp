@@ -6,24 +6,23 @@
         <title>Login</title>
     </head>
     <body>
-        <div class="hero-unit">
-            <div class="container">
-                <div class="row">
-                    <div class="well span7">
-                        <h2>Welcome</h2>
+        <div class="container">
+            <div class="row">
+                <div class="span4 offset4 well">
+                    <legend>Please Sign In</legend>
+                    <div class="alert alert-error">
+                        <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
                     </div>
-                    <div class="well span5 pull-right">
-                        <fieldset>
-                            <legend>Login</legend>
-                            <s:form action="signin" theme="simple" cssClass="form">
-                                <s:label key="username"/>
-                                <s:textfield key="username"/>
-                                <s:label key="password"/>
-                                <s:password key="password"/>
-                                <p><s:a cssClass="btn btn-primary" action="">Login</s:a></p>
-                            </s:form>
-                        </fieldset>
-                    </div>
+                    <s:form acceptcharset="UTF-8">
+                        <s:textfield key="username" cssClass="span4" placeholder="Username"/>
+                        <s:password key="password" cssClass="span4" placeholder="Password"/>
+                        <label class="checkbox">
+                            <s:checkbox key="remember" value="1">Remember Me</s:checkbox>
+                        </label>
+                        <s:a key="submit" cssClass="btn btn-info btn-block" href="#">Sign in</s:a>
+                        <%--<s:submit name="submit" cssClass="btn btn-info btn-block" value="Sign in"/>--%>
+                        <!--<button type="submit" name="submit" class="btn btn-info btn-block">Sign in</button>-->
+                    </s:form>
                 </div>
             </div>
         </div>

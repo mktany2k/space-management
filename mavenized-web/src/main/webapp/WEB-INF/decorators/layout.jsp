@@ -54,16 +54,21 @@
                     -->
                     <%--</shiro:authenticated>--%>
                     <%--<shiro:notAuthenticated>--%>
-                    <div class="nav-collapse collapse pull-right">
-		                <s:form action="signin" theme="simple" cssClass="form-horizontal">
-		                    <s:textfield placeholder="username" key="username"/>
-		                    <s:password placeholder="password" key="password"/>
-		                    <s:a cssClass="btn btn-primary" action="">Login</s:a>
-		                </s:form>
-		            </div>
-		            <!--
-                    <s:a action="login" cssClass="btn btn-primary pull-right">Login</s:a>
-                    -->
+                    <div class="nav pull-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                            <div class="dropdown-menu well form">
+                                <s:form acceptcharset="UTF-8">
+                                    <s:textfield key="username" placeholder="Username" size="30"/>
+                                    <s:password key="password" placeholder="Password" size="30"/>
+                                    <label class="checkbox string optional">
+                                        <s:checkbox key="remember" value="1">Remember me</s:checkbox>
+                                    </label>
+                                    <s:submit cssClass="btn btn-primary" key="submit" value="Sign In"/>
+                                </s:form>
+                            </div>
+                        </li>
+                    </div>
                     <%--</shiro:notAuthenticated>--%>
                 </div>
             </div>
