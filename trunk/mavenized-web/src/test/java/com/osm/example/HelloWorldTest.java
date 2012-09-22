@@ -21,9 +21,9 @@
 
 package com.osm.example;
 
-import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.StrutsSpringTestCase;
-import org.apache.struts2.StrutsTestCase;
+
+import com.opensymphony.xwork2.ActionSupport;
 
 public class HelloWorldTest extends StrutsSpringTestCase {
 

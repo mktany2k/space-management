@@ -18,10 +18,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package com.osm.example.action;
 
 import com.osm.example.ExampleSupport;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -30,20 +31,25 @@ import org.apache.struts2.convention.annotation.Result;
 public class Login extends ExampleSupport {
 
     @Override
-    @Action(value="Login_*", results={@Result(name="input", location="/WEB-INF/jsp/login.jsp")})
+    @Action(value = "Login_*", results = {
+        @Result(name = "input", location = "/WEB-INF/jsp/login.jsp"),
+        @Result(name = "success", location = "/WEB-INF/jsp/index.jsp")})
     public String execute() throws Exception {
+        if (isInvalid(getUsername())) {
+            return INPUT;
+        }
 
-        if (isInvalid(getUsername())) return INPUT;
-
-        if (isInvalid(getPassword())) return INPUT;
-
+        if (isInvalid(getPassword())) {
+            return INPUT;
+        }
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        SecurityUtils.getSubject().login(token);
         return SUCCESS;
     }
 
     private boolean isInvalid(String value) {
         return (value == null || value.isEmpty());
     }
-
     private String username;
 
     public String getUsername() {
@@ -53,7 +59,6 @@ public class Login extends ExampleSupport {
     public void setUsername(String username) {
         this.username = username;
     }
-
     private String password;
 
     public String getPassword() {
@@ -63,5 +68,4 @@ public class Login extends ExampleSupport {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }
