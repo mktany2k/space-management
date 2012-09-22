@@ -17,6 +17,8 @@
             }
         </style>
         <decorator:head/> 
+        <script src="<s:url value="/js/jquery-1.8.1.min.js"/>"></script>
+        <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
     </head>
     <body> 
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -58,14 +60,14 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
                             <div class="dropdown-menu well form">
-                                <s:form acceptcharset="UTF-8">
+                                <%--<s:form acceptcharset="UTF-8">
                                     <s:textfield key="username" placeholder="Username" size="30"/>
                                     <s:password key="password" placeholder="Password" size="30"/>
                                     <label class="checkbox string optional">
                                         <s:checkbox key="remember" value="1">Remember me</s:checkbox>
                                     </label>
                                     <s:submit cssClass="btn btn-primary" key="submit" value="Sign In"/>
-                                </s:form>
+                                </s:form>--%>
                             </div>
                         </li>
                     </div>
@@ -86,7 +88,5 @@
                 </div>
             </footer>
         </div>
-        <script src="<s:url value="/js/jquery-1.8.1.min.js"/>"></script>
-        <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
     </body>
 </html> 
