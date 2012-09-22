@@ -12,10 +12,10 @@
       <result>/WEB-INF/jsp/login.jsp</result>
     </action>
 
-    <action name="Login_*" method="{1}" class="Login">
-      <result name="input">/WEB-INF/example/Login.jsp</result>
+<!--    <action name="Login_*" method="{1}" class="Login">
+      <result name="input">/WEB-INF/jsp/login.jsp</result>
       <result type="redirectAction">menu</result>
-    </action>
+    </action>-->
 
     <action name="*" class="ExampleSupport">
       <result>/WEB-INF/jsp/{1}.jsp</result>
