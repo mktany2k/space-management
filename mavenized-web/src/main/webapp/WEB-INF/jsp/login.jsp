@@ -10,8 +10,8 @@
             <div class="row">
                 <div class="span4 offset4 well">
                     <legend>Please Sign In</legend>
-                    <div class="alert alert-error">
-                        <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
+                    <div class="alert alert-info">
+                        <a class="close" data-dismiss="alert" href="#">×</a>Please use username/password user1/user1 or user2/user2 to test
                     </div>
                     <s:form acceptcharset="UTF-8" validate="true" action="Login" namespace="/example">
                         <s:textfield key="username" cssClass="span4" placeholder="Username" required="true"/>
@@ -24,10 +24,10 @@
                 </div>
             </div>
         </div>
-        <script>
+<!--        <script>
                 $('#Login').submit(function(){
                     alert("submit");
                 });
-        </script>
+        </script>-->
     </body>
 </html>

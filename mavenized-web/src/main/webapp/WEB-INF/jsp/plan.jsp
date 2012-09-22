@@ -113,7 +113,7 @@
 			-->
 			<ul id="jx-floors" class="jx-bar-button-left">
 				<li title="Floors">
-					<a id="jx-floor" name="jx-floor" href="#">
+					<a id="jx-floor" href="#">
 						<img src="../images/floor.png" class="menu-icon-small"/>
 						<!--c:out value="${project.name} [${fn:length(project.plans)}]"/-->
 					</a>

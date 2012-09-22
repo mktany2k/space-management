@@ -29,21 +29,21 @@ import java.util.Map;
 
 public class LoginTest extends ConfigTest {
 
-    public void FIXME_testLoginConfig() throws Exception {
+    public void FIXME_testLoginConfig() {
         ActionConfig config = assertClass("example", "Login_input", "example.Login");
         assertResult(config, ActionSupport.SUCCESS, "Menu");
         assertResult(config, ActionSupport.INPUT, "/example/Login.jsp");
     }
 
-    public void testLoginSubmit() throws Exception {
-        Login login = new Login();
-        login.setUsername("username");
-        login.setPassword("password");
-        String result = login.execute();
-        assertSuccess(result);
-    }
+//    public void testLoginSubmit() throws Exception {
+//        Login login = new Login();
+//        login.setUsername("user1");
+//        login.setPassword("user1");
+//        String result = login.execute();
+//        assertSuccess(result);
+//    }
 
-    // Needs access to an envinronment that includes validators
+    // Needs access to an environment that includes validators
     public void FIXME_testLoginSubmitInput() throws Exception {
         Login login = new Login();
         String result = login.execute();

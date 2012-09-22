@@ -32,17 +32,17 @@ import org.apache.struts2.StrutsSpringTestCase;
 
 public class ConfigTest extends StrutsSpringTestCase {
 
-    protected void assertSuccess(String result) throws Exception {
+    protected void assertSuccess(String result) {
         assertTrue("Expected a success result!",
                 ActionSupport.SUCCESS.equals(result));
     }
 
-    protected void assertInput(String result) throws Exception {
+    protected void assertInput(String result) {
         assertTrue("Expected an input result!",
                 ActionSupport.INPUT.equals(result));
     }
 
-    protected Map assertFieldErrors(ActionSupport action) throws Exception {
+    protected Map assertFieldErrors(ActionSupport action) {
         assertTrue(action.hasFieldErrors());
         return action.getFieldErrors();
     }
@@ -57,7 +57,8 @@ public class ConfigTest extends StrutsSpringTestCase {
 
     }
 
-    protected void setUp() throws Exception {
+    @Override
+	protected void setUp() throws Exception {
         super.setUp();
         XmlConfigurationProvider c = new XmlConfigurationProvider("struts.xml");
         configurationManager.addContainerProvider(c);
@@ -89,7 +90,7 @@ public class ConfigTest extends StrutsSpringTestCase {
                 result_value.equals(value));
     }
 
-    public void testConfig() throws Exception {
+    public void testConfig() {
         assertNotNull(configurationManager);
     }
 }
