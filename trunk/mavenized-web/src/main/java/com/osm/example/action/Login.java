@@ -19,11 +19,18 @@
  * under the License.
  */
 
-package com.osm.example;
+package com.osm.example.action;
 
+import com.osm.example.ExampleSupport;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+
+@Namespace("/example")
 public class Login extends ExampleSupport {
 
     @Override
+    @Action(value="Login_*", results={@Result(name="input", location="/WEB-INF/jsp/login.jsp")})
     public String execute() throws Exception {
 
         if (isInvalid(getUsername())) return INPUT;
