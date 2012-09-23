@@ -21,7 +21,7 @@
 
 package com.osm.example;
 
-import com.osm.example.action.Login;
+import com.osm.web.action.auth.Login;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.config.entities.ActionConfig;
 

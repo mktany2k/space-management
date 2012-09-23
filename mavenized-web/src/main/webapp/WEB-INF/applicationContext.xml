@@ -77,7 +77,7 @@
                 /ico/* = anon
                 /img/* = anon
                 /images/* = anon
-                /example/Login.action = anon
+                /auth/Login.action = anon
                 # /index.action = anon
                 # everything else requires authentication:
                 /** = authc
@@ -85,7 +85,9 @@
         </property>
     </bean>
     
-    <bean id="HelloWorld" class="com.osm.example.HelloWorld"/>
-    <bean id="Login" class="com.osm.example.action.Login"/>
-    <bean id="ExampleSupport" class="com.osm.example.ExampleSupport"/>
+    <!--
+    -->
+    <bean id="DefaultAction" class="com.osm.web.action.DefaultAction"/>
+    <bean id="HelloWorld" class="com.osm.web.action.HelloWorld"/>
+    <bean id="Login" class="com.osm.web.action.auth.Login"/>
 </beans>

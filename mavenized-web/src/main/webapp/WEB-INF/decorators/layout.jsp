@@ -16,7 +16,7 @@
                 padding-bottom: 40px;
             }
         </style>
-        <decorator:head/> 
+        <decorator:head/>
         <script src="<s:url value="/js/jquery-1.8.1.min.js"/>"></script>
         <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
     </head>
@@ -29,7 +29,7 @@
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login is as <shiro:principal/><b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as <shiro:principal/><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><s:a action="Logout" namespace="/example">Logout</s:a></li>
                                         </ul>
@@ -40,7 +40,7 @@
                     <shiro:notAuthenticated>
                         <div class="nav pull-right">
                             <li class="dropdown">
-                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">Log In <strong class="caret"></strong></a>
                                 <div class="dropdown-menu well form">
                                     <%--<s:form acceptcharset="UTF-8">
                                         <s:textfield key="username" placeholder="Username" size="30"/>
