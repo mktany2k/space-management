@@ -1,5 +1,6 @@
 package com.osm.web.action.auth;
 
+
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -9,11 +10,14 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
+
 @Namespace("/auth")
-@Action("Login")
+@Action("Login_xx")
 @Results({
     @Result(name = "success", location = "/index"),
-    @Result(name = "fail", location = "/login")})
+    @Result(name = "fail", location = "/login")}
+)
+@Deprecated // TODO: @MK, please confirm if this is to be deleted
 public class LoginAction extends ActionSupport {
 
     private String username;
