@@ -25,35 +25,18 @@
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="#">Office Space Management</a>
-                    <shiro:authenticated>
+                    <shiro:user>
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as <shiro:principal/><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><s:a action="Logout" namespace="/example">Logout</s:a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                    </shiro:authenticated>
-                    <shiro:notAuthenticated>
-                        <div class="nav pull-right">
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">Log In <strong class="caret"></strong></a>
-                                <div class="dropdown-menu well form">
-                                    <%--<s:form acceptcharset="UTF-8">
-                                        <s:textfield key="username" placeholder="Username" size="30"/>
-                                        <s:password key="password" placeholder="Password" size="30"/>
-                                        <label class="checkbox string optional">
-                                            <s:checkbox key="remember" value="1">Remember me</s:checkbox>
-                                        </label>
-                                        <s:submit cssClass="btn btn-primary" key="submit" value="Sign In"/>
-                                    </s:form>--%>
-                                </div>
-                            </li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
-                    </shiro:notAuthenticated>
+                    </shiro:user>
                 </div>
             </div>
         </div>
