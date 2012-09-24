@@ -10,7 +10,7 @@ import org.apache.struts2.convention.annotation.Result;
 
 @Namespace("/example")
 @Action("Logout")
-@Result(location="login")
+@Result(type="redirectAction",params={"namespace", "/", "actionName", "index"})
 @SuppressWarnings("serial")
 public class Logout extends ActionSupport {
 

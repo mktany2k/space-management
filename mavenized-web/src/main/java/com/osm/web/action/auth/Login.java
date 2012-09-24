@@ -1,17 +1,17 @@
 package com.osm.web.action.auth;
 
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
-import com.osm.web.action.DefaultAction;
 
 
 @Namespace("/auth")
 @SuppressWarnings("serial")
-public class Login extends DefaultAction {
+public class Login extends ActionSupport {
 
     @Override
     @Action(value = "Login", results = {
