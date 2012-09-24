@@ -71,13 +71,13 @@
         </property> -->
         <property name="filterChainDefinitions">
             <value>
-                /login.action = anon
                 /js/* = anon
                 /css/* = anon
                 /ico/* = anon
                 /img/* = anon
                 /images/* = anon
                 /auth/Login.action = anon
+                /index.html = anon
                 # /index.action = anon
                 # everything else requires authentication:
                 /** = authc
@@ -87,7 +87,6 @@
     
     <!--
     -->
-    <bean id="DefaultAction" class="com.osm.web.action.DefaultAction"/>
-    <bean id="HelloWorld" class="com.osm.web.action.HelloWorld"/>
+    <bean id="DefaultAction" class="com.opensymphony.xwork2.ActionSupport"/>
     <bean id="Login" class="com.osm.web.action.auth.Login"/>
 </beans>
