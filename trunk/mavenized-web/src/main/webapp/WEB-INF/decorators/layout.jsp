@@ -17,14 +17,14 @@
             }
         </style>
         <decorator:head/>
-        <script src="<s:url value="/js/jquery-1.8.1.min.js"/>"></script>
+        <script src="<s:url value="/js/jquery-1.8.2.min.js"/>"></script>
         <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
     </head>
     <body> 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="#">Office Space Management</a>
+                    <s:a cssClass="brand" action="index" namespace="/"><s:text name="project.name"/></s:a>
                     <shiro:user>
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
@@ -32,10 +32,10 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as <shiro:principal/><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><s:a action="Logout" namespace="/example">Logout</s:a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                     </shiro:user>
                 </div>
             </div>
