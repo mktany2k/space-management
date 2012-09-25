@@ -88,5 +88,15 @@
     <!--
     -->
     <bean id="DefaultAction" class="com.opensymphony.xwork2.ActionSupport"/>
-    <bean id="Login" class="com.osm.web.action.auth.Login"/>
+    <bean id="Login" class="com.osm.web.action.auth.Login">
+        <property name="authenticator">
+            <bean class="com.osm.auth.shiro.ShiroAuthenticator"/> 
+        </property>
+    </bean>
+    
+    <bean id="Logout" class="com.osm.web.action.auth.Logout">
+        <property name="authenticator">
+            <bean class="com.osm.auth.shiro.ShiroAuthenticator"/> 
+        </property>
+    </bean>
 </beans>

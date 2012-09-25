@@ -1,42 +1,33 @@
 package com.osm.web.action.auth;
 
+import com.google.common.base.Strings;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
+import com.osm.auth.AuthenticationException;
+import com.osm.auth.Authenticator;
 
-@Namespace("/auth")
 @SuppressWarnings("serial")
 public class Login extends ActionSupport {
 
+    private Authenticator authenticator;
+
     @Override
-    @Action(value = "Login", results = {
-        @Result(name = "input", location = "/WEB-INF/jsp/login.jsp"),
-        @Result(name = "success", type = "redirectAction", params = {"namespace", "/", "actionName", "index"})})
     public String execute() throws Exception {
-        if (isInvalid(getUsername())) {
+        if (Strings.isNullOrEmpty(getUsername())) {
             return INPUT;
         }
 
-        if (isInvalid(getPassword())) {
+        if (Strings.isNullOrEmpty(getPassword())) {
             return INPUT;
         }
-        
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+
         try {
-            SecurityUtils.getSubject().login(token);
+            authenticator.login(username, password);
         } catch (AuthenticationException e) {
             return INPUT;
         }
         return SUCCESS;
     }
 
-    private boolean isInvalid(String value) {
-        return (value == null || value.isEmpty());
-    }
     private String username;
 
     public String getUsername() {
@@ -54,5 +45,9 @@ public class Login extends ActionSupport {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setAuthenticator(final Authenticator authenticator) {
+        this.authenticator = authenticator;
     }
 }

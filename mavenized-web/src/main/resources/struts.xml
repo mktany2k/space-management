@@ -13,4 +13,19 @@
             <result>/WEB-INF/jsp/{1}.jsp</result>
         </action>
     </package>
+    <package name="auth" namespace="/auth" extends="struts-default">
+        <action name="Login" class="Login">
+            <result name="input">/WEB-INF/jsp/login.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="namespace">/</param>
+                <param name="actionName">index</param>
+            </result>
+        </action>
+        <action name="Logout" class="Logout">
+            <result name="success" type="redirectAction">
+                <param name="namespace">/</param>
+                <param name="actionName">index</param>
+            </result>
+        </action>
+    </package>
 </struts>

@@ -1,22 +1,20 @@
 package com.osm.web.action.auth;
 
-
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.shiro.SecurityUtils;
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
+import com.osm.auth.Authenticator;
 
-
-@Namespace("/example")
-@Action("Logout")
-@Result(type="redirectAction",params={"namespace", "/", "actionName", "index"})
 @SuppressWarnings("serial")
 public class Logout extends ActionSupport {
 
+    private Authenticator authenticator;
+
     @Override
     public String execute() throws Exception {
-        SecurityUtils.getSubject().logout();
+        authenticator.logout();
         return SUCCESS;
+    }
+
+    public void setAuthenticator(final Authenticator authenticator) {
+        this.authenticator = authenticator;
     }
 }
