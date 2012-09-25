@@ -21,6 +21,7 @@
 
 package com.osm.example;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.config.RuntimeConfiguration;
 import com.opensymphony.xwork2.config.entities.ActionConfig;
@@ -39,7 +40,7 @@ public class ConfigTest extends StrutsSpringTestCase {
 
     protected void assertInput(String result) {
         assertTrue("Expected an input result!",
-                ActionSupport.INPUT.equals(result));
+                Action.INPUT.equals(result));
     }
 
     protected Map assertFieldErrors(ActionSupport action) {

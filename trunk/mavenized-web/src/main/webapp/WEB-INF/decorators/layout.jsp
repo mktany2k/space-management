@@ -31,7 +31,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as <shiro:principal/><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><s:a action="Logout" namespace="/example">Logout</s:a></li>
+                                        <li><s:a action="Logout" namespace="/auth">Logout</s:a></li>
                                         </ul>
                                     </li>
                                 </ul>
