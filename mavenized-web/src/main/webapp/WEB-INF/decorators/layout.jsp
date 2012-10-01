@@ -16,9 +16,10 @@
                 padding-bottom: 40px;
             }
         </style>
-        <decorator:head/>
+        
         <script src="<s:url value="/js/jquery-1.8.2.min.js"/>"></script>
         <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
+        <decorator:head/>
     </head>
     <body> 
         <div class="navbar navbar-inverse navbar-fixed-top">

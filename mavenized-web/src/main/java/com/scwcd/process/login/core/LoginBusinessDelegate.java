@@ -23,7 +23,7 @@ class LoginBusinessDelegate extends AbstractBusinessDelegate {
 
 		service.perform();
 
-		final User user = (User) service.getOutput();
+		final User user = service.getOutput();
 		if (user != null) {
 			final ApplicationSession session = getSession();
 			session.setUser(user);

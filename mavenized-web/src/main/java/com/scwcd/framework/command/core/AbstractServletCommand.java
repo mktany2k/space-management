@@ -29,28 +29,27 @@ public abstract class AbstractServletCommand implements IServletCommand {
 		return null;
 	}
 
-	public abstract String execute(final HttpServletRequest request, final HttpServletResponse response)
-			throws IOException;
+	@Override
+	public abstract String execute(final HttpServletRequest request, final HttpServletResponse response) throws IOException;
 
 	@Override
 	public IServletCommand create() {
 		return this;
 	}
 
-	protected ApplicationSession getSession(final HttpServletRequest request) {
+	protected static ApplicationSession getSession(final HttpServletRequest request) {
 		final HttpSession session = request.getSession();
 
 		ApplicationSession appSession = (ApplicationSession) session.getAttribute(ApplicationSession.SESSION_APPLICATION);
 		if (appSession == null) {
 			appSession = new ApplicationSession(session);
 			session.setAttribute(ApplicationSession.SESSION_APPLICATION, appSession);
-			return appSession;
 		}
 
 		return appSession;
 	}
 
-	protected void debugRequest(final HttpServletRequest request, final boolean outputToFile) {
+	protected static void debugRequest(final HttpServletRequest request, final boolean outputToFile) {
 		{
 			System.out.println("request.getAttributeNames()");
 			Enumeration<?> enumeration = request.getAttributeNames();
@@ -100,7 +99,7 @@ public abstract class AbstractServletCommand implements IServletCommand {
 		}
 	}
 
-	protected void prepareResponse(final HttpServletResponse response) {
+	protected static void prepareResponse(final HttpServletResponse response) {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/xml");
 		response.addHeader("Content-Encoding", "UTF-8");
