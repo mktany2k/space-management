@@ -10,12 +10,15 @@
 
     <properties>
         <struts2.version>2.3.4.1</struts2.version>
-        <spring.version>3.1.2.RELEASE</spring.version>
+        <spring.version>3.2.0.M2</spring.version>
         <guava.version>13.0.1</guava.version>
         <joda.time.version>2.1</joda.time.version>
         <shiro.version>1.2.1</shiro.version>
-        <slf4j.version>1.6.6</slf4j.version>
+        <slf4j.version>1.7.1</slf4j.version>
+        <logback.version>1.0.7</logback.version>
         <hibernate.version>4.1.7.Final</hibernate.version>
+        <spring.data.jpa.version>1.2.0.RC1</spring.data.jpa.version>
+        <camel.version>2.10.1</camel.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -82,26 +85,20 @@
             <version>${slf4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.0.7</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jcl</artifactId>
+            <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-http</artifactId>
-            <version>2.10.1</version>
+            <version>${camel.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>geronimo-servlet_2.5_spec</artifactId>
@@ -121,6 +118,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -211,6 +214,23 @@
             <groupId>org.apache.shiro</groupId>
             <version>${shiro.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <artifactId>xwork-core</artifactId>
+            <groupId>org.apache.struts.xwork</groupId>
+            <type>jar</type>
+            <version>${struts2.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -251,7 +271,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.5</version>
+                <version>2.6</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>

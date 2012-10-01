@@ -1,11 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 	<head>
 		<title><c:out value="${page_title}" escapeXml="false"/></title>
-		<link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/images/svg.ico"/>
-		<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/default.css" type="text/css"/>
-		<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/jquery-1.6.1.min.js"></script>
-		<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/fn-menu.js"></script>
+        <link rel="stylesheet" href="<s:url value="/css/default.css"/>" type="text/css"/>
+        <script type="text/javascript" src="<s:url value="/js/fn-menu.js"/>"></script>
 		<style type="text/css">@import "${pageContext.servletContext.contextPath}/js/jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css";</style>
 		<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/jquery-ui-1.8.13.custom/js/jquery-ui-1.8.13.custom.min.js"></script>
 
@@ -23,20 +22,7 @@
 		</script>
 	</head>
 	<body>
-		<table class="svg-main-tbl" border="0" cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="svg-header"/>
-			</tr>
-			<tr>
-				<td>
-					<div class="ui-menu-top-nav-left">
-						Logged in as <c:out value="${sessionScope[SESSION_USER].username}" escapeXml="true" />
-					</div>
-					<div class="ui-menu-top-nav-right">
-						<input type="submit" name="op" value="Logout" class="ui-dialog-button"/>
-					</div>
-				</td>
-			</tr>
+		<table>
 			<tr>
 				<td class="svg-body">
 					<div id="menu-accordian" class="ui-menu-accordian">

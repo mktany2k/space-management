@@ -56,7 +56,7 @@ public class CommandOpenProject extends AbstractServletCommand {
 	}
 
 	protected int getProjectId(final HttpServletRequest request) {
-		final String projectId = (String) request.getParameter("projectId");
+		final String projectId = request.getParameter("projectId");
 		if (projectId == null) {
 			final ApplicationSession appSession = getSession(request);
 			final Project project = (Project) appSession.getProject();

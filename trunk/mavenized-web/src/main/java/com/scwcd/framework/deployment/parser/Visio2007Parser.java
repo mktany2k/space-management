@@ -144,7 +144,7 @@ public class Visio2007Parser extends SvgDefaultParser {
 			}
 
 			for (int i = 0; i < nodes.getLength(); i++) {
-				final Node node = (Node) nodes.item(i);
+				final Node node = nodes.item(i);
 				node.getParentNode().removeChild(node);
 			}
 		}

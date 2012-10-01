@@ -22,7 +22,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AccountException;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.JdbcUtils;
@@ -48,7 +54,6 @@ public class SaltAwareJdbcRealm extends JdbcRealm {
         }
 
         Connection conn = null;
-        AuthenticationInfo info = null;
         try {
             conn = dataSource.getConnection();
 
@@ -67,7 +72,7 @@ public class SaltAwareJdbcRealm extends JdbcRealm {
              */
             saInfo.setCredentialsSalt(ByteSource.Util.bytes(username));
 
-            info = saInfo;
+            return saInfo;
 
         } catch (SQLException e) {
             final String message = "There was a SQL error while authenticating user [" + username + "]";
@@ -80,8 +85,6 @@ public class SaltAwareJdbcRealm extends JdbcRealm {
         } finally {
             JdbcUtils.closeConnection(conn);
         }
-
-        return info;
     }
 
     private String getPasswordForUser(Connection conn, String username) throws SQLException {
