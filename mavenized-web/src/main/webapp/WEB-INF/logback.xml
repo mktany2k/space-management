@@ -38,8 +38,8 @@
 		</encoder>
 	</appender>
 
-    <logger name="com.scwcd" level="info">
-        <appender-ref ref="svgAppender" />
+    <logger name="com.osm" level="debug">
+        <!--<appender-ref ref="svgAppender" />-->
     </logger>
 
     <logger name="org.apache.camel" level="info">

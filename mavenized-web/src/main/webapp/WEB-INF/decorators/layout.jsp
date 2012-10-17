@@ -30,9 +30,9 @@
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as <shiro:principal/><b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <shiro:principal/><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><s:a action="Logout" namespace="/auth">Logout</s:a></li>
+                                        <li><s:a action="Logout" namespace="/auth"><i class="icon-off"></i> Logout</s:a></li>
                                         </ul>
                                     </li>
                                 </ul>

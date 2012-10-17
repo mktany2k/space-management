@@ -1,8 +1,9 @@
 <%@page  isErrorPage="true" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
     <head>
-        <title><c:out value="${page_title}" escapeXml="false"/></title>
+        <title><fmt:message key="project.name"/></title>
         <link rel="shortcut icon" href="../images/svg.ico"/>
         <link rel="stylesheet" href="http://localhost:8088/svg/css/default.css" type="text/css"/>
     </head>
