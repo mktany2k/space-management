@@ -12,7 +12,7 @@
                 <div class=" well span4 offset4">
                     <legend>Please Sign In</legend>
                     <div class="alert alert-info">
-                        <a class="close" data-dismiss="alert" href="#">×</a>Please use username/password user1/user1 or user2/user2 to test
+                        <a class="close" data-dismiss="alert" href="#">×</a>Please use admin/admin to test
                     </div>
                     <s:form acceptcharset="UTF-8" validate="true" action="Login" namespace="/auth">
                         <s:textfield key="username" cssClass="span4" placeholder="getText('username')" required="true"/>

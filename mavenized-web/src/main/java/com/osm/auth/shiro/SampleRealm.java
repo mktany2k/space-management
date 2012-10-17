@@ -3,7 +3,11 @@ package com.osm.auth.shiro;
 import com.osm.model.Role;
 import com.osm.model.User;
 import com.osm.repository.UserDAO;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -41,26 +45,28 @@ public class SampleRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         User user = userDAO.findUser(token.getUsername());
-        if (user != null) {
-            return new SimpleAuthenticationInfo(user.getId(), user.getPassword(), getName());
-        } else {
+        if (user == null) {
             return null;
         }
+        
+        return new SimpleAuthenticationInfo(user.getId(), user.getPassword(), getName());
     }
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         Long userId = (Long) principals.fromRealm(getName()).iterator().next();
         User user = userDAO.getUser(userId);
-        if (user != null) {
-            SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-            for (Role role : user.getRoles()) {
-                info.addRole(role.getName());
-                info.addStringPermissions(role.getPermissions());
-            }
-            return info;
-        } else {
+        
+        if (user == null) {
             return null;
         }
+        
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        for (Role role : user.getRoles()) {
+            info.addRole(role.getName());
+            info.addStringPermissions(role.getPermissions());
+        }
+        
+        return info;
     }
 }

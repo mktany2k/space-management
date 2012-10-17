@@ -21,7 +21,7 @@ public class Role {
     private String description;
     private Set<String> permissions;
 
-    protected Role() {
+    public Role() {
     }
 
     public Role(String name) {

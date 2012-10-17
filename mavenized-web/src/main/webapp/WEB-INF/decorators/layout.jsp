@@ -1,8 +1,7 @@
-<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html> 
 <html> 
     <head> 
