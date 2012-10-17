@@ -49,13 +49,13 @@ public class SampleRealm extends AuthorizingRealm {
             return null;
         }
         
-        return new SimpleAuthenticationInfo(user.getId(), user.getPassword(), getName());
+        return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
     }
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        Long userId = (Long) principals.fromRealm(getName()).iterator().next();
-        User user = userDAO.getUser(userId);
+        User userId = (User) principals.fromRealm(getName()).iterator().next();
+        User user = userDAO.getUser(userId.getId());
         
         if (user == null) {
             return null;
