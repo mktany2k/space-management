@@ -12,7 +12,7 @@ public class FloorPlanHandler {
 
 	private static final FloorPlanHandler INSTANCE = new FloorPlanHandler();
 
-	private final HashMap<String, byte[]> m_FloorPlan = new HashMap<String, byte[]>();
+	private final HashMap<String, byte[]> m_FloorPlan = new HashMap<>();
 
 	private FloorPlanHandler() {
 	}

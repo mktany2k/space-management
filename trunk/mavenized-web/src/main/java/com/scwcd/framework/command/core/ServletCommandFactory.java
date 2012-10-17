@@ -2,6 +2,8 @@ package com.scwcd.framework.command.core;
 
 
 import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +14,7 @@ public class ServletCommandFactory implements ICommandFactory<IServletCommand> {
 
 	private static final ServletCommandFactory INSTANCE = new ServletCommandFactory();
 
-	private HashMap<String, IServletCommand> m_RegisteredCommand = new HashMap<>();
+	private Map<String, IServletCommand> m_RegisteredCommand = new HashMap<>();
 
 	private ServletCommandFactory() {
 	}

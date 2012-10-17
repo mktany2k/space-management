@@ -32,7 +32,7 @@ public class CommandNewProject extends CommandOpenProject {
 		final String unit = request.getParameter("unit");
 		final String levels = request.getParameter("levels");
 
-		final int projectId = planBizDelegate.createProject(name, description, parser, unit, levels);
+		final int projectId = planBizDelegate.createProject(name, description, parser, unit);
 
 		final DeploymentManager manager = DeploymentManager.getInstance();
 		manager.listen(projectId, configPath);

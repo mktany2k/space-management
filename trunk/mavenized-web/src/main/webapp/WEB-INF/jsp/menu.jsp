@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 	<head>
-		<title><c:out value="${page_title}" escapeXml="false"/></title>
+        <title><fmt:message key="project.name"/></title>
         <link rel="stylesheet" href="<s:url value="/css/default.css"/>" type="text/css"/>
         <script type="text/javascript" src="<s:url value="/js/fn-menu.js"/>"></script>
 		<style type="text/css">@import "${pageContext.servletContext.contextPath}/js/jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css";</style>

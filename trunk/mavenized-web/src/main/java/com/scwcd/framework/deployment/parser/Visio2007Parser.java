@@ -69,7 +69,7 @@ public class Visio2007Parser extends SvgDefaultParser {
 		configureCss(document, projectId, planId, map);
 	}
 
-	void configureHeader(final Document document) {
+	static void configureHeader(final Document document) {
 		// remove DOCTYPE and comments
 		while (true) {
 			final Node node = document.getFirstChild();
@@ -83,7 +83,7 @@ public class Visio2007Parser extends SvgDefaultParser {
 		}
 	}
 
-	void configureSvgNode(final Document document, final int projectId, final int planId) {
+	static void configureSvgNode(final Document document, final int projectId, final int planId) {
 		// configure svg element
 		final String svgId = "floor-" + projectId + "-" + planId;
 		final NodeList nodes = document.getElementsByTagName("svg");
@@ -133,7 +133,7 @@ public class Visio2007Parser extends SvgDefaultParser {
 	}
 	*/
 
-	void configureTitleNode(final Document document) {
+	static void configureTitleNode(final Document document) {
 		/*
 		 * Remove all title tags manually. NOTE: unable to use 
 		 * XPath to retrieve all 'title' tags - reason: unknown
@@ -151,7 +151,7 @@ public class Visio2007Parser extends SvgDefaultParser {
 		}
 	}
 
-	void configureLot(final Document document, final int projectId, final int planId, final Set<Lot> generated) {
+	static void configureLot(final Document document, final int projectId, final int planId, final Set<Lot> generated) {
 		// configure id value for each lot
 		final String plotId = "plot-" + projectId + "-" + planId + "-";
 		final String lotId = "lot-" + projectId + "-" + planId + "-";
@@ -181,7 +181,7 @@ public class Visio2007Parser extends SvgDefaultParser {
 		}
 	}
 
-	void mapLotId(final int projectId, final int planId, final Set<Lot> generated, final Map<String, Lot> map) {
+	static void mapLotId(final int projectId, final int planId, final Set<Lot> generated, final Map<String, Lot> map) {
 		final DAOFactory factory = DAOFactory.getInstance();
 		final DAOLot dao = (DAOLot) factory.getInstance(DAOLot.class);
 		
@@ -211,7 +211,7 @@ public class Visio2007Parser extends SvgDefaultParser {
 		}
 	}
 
-	void configureCss(final Document document, final int projectId, final int planId, final Map<String, Lot> map) {
+	static void configureCss(final Document document, final int projectId, final int planId, final Map<String, Lot> map) {
 		// configure css for whole document
 		final String replacement = ".css-" + projectId + "-" + planId + "-";
 		final XPathFactory factory = XPathFactory.newInstance();

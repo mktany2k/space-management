@@ -54,14 +54,14 @@ public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 		final Plan[] planArr = plans.toArray(new Plan[plans.size()]);
 		
 		final Set<Plan> _plans = new HashSet<>();
-		for (int i = 0; i < planArr.length; i++) {
-			for (int j : _planIds) {
-				if (j == planArr[i].getPlanId()) {
-					_plans.add(planArr[i]);
-					break;
-				}
-			}
-		}
+        for (Plan aPlanArr : planArr) {
+            for (int j : _planIds) {
+                if (j == aPlanArr.getPlanId()) {
+                    _plans.add(aPlanArr);
+                    break;
+                }
+            }
+        }
 		return _plans;
 	}
 
