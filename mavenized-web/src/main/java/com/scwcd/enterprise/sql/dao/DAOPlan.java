@@ -1,16 +1,16 @@
 package com.scwcd.enterprise.sql.dao;
 
 
+import com.scwcd.enterprise.sql.hbm.Plan;
+import com.scwcd.framework.sql.core.Insertable;
+import com.scwcd.framework.sql.core.Listable;
+import com.scwcd.framework.sql.core.Saveable;
+import com.scwcd.framework.sql.util.HibernateUtility;
 import java.util.Arrays;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import com.scwcd.enterprise.sql.hbm.Plan;
-import com.scwcd.framework.sql.core.Insertable;
-import com.scwcd.framework.sql.core.Saveable;
-import com.scwcd.framework.sql.core.Listable;
-import com.scwcd.framework.sql.util.HibernateUtility;
 
 
 public class DAOPlan implements Listable<Plan>, Saveable<Plan>, Insertable<Plan> {
@@ -21,7 +21,7 @@ public class DAOPlan implements Listable<Plan>, Saveable<Plan>, Insertable<Plan>
         session.beginTransaction();
         
         Criteria criteria = session.createCriteria(Plan.class);
-        List<?> list = criteria.list();
+        List<Plan> list = criteria.list();
         session.close();
         Plan[] plans = list.toArray(new Plan[list.size()]);
 		return Arrays.asList(plans);
@@ -32,7 +32,7 @@ public class DAOPlan implements Listable<Plan>, Saveable<Plan>, Insertable<Plan>
         session.beginTransaction();
         
         Criteria criteria = session.createCriteria(Plan.class);
-        List<?> list = criteria.add(Restrictions.eq("projectId", projectId)).list();
+        List<Plan> list = criteria.add(Restrictions.eq("projectId", projectId)).list();
         session.close();
         Plan[] plans = list.toArray(new Plan[list.size()]);
 		return Arrays.asList(plans);

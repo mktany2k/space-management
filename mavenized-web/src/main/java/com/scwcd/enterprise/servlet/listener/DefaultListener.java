@@ -49,7 +49,7 @@ public class DefaultListener extends FrameworkListener {
 		registerView();
 	}
 
-	private void registerContext(final ServletContextEvent sce) {
+	private static void registerContext(final ServletContextEvent sce) {
 		// camel deployment framework startup
 		final ServletContext sc = sce.getServletContext();
 		final String projectPath = sc.getRealPath(PROJECT_DIR);
@@ -60,34 +60,33 @@ public class DefaultListener extends FrameworkListener {
 	}
 
 	// register IServletCommand objects
-	private void registerCommand() {
-		final CommandResource resource = CommandResource.getInstance();
-		final ServletCommandFactory commandFactory = ServletCommandFactory.getInstance();
+	private static void registerCommand() {
+        final ServletCommandFactory commandFactory = ServletCommandFactory.getInstance();
 
 		// Process_Login
-		commandFactory.register(resource.getOperation(CommandPreLogin.class), new CommandPreLogin());
-		commandFactory.register(resource.getOperation(CommandLogin.class), new CommandLogin());
-		commandFactory.register(resource.getOperation(CommandPostLogin.class), new CommandPostLogin());
-		commandFactory.register(resource.getOperations(CommandLogout.class), new CommandLogout());
+		commandFactory.register(CommandResource.getOperation(CommandPreLogin.class), new CommandPreLogin());
+		commandFactory.register(CommandResource.getOperation(CommandLogin.class), new CommandLogin());
+		commandFactory.register(CommandResource.getOperation(CommandPostLogin.class), new CommandPostLogin());
+		commandFactory.register(CommandResource.getOperations(CommandLogout.class), new CommandLogout());
 
 		// Process_Plan
-		commandFactory.register(resource.getOperations(CommandOpenProject.class), new CommandOpenProject());
-		commandFactory.register(resource.getOperations(CommandNewProject.class), new CommandNewProject());
+		commandFactory.register(CommandResource.getOperations(CommandOpenProject.class), new CommandOpenProject());
+		commandFactory.register(CommandResource.getOperations(CommandNewProject.class), new CommandNewProject());
 
 		// Process_Ajax
-		commandFactory.register(resource.getOperation(CommandPrintSession.class), new CommandPrintSession());
-		commandFactory.register(resource.getOperation(CommandSelectFloor.class), new CommandSelectFloor());
-		commandFactory.register(resource.getOperation(CommandSyncState.class), new CommandSyncState());
-		commandFactory.register(resource.getOperation(CommandSelectView.class), new CommandSelectView());
-		commandFactory.register(resource.getOperation(CommandSelectLot.class), new CommandSelectLot());
-		commandFactory.register(resource.getOperation(CommandUpdateLot.class), new CommandUpdateLot());
+		commandFactory.register(CommandResource.getOperation(CommandPrintSession.class), new CommandPrintSession());
+		commandFactory.register(CommandResource.getOperation(CommandSelectFloor.class), new CommandSelectFloor());
+		commandFactory.register(CommandResource.getOperation(CommandSyncState.class), new CommandSyncState());
+		commandFactory.register(CommandResource.getOperation(CommandSelectView.class), new CommandSelectView());
+		commandFactory.register(CommandResource.getOperation(CommandSelectLot.class), new CommandSelectLot());
+		commandFactory.register(CommandResource.getOperation(CommandUpdateLot.class), new CommandUpdateLot());
 		
 		// Process_Maintenance
-		commandFactory.register(resource.getOperation(CommandMaintainProject.class), new CommandMaintainProject());
+		commandFactory.register(CommandResource.getOperation(CommandMaintainProject.class), new CommandMaintainProject());
 	}
 
 	// register DAO objects
-	private void registerDataAccess() {
+	private static void registerDataAccess() {
 		final IFactory<Class<?>, IDataAccessObject> daoFactory = DAOFactory.getInstance();
 		daoFactory.register(DAOProject.class, new DAOProject());
 		daoFactory.register(DAOPlan.class, new DAOPlan());

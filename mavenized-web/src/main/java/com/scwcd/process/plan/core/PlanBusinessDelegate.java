@@ -25,7 +25,7 @@ class PlanBusinessDelegate extends AbstractBusinessDelegate {
         return service.getOutput();
     }
 
-    Set<Plan> selectPlans(final Set<Plan> plans, final Integer[] planIds) {
+    static Set<Plan> selectPlans(final Set<Plan> plans, final Integer[] planIds) {
         final Set<Plan> floors = new HashSet<>();
         for (int planId : planIds) {
             for (Plan plan : plans) {
@@ -38,7 +38,7 @@ class PlanBusinessDelegate extends AbstractBusinessDelegate {
         return floors;
     }
 
-    int createProject(final String name, final String description, final String parser, final String unit, final String levels) {
+    int createProject(final String name, final String description, final String parser, final String unit) {
         // persist project into storage
         final ServiceNewProject service = (ServiceNewProject) getService();
         service.setName(name);

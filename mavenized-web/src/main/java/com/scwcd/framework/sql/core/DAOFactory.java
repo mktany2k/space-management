@@ -2,8 +2,12 @@ package com.scwcd.framework.sql.core;
 
 
 import java.util.HashMap;
+import java.util.Map;
+
+import com.google.common.base.Preconditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import com.scwcd.framework.factory.IFactory;
 
 
@@ -13,7 +17,7 @@ public class DAOFactory implements IFactory<Class<?>, IDataAccessObject> {
 
 	private static final DAOFactory INSTANCE = new DAOFactory();
 
-	private HashMap<Class<?>, IDataAccessObject> m_RegisteredDAO = new HashMap<Class<?>, IDataAccessObject>();
+	private Map<Class<?>, IDataAccessObject> m_RegisteredDAO = new HashMap<>();
 
 	public static DAOFactory getInstance() {
 		return INSTANCE;
@@ -28,9 +32,7 @@ public class DAOFactory implements IFactory<Class<?>, IDataAccessObject> {
 	@Override
 	public IDataAccessObject getInstance(final Class<?> clazz) {
 		final IDataAccessObject dao = m_RegisteredDAO.get(clazz);
-		if (dao == null) {
-			throw new IllegalArgumentException("[" + clazz.getCanonicalName() + "] not registered");
-		}
+        Preconditions.checkArgument(dao != null, "[" + clazz.getCanonicalName() + "] not registered");
 		return dao;
 	}
 

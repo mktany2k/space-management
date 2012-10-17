@@ -1,9 +1,11 @@
 package com.scwcd.framework.deployment.core;
 
+import com.scwcd.framework.deployment.parser.IParser;
+import com.scwcd.framework.deployment.parser.SvgDefaultParser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Hashtable;
+import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.camel.Exchange;
@@ -16,9 +18,6 @@ import org.w3c.dom.Document;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import com.scwcd.framework.deployment.parser.IParser;
-import com.scwcd.framework.deployment.parser.SvgDefaultParser;
-import java.util.Map;
 
 public class SvgDeploymentProcessor implements Processor {
 

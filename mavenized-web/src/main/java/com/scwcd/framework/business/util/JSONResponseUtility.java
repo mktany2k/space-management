@@ -1,5 +1,8 @@
 package com.scwcd.framework.business.util;
 
+import com.osm.util.Exceptions;
+import com.scwcd.framework.command.core.ApplicationSession;
+import com.scwcd.framework.command.util.CommandUtility;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -7,11 +10,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.io.IOUtils;
-
-import com.scwcd.framework.command.core.ApplicationSession;
-import com.scwcd.framework.command.util.CommandUtility;
 
 public class JSONResponseUtility {
 
@@ -79,7 +78,7 @@ public class JSONResponseUtility {
         state.append("\"v\": { \"id\": ").append("999");
         state.append(", \"r\": ").append("null");
         state.append(", \"d\": ").append("false"); // true if view/lot has been
-                                                   // modified
+        // modified
         state.append(" } ");
 
         // end of JSON
@@ -88,7 +87,7 @@ public class JSONResponseUtility {
         return state.toString();
     }
 
-    public static String buildResponse(final HttpServletRequest request) {
+    public static String buildResponse() {
         final StringBuilder state = new StringBuilder();
 
         // start of JSON
@@ -127,5 +126,9 @@ public class JSONResponseUtility {
             IOUtils.closeQuietly(baos);
         }
         return baos;
+    }
+
+    private JSONResponseUtility() throws InstantiationException {
+        throw Exceptions.instantiationException();
     }
 }

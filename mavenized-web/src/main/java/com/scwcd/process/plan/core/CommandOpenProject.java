@@ -37,7 +37,7 @@ public class CommandOpenProject extends AbstractServletCommand {
 		// set Set<Plan>
 		final Set<Plan> plans = project.getPlans();
 		final Set<Integer> planIds = appSession.getPlanIds();
-		final Set<Plan> floors = planBizDelegate.selectPlans(plans, planIds.toArray(new Integer[planIds.size()]));
+		final Set<Plan> floors = PlanBusinessDelegate.selectPlans(plans, planIds.toArray(new Integer[planIds.size()]));
 		request.setAttribute("floors", SqlUtility.convertToDelimited(floors));
 
 		// set Function

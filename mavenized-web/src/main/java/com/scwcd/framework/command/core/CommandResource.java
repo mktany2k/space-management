@@ -17,13 +17,13 @@ public class CommandResource {
 		return INSTANCE;
 	}
 	
-	public String getOperation(Class<?> clazz) {
+	public static String getOperation(Class<?> clazz) {
 		final ResourceBundle resourceBundle = ResourceBundle.getBundle(RESOURCE);
 		final String key = clazz.getCanonicalName();
 		return resourceBundle.getString(key);
 	}
 	
-	public String[] getOperations(Class<?> clazz) {
+	public static String[] getOperations(Class<?> clazz) {
 		final ResourceBundle resourceBundle = ResourceBundle.getBundle(RESOURCE);
 		final String key = clazz.getCanonicalName();
 		return resourceBundle.getString(key).split(",");

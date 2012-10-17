@@ -82,7 +82,7 @@ public class SvgDeploymentProcessor implements Processor {
 			final Document document = builder.parse(file);
 			final long end = System.currentTimeMillis();
 			logging(file, start, end);
-			
+
 			new File(outputPath.toString()).mkdir();
 			final File outputFile = new File(outputPath.toString() + File.separator + filename);
 
