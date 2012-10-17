@@ -1,9 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title><s:text name="project.name"/> - Login</title>
+        <title><fmt:message key="project.name"/> - <s:text name="action"/></title>
     </head>
     <body>
         <div class="container">
@@ -14,8 +15,8 @@
                         <a class="close" data-dismiss="alert" href="#">×</a>Please use username/password user1/user1 or user2/user2 to test
                     </div>
                     <s:form acceptcharset="UTF-8" validate="true" action="Login" namespace="/auth">
-                        <s:textfield key="username" cssClass="span4" placeholder="Username" required="true"/>
-                        <s:password key="password" cssClass="span4" placeholder="Password"/>
+                        <s:textfield key="username" cssClass="span4" placeholder="getText('username')" required="true"/>
+                        <s:password key="password" cssClass="span4" placeholder="getText('password')"/>
                         <label class="checkbox">
                             <s:checkbox key="rememberMe" value="0">Remember Me</s:checkbox>
                         </label>
