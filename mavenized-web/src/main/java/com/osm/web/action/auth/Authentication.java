@@ -6,12 +6,11 @@ import com.osm.auth.AuthenticationException;
 import com.osm.auth.Authenticator;
 
 @SuppressWarnings("serial")
-public class Login extends ActionSupport {
+public class Authentication extends ActionSupport {
 
     private Authenticator authenticator;
 
-    @Override
-    public String execute() throws Exception {
+    public String login() throws Exception {
         if (Strings.isNullOrEmpty(getUsername())) {
             return INPUT;
         }
@@ -25,6 +24,11 @@ public class Login extends ActionSupport {
         } catch (AuthenticationException e) {
             return INPUT;
         }
+        return SUCCESS;
+    }
+    
+    public String logout() {
+        authenticator.logout();
         return SUCCESS;
     }
 

@@ -14,14 +14,14 @@
         </action>
     </package>
     <package name="auth" namespace="/auth" extends="struts-default">
-        <action name="Login" class="Login">
+        <action name="Login" class="authentication" method="login">
             <result name="input">/WEB-INF/jsp/login.jsp</result>
             <result name="success" type="redirectAction">
                 <param name="namespace">/</param>
                 <param name="actionName">index</param>
             </result>
         </action>
-        <action name="Logout" class="Logout">
+        <action name="Logout" class="authentication" method="logout">
             <result name="success" type="redirectAction">
                 <param name="namespace">/</param>
                 <param name="actionName">index</param>
