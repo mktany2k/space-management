@@ -23,7 +23,7 @@ package com.osm.example;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.config.entities.ActionConfig;
-import com.osm.web.action.auth.Login;
+import com.osm.web.action.auth.Authentication;
 import java.util.Map;
 
 public class LoginTest extends ConfigTest {
@@ -44,7 +44,7 @@ public class LoginTest extends ConfigTest {
 
     // Needs access to an environment that includes validators
     public void FIXME_testLoginSubmitInput() throws Exception {
-        Login login = new Login();
+        Authentication login = new Authentication();
         String result = login.execute();
         assertInput(result);
         Map errors = assertFieldErrors(login);
