@@ -6,3 +6,4 @@ mavenized-web/target
 .wtpmodules
 .idea/
 *.iml
+nb-configuration.xml
