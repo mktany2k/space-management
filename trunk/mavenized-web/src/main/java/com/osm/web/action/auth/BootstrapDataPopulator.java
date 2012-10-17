@@ -18,33 +18,31 @@
  */
 package com.osm.web.action.auth;
 
-import javax.sql.DataSource;
+
+import com.google.common.collect.Sets;
+import com.osm.model.Role;
+import com.osm.model.User;
 import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 /**
- * A data populator that creates a set of security tables and test data that can be used by the Shiro Spring sample application to
- * demonstrate the use of the {@link org.apache.shiro.realm.jdbc.JdbcRealm} The tables created by this class follow the default
- * table and column names that {@link org.apache.shiro.realm.jdbc.JdbcRealm} uses.
- *
+ * A data populator that creates a set of security tables and test data that can
+ * be used by the Shiro Spring sample application to demonstrate the use of the
+ * {@link org.apache.shiro.realm.jdbc.JdbcRealm} The tables created by this
+ * class follow the default table and column names that
+ * {@link org.apache.shiro.realm.jdbc.JdbcRealm} uses.
+ * 
  */
 @Component
 public class BootstrapDataPopulator implements InitializingBean {
 
-    private DataSource dataSource;
-    @SuppressWarnings({"FieldCanBeLocal"})
     private SessionFactory sessionFactory;
 
-    @Autowired
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
-    // Session factory is only injected to ensure it is initialized before this runs
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -52,14 +50,42 @@ public class BootstrapDataPopulator implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        //because we're using an in-memory hsqldb for the sample app, a new one will be created each time the
-        //app starts, so insert the sample admin user at startup:
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(this.dataSource);
+        // because we're using an in-memory hsqldb for the sample app, a new one
+        // will be created each time the
+        // app starts, so insert the sample admin user at startup:
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
 
-        jdbcTemplate.execute("insert into roles values (1, 'user', 'The default role given to all users.')");
-        jdbcTemplate.execute("insert into roles values (2, 'admin', 'The administrator role only given to site admins')");
-        jdbcTemplate.execute("insert into roles_permissions values (2, 'user:*')");
-        jdbcTemplate.execute("insert into users(id,username,email,password) values (1, 'admin', 'sample@shiro.apache.org', '" + new Sha256Hash("admin").toHex() + "')");
-        jdbcTemplate.execute("insert into users_roles values (1, 2)");
+        //the whole user creation is ugly.
+        //there must be a better way.
+        User user = new User();
+        user.setUsername("admin");
+        user.setEmail("sample@shiro.apache.org");
+        user.setPassword(new Sha256Hash("admin").toHex());
+
+        session.save(user);
+
+        Role role = new Role();
+        role.setName("user");
+        role.setDescription("The default role given to all users.");
+
+        session.save(role);
+
+        role = new Role();
+        role.setName("admin");
+        role.setDescription("The administrator role only given to site admins");
+
+        session.save(role);
+
+        user.setRoles(Sets.newHashSet(role));
+
+        session.update(user);
+
+        role.setPermissions(Sets.newHashSet("user:*"));
+
+        session.update(role);
+
+        transaction.commit();
+
     }
 }
