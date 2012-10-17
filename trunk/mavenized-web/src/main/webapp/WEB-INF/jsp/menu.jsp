@@ -30,7 +30,7 @@
 						<div class="ui-menu-tab">
 							<div class="ui-menu-new">
 								<form method="POST" action="new">
-									<table class="ui-display-table" border="0" cellspacing="0" cellpadding="4">
+									<table class="ui-display-table">
 										<tr>
 											<td class="ui-display-table-header" colspan="2">Properties</td>
 										</tr>

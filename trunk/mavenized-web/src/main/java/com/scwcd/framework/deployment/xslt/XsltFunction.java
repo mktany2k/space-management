@@ -30,7 +30,7 @@ public class XsltFunction {
 
 		if (queried == null) {
 			final List<Lot> _queried = dao.doList(new LotParameter(projectId, planId));
-			queried = new HashSet<Lot>(_queried);
+			queried = new HashSet<>(_queried);
 		}
 
 		final Lot lot = new Lot();

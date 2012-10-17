@@ -41,15 +41,13 @@ public class ApplicationSession {
 	public Set<Integer> getPlanIds() {
 		@SuppressWarnings(value="unchecked")
 		final Set<Integer> planIds = (Set<Integer>) session.getAttribute(SESSION_PLANS);
-		if (planIds == null) {
-			synchronized (this) {
-				if (planIds == null) {
-					final Set<Integer> _planIds = CommandUtility.newPlanIds();
-					session.setAttribute(SESSION_PLANS, _planIds);
-					return _planIds;
-				}
-			}
-		}
+        synchronized (this) {
+            if (planIds == null) {
+                final Set<Integer> _planIds = CommandUtility.newPlanIds();
+                session.setAttribute(SESSION_PLANS, _planIds);
+                return _planIds;
+            }
+        }
 		return planIds;
 	}
 
@@ -79,6 +77,7 @@ public class ApplicationSession {
 		session.invalidate();
 	}
 
+    @Override
 	public String toString() {
 		final StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(session.getCreationTime()).append(";");

@@ -9,5 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public interface IServletCommand extends ICommand<Object[], String> {
 	String execute(final HttpServletRequest request, final HttpServletResponse response) throws IOException;
 
+    @Override
 	IServletCommand create();
 }

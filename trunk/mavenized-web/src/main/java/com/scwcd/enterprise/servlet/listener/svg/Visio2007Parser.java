@@ -45,8 +45,8 @@ public class Visio2007Parser extends SvgDefaultParser {
 		final Document document = (Document) object[0];
 		final int projectId = (Integer) object[1];
 		final int planId = (Integer) object[2];
-		final Set<Lot> generated = new HashSet<Lot>();
-		final Map<String, Lot> map = new HashMap<String, Lot>();
+		final Set<Lot> generated = new HashSet<>();
+		final Map<String, Lot> map = new HashMap<>();
 
 		// configure document header, i.e. <!-- comments -->, <!DOCTYPE/>
 		configureHeader(document);
@@ -250,7 +250,7 @@ public class Visio2007Parser extends SvgDefaultParser {
 
 	private static final class SimpleNamespaceContext implements NamespaceContext {
 
-		private Map<String, String> namespace = new HashMap<String, String>();
+		private Map<String, String> namespace = new HashMap<>();
 
 		private SimpleNamespaceContext() {
 			namespace.put("v", "http://schemas.microsoft.com/visio/2003/SVGExtensions/");

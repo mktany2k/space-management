@@ -1,13 +1,6 @@
 package com.scwcd.enterprise.servlet.listener;
 
 
-import java.net.URL;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.xml.XMLConstants;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import org.xml.sax.SAXException;
 import com.scwcd.component.view.core.View;
 import com.scwcd.component.view.factory.ViewFactory;
 import com.scwcd.enterprise.sql.dao.DAOLot;
@@ -34,6 +27,13 @@ import com.scwcd.process.login.core.CommandPreLogin;
 import com.scwcd.process.maintenance.core.CommandMaintainProject;
 import com.scwcd.process.plan.core.CommandNewProject;
 import com.scwcd.process.plan.core.CommandOpenProject;
+import java.net.URL;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.xml.XMLConstants;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import org.xml.sax.SAXException;
 
 
 public class DefaultListener extends FrameworkListener {

@@ -85,14 +85,12 @@ public abstract class AbstractServletCommand implements IServletCommand {
 		if (outputToFile) {
 			try {
 				final String filename = MessageFormat.format("c:\\temp\\svg-{0,date,yyyyMMdd_HHmmss_SSS}.log", new Date());
-				final FileOutputStream fos = new FileOutputStream(filename);
-				final InputStream is = request.getInputStream();
-				int b = 0;
-				while ((b = is.read()) != -1) {
-					fos.write(b);
-				}
-				is.close();
-				fos.close();
+                try (FileOutputStream fos = new FileOutputStream(filename); InputStream is = request.getInputStream()) {
+                    int b;
+                    while ((b = is.read()) != -1) {
+                        fos.write(b);
+                    }
+                }
 			} catch (final Exception e) {
 				e.printStackTrace();
 			}

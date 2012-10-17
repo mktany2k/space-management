@@ -11,7 +11,7 @@
 		   onkeypress="javascript: keyDone(event, this);"/>
 	<span class="ui-icon ui-icon-closethick ui-dialog-close" onclick="javascript: closeSvgLot(event);" title="Close"></span>
 	<div class="ui-dialog-body">
-		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<table>
 			<tr>
 				<td class="ui-dialog-image-cell">
 					<div>

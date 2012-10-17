@@ -33,7 +33,7 @@ public class DAOProject implements Listable<Project>, Selectable<ProjectParamete
         Criteria criteria = session.createCriteria(Project.class);
         List<?> list = criteria.list();
         session.close();
-        Project[] projects = list.toArray(new Project[0]);
+        Project[] projects = list.toArray(new Project[list.size()]);
         return Arrays.asList(projects);
     }
 

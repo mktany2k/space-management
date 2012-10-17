@@ -2,11 +2,11 @@ package com.scwcd.enterprise.servlet.listener.svg;
 
 
 import java.util.Date;
-import java.util.Hashtable;
 import com.scwcd.enterprise.sql.dao.DAOPlan;
 import com.scwcd.enterprise.sql.hbm.Plan;
 import com.scwcd.enterprise.sql.util.SqlUtility;
 import com.scwcd.framework.sql.core.DAOFactory;
+import java.util.Map;
 
 
 class SvgFileManager {
@@ -17,7 +17,7 @@ class SvgFileManager {
 		this.exists = exists;
 	}
 
-	void insert(final String filename, final int projectId, final Hashtable<String, Integer> hashtable) {
+	void insert(final String filename, final int projectId, final Map<String, Integer> hashtable) {
 		if (!exists) {
 			final Plan plan = new Plan();
 			plan.setProjectId(projectId);

@@ -1,8 +1,8 @@
 package com.scwcd.enterprise.sql.util;
 
 
-import java.util.Set;
 import com.scwcd.enterprise.sql.hbm.Plan;
+import java.util.Set;
 
 
 public class SqlUtility {
@@ -12,8 +12,8 @@ public class SqlUtility {
 	public static final String UPDATED_BY = "SYSTEM";
 
 	public static String convertToDelimited(final Set<Plan> plans) {
-		final StringBuilder string = new StringBuilder();
-		for (final Plan plan : plans) {
+        final StringBuilder string = new StringBuilder();
+		for (Plan plan : plans) {
 			string.append(plan.getFilename()).append(",");
 		}
 		return string.toString();

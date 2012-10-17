@@ -1,10 +1,10 @@
 package com.scwcd.process.login.core;
 
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import com.scwcd.framework.command.core.AbstractServletCommand;
 import com.scwcd.framework.command.core.ApplicationSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 public class CommandLogout extends AbstractServletCommand {

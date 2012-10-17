@@ -20,7 +20,7 @@ import com.scwcd.framework.command.core.ApplicationSession;
 
 public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 
-	private final Set<Integer> planIds = new HashSet<Integer>();
+	private final Set<Integer> planIds = new HashSet<>();
 
 	protected AjaxBusinessDelegate(final ApplicationSession session, final AbstractBusinessService<?> service) {
 		super(session, service);
@@ -31,8 +31,13 @@ public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 	}
 
 	void setParameters(String[] parameters) {
-		if (parameters == null) parameters = new String[0];
-		for (final String planId : parameters) planIds.add(Integer.parseInt(planId));
+		if (parameters == null) {
+            parameters = new String[0];
+        }
+        
+		for (final String planId : parameters) {
+            planIds.add(Integer.parseInt(planId));
+        }
 
 		final ApplicationSession appSession = getSession();
 		final Set<Integer> _planIds = appSession.getPlanIds();
@@ -46,9 +51,9 @@ public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 
 		final Project project = (Project) appSession.getProject();
 		final Set<Plan> plans = project.getPlans();
-		final Plan[] planArr = plans.toArray(new Plan[0]);
+		final Plan[] planArr = plans.toArray(new Plan[plans.size()]);
 		
-		final Set<Plan> _plans = new HashSet<Plan>();
+		final Set<Plan> _plans = new HashSet<>();
 		for (int i = 0; i < planArr.length; i++) {
 			for (int j : _planIds) {
 				if (j == planArr[i].getPlanId()) {

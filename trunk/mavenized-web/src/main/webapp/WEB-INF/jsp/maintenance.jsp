@@ -8,9 +8,9 @@
 		<!--
 		-->
 		<link rel="stylesheet" href="../css/default.css" type="text/css"/>
-		<link rel="stylesheet" href="../js/SlickGrid-1.4.3-62/slick.grid.css" type="text/css" media="screen" charset="utf-8" />
-		<link rel="stylesheet" href="../js/SlickGrid-1.4.3-62/css/smoothness/jquery-ui-1.8.5.custom.css" type="text/css" media="screen" charset="utf-8" />
-		<link rel="stylesheet" href="../js/SlickGrid-1.4.3-62/examples/examples.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="../js/SlickGrid-1.4.3-62/slick.grid.css" type="text/css" media="screen"/>
+		<link rel="stylesheet" href="../js/SlickGrid-1.4.3-62/css/smoothness/jquery-ui-1.8.5.custom.css" type="text/css" media="screen"/>
+		<link rel="stylesheet" href="../js/SlickGrid-1.4.3-62/examples/examples.css" type="text/css" media="screen"/>
 		<script type="text/javascript" src="../js/fn-maintenance.js"></script>
 		<!--
 		<style type="text/css">@import "../js/jquery-ui-1.8.13.custom/css/smoothness/jquery-ui-1.8.13.custom.css";</style>
@@ -109,14 +109,14 @@
 		</style>
 	</head>
 	<body>
-		<table class="svg-main-tbl" border="0" cellpadding="0" cellspacing="0">
+		<table>
 			<tr>
 				<td class="svg-body">
 					<div id="maintenance-accordian" class="ui-maintenance-accordian ui-height-10pc">
 						<h3><a href="#" class="text-bolded">Project</a></h3>
 						<div class="ui-maintenance-tab">
 							<div class="ui-maintenance-inner">
-								<table class="ui-display-table" border="0" cellspacing="0" cellpadding="0">
+								<table class="ui-display-table">
 									<tr>
 										<td class="ui-display-table-header">
 											Maintenance

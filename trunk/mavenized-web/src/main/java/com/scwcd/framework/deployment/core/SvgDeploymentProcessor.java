@@ -1,6 +1,5 @@
 package com.scwcd.framework.deployment.core;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,113 +18,107 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import com.scwcd.framework.deployment.parser.IParser;
 import com.scwcd.framework.deployment.parser.SvgDefaultParser;
-
+import java.util.Map;
 
 public class SvgDeploymentProcessor implements Processor {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(SvgDeploymentProcessor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SvgDeploymentProcessor.class);
+    private IParser parser;
+    private String projectPath;
+    private int projectId;
+    private final StringBuilder outputPath = new StringBuilder();
+    private CustomEntityResolver cer;
+    private Map<String, Integer> hashtable;
 
-	private IParser parser;
+    public void setParser(final IParser parser) {
+        this.parser = parser;
+    }
 
-	private String projectPath;
+    public void setProjectPath(final String projectPath) {
+        this.projectPath = projectPath;
+        outputPath.append(projectPath).append(File.separator)
+                .append("meta").append(File.separator)
+                .append(projectId).append(File.separator)
+                .append("output");
+        cer = new CustomEntityResolver(projectPath + File.separator + "dtd");
+    }
 
-	private int projectId;
+    public String getProjectPath() {
+        return projectPath;
+    }
 
-	private final StringBuilder outputPath = new StringBuilder();
+    public void setProjectId(final int projectId) {
+        this.projectId = projectId;
+    }
 
-	private CustomEntityResolver cer;
+    public int getProjectId() {
+        return projectId;
+    }
 
-	private Hashtable<String, Integer> hashtable;
+    public void setHashtable(final Map<String, Integer> hashtable) {
+        this.hashtable = hashtable;
+    }
 
-	public void setParser(final IParser parser) {
-		this.parser = parser;
-	}
+    @Override
+    public void process(final Exchange exchange) throws Exception {
+        if (parser instanceof SvgDefaultParser) {
+            final Message message = exchange.getIn();
 
-	public void setProjectPath(final String projectPath) {
-		this.projectPath = projectPath;
-		outputPath.append(projectPath).append(File.separator)
-				  .append("meta").append(File.separator)
-				  .append(projectId).append(File.separator)
-				  .append("output");
-		cer = new CustomEntityResolver(projectPath+ File.separator + "dtd");
-	}
+            final GenericFile<?> genericFile = (GenericFile<?>) message.getBody();
+            final File file = (File) genericFile.getFile();
+            final String filename = file.getName();
 
-	public String getProjectPath() {
-		return projectPath;
-	}
+            // allow file manager to validate if Plan needs to be created in DBMS
+            final SvgFileManager fileManager = new SvgFileManager();
+            fileManager.validate(hashtable.containsKey(filename));
+            fileManager.insert(filename, projectId, hashtable);
 
-	public void setProjectId(final int projectId) {
-		this.projectId = projectId;
-	}
+            final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setNamespaceAware(true);
 
-	public int getProjectId() {
-		return projectId;
-	}
+            final DocumentBuilder builder = factory.newDocumentBuilder();
+            builder.setEntityResolver(cer);
 
-	public void setHashtable(final Hashtable<String, Integer> hashtable) {
-		this.hashtable = hashtable;
-	}
+            final long start = System.currentTimeMillis();
+            final Document document = builder.parse(file);
+            final long end = System.currentTimeMillis();
+            logging(file, start, end);
 
-	@Override
-	public void process(final Exchange exchange) throws Exception {
-		if (parser instanceof SvgDefaultParser) {
-			final Message message = exchange.getIn();
+            new File(outputPath.toString()).mkdir();
+            final File outputFile = new File(outputPath.toString() + File.separator + filename);
 
-			final GenericFile<?> genericFile = (GenericFile<?>) message.getBody();
-			final File file = (File) genericFile.getFile();
-			final String filename = file.getName();
+            SvgFileDispatcher.dispatch(parser, document, outputFile, projectId, hashtable);
+        } else {
+            throw new UnsupportedOperationException("Parser not supported");
+        }
+    }
 
-			// allow file manager to validate if Plan needs to be created in DBMS
-			final SvgFileManager fileManager = new SvgFileManager();
-			fileManager.validate(hashtable.containsKey(filename));
-			fileManager.insert(filename, projectId, hashtable);
+    private void logging(final File file, final long start, final long end) {
+        final StringBuilder logMessage = new StringBuilder();
+        logMessage.append(file.getName());
+        logMessage.append(" successfully parsed in ");
+        logMessage.append(end - start);
+        logMessage.append(" ms");
+        LOGGER.info(logMessage.toString());
+    }
 
-			final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			factory.setNamespaceAware(true);
+    private static final class CustomEntityResolver implements EntityResolver {
 
-			final DocumentBuilder builder = factory.newDocumentBuilder();
-			builder.setEntityResolver(cer);
+        private String dtdPath;
 
-			final long start = System.currentTimeMillis();
-			final Document document = builder.parse(file);
-			final long end = System.currentTimeMillis();
-			logging(file, start, end);
+        private CustomEntityResolver(final String dtdPath) {
+            this.dtdPath = dtdPath;
+        }
 
-			new File(outputPath.toString()).mkdir();
-			final File outputFile = new File(outputPath.toString() + File.separator + filename);
+        @Override
+        public InputSource resolveEntity(final String publicId, final String systemId)
+                throws SAXException, IOException {
 
-			SvgFileDispatcher.dispatch(parser, document, outputFile, projectId, hashtable);
-		} else {
-			throw new UnsupportedOperationException("Parser not supported");
-		}
-	}
+            if (publicId.equals("-//W3C//DTD SVG 1.0//EN")) {
+                return new InputSource(new FileInputStream(dtdPath + File.separator + "svg10.dtd"));
+            }
 
-	private void logging(final File file, final long start, final long end) {
-		final StringBuilder logMessage = new StringBuilder();
-		logMessage.append(file.getName());
-		logMessage.append(" successfully parsed in ");
-		logMessage.append(end - start);
-		logMessage.append(" ms");
-		LOGGER.info(logMessage.toString());
-	}
-
-	private static final class CustomEntityResolver implements EntityResolver {
-
-		private String dtdPath;
-
-		private CustomEntityResolver(final String dtdPath) {
-			this.dtdPath = dtdPath;
-		}
-
-		@Override
-		public InputSource resolveEntity(final String publicId, final String systemId)
-				throws SAXException, IOException {
-
-			if (publicId.equals("-//W3C//DTD SVG 1.0//EN")) {
-				return new InputSource(new FileInputStream(dtdPath + File.separator + "svg10.dtd"));
-			}
-
-			return new InputSource(systemId);
-		}
-	}
+            return new InputSource(systemId);
+        }
+    }
 }

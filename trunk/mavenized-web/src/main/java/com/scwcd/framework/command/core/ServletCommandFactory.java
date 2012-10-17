@@ -12,7 +12,7 @@ public class ServletCommandFactory implements ICommandFactory<IServletCommand> {
 
 	private static final ServletCommandFactory INSTANCE = new ServletCommandFactory();
 
-	private HashMap<String, IServletCommand> m_RegisteredCommand = new HashMap<String, IServletCommand>();
+	private HashMap<String, IServletCommand> m_RegisteredCommand = new HashMap<>();
 
 	private ServletCommandFactory() {
 	}
