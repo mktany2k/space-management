@@ -24,10 +24,5 @@
                 </div>
             </div>
         </div>
-<!--        <script>
-                $('#Login').submit(function(){
-                    alert("submit");
-                });
-        </script>-->
     </body>
 </html>

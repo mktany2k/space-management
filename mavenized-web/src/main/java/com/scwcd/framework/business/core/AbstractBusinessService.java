@@ -12,7 +12,7 @@ public abstract class AbstractBusinessService<O> implements BusinessService {
 	private List<Integer> codeIds;
 
 	protected AbstractBusinessService() {
-		codeIds = new ArrayList<Integer>();
+		codeIds = new ArrayList<>();
 	}
 
 	@Override
@@ -28,10 +28,7 @@ public abstract class AbstractBusinessService<O> implements BusinessService {
 		}
 		return BusinessResource.getInstance().getCode(_codeIds);
 	}
-
-	@Override
-	public abstract void perform();
-
+    
 	protected final void setOutput(final O object) {
 		this.object = object;
 	}

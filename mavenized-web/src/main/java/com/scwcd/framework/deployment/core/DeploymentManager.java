@@ -12,6 +12,8 @@ import com.scwcd.enterprise.sql.hbm.Plan;
 import com.scwcd.enterprise.sql.hbm.Project;
 import com.scwcd.framework.deployment.xslt.XsltTemplate;
 import com.scwcd.framework.sql.core.DAOFactory;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class DeploymentManager {
@@ -20,7 +22,7 @@ public class DeploymentManager {
 
 	private CamelManager camelManager;
 	
-	private final Hashtable<String, Integer> hashtable = new Hashtable<String, Integer>();
+	private final Map<String, Integer> hashtable = new ConcurrentHashMap<>();
 
 	private DeploymentManager() {
 		// prevent instantiation
@@ -41,7 +43,7 @@ public class DeploymentManager {
 		final List<Project> projects = dao.doList();
 
 		// for every projects, create a new processor and a new parser
-		final List<Processor> processors = new ArrayList<Processor>();
+		final List<Processor> processors = new ArrayList<>();
 		for (final Project project : projects) {
 			final Set<Plan> plans = project.getPlans();
 			for (final Plan plan : plans) {

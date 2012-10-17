@@ -23,7 +23,7 @@ public class DAOPlan implements Listable<Plan>, Saveable<Plan>, Insertable<Plan>
         Criteria criteria = session.createCriteria(Plan.class);
         List<?> list = criteria.list();
         session.close();
-        Plan[] plans = list.toArray(new Plan[0]);
+        Plan[] plans = list.toArray(new Plan[list.size()]);
 		return Arrays.asList(plans);
 	}
 
@@ -34,7 +34,7 @@ public class DAOPlan implements Listable<Plan>, Saveable<Plan>, Insertable<Plan>
         Criteria criteria = session.createCriteria(Plan.class);
         List<?> list = criteria.add(Restrictions.eq("projectId", projectId)).list();
         session.close();
-        Plan[] plans = list.toArray(new Plan[0]);
+        Plan[] plans = list.toArray(new Plan[list.size()]);
 		return Arrays.asList(plans);
 	}
 

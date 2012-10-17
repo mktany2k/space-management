@@ -1,21 +1,21 @@
 package com.scwcd.framework.deployment.core;
 
 
+import com.scwcd.framework.deployment.xslt.XsltTemplate;
 import java.io.File;
-import java.util.Hashtable;
-
+import java.io.IOException;
+import java.util.Map;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.component.file.GenericFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.scwcd.framework.deployment.xslt.XsltTemplate;
 
 
 public class DefaultDeploymentProcessor implements Processor {
@@ -30,7 +30,7 @@ public class DefaultDeploymentProcessor implements Processor {
 
 	private final StringBuilder outputPath = new StringBuilder();
 
-	private Hashtable<String, Integer> hashtable;
+	private Map<String, Integer> hashtable;
 
 	public void setXsltTemplate(final XsltTemplate xsltTemplate) {
 		this.xsltTemplate = xsltTemplate;
@@ -56,7 +56,7 @@ public class DefaultDeploymentProcessor implements Processor {
 		return projectId;
 	}
 
-	public void setHashtable(final Hashtable<String, Integer> hashtable) {
+	public void setHashtable(final Map<String, Integer> hashtable) {
 		this.hashtable = hashtable;
 	}
 
@@ -97,7 +97,7 @@ public class DefaultDeploymentProcessor implements Processor {
 			transformer.transform(xmlsource, output);
 			final long end = System.currentTimeMillis();
 			logging(file, start, end);
-		} catch (final Exception e) {
+		} catch (final TransformerFactoryConfigurationError | IOException | TransformerException e) {
 			e.printStackTrace();
 		}
 	}

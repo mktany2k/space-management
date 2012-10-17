@@ -4,12 +4,12 @@ package com.scwcd.framework.deployment.core;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.List;
 import com.scwcd.enterprise.sql.dao.DAOPlan;
 import com.scwcd.enterprise.sql.hbm.Plan;
 import com.scwcd.enterprise.sql.util.SqlUtility;
 import com.scwcd.framework.sql.core.DAOFactory;
+import java.util.Map;
 
 
 class SvgFileManager {
@@ -20,12 +20,12 @@ class SvgFileManager {
 		this.exists = exists;
 	}
 
-	void insert(final String filename, final int projectId, final Hashtable<String, Integer> hashtable) {
+	void insert(final String filename, final int projectId, final Map<String, Integer> hashtable) {
 		if (!exists) {
 			// generate plan id
-			final List<Integer> planIds = new ArrayList<Integer>(hashtable.values());
+			final List<Integer> planIds = new ArrayList<>(hashtable.values());
 			Collections.sort(planIds);
-			final int planId = planIds.size() == 0 ? 1 : planIds.get(planIds.size() - 1) + 1;
+			final int planId = planIds.isEmpty() ? 1 : planIds.get(planIds.size() - 1) + 1;
 
 			final Plan plan = new Plan();
 			plan.setProjectId(projectId);

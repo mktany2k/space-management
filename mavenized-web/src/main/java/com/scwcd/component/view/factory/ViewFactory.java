@@ -1,6 +1,8 @@
 package com.scwcd.component.view.factory;
 
 
+import com.scwcd.component.view.core.View;
+import com.scwcd.framework.factory.IFactory;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +13,6 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.scwcd.component.view.core.View;
-import com.scwcd.framework.factory.IFactory;
 
 
 public class ViewFactory implements IFactory<Class<View>, String> {
@@ -25,9 +25,9 @@ public class ViewFactory implements IFactory<Class<View>, String> {
 
 	private static final ViewFactory INSTANCE = new ViewFactory();
 
-	private HashMap<Integer, View> m_RegisteredView = new HashMap<Integer, View>();
+	private HashMap<Integer, View> m_RegisteredView = new HashMap<>();
 
-	private List<View> views = new ArrayList<View>();
+	private List<View> views = new ArrayList<>();
 	
 	private Schema schema;
 

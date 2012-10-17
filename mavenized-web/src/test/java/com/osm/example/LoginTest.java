@@ -21,10 +21,9 @@
 
 package com.osm.example;
 
-import com.osm.web.action.auth.Login;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.config.entities.ActionConfig;
-
+import com.osm.web.action.auth.Login;
 import java.util.Map;
 
 public class LoginTest extends ConfigTest {

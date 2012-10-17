@@ -1,12 +1,12 @@
 package com.scwcd.process.plan.core;
 
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import com.scwcd.framework.command.core.ApplicationSession;
 import com.scwcd.framework.deployment.core.DeploymentManager;
 import com.scwcd.framework.deployment.core.WebContext;
 import com.scwcd.framework.deployment.core.WebContextManager;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 public class CommandNewProject extends CommandOpenProject {

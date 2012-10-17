@@ -5,13 +5,14 @@ import java.util.HashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.scwcd.framework.factory.IFactory;
+import java.util.Map;
 
 
 public class ParserFactory implements IFactory<Integer, IParser> {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ParserFactory.class);
 
-	private HashMap<Integer, IParser> m_RegisteredParser = new HashMap<Integer, IParser>();
+	private Map<Integer, IParser> m_RegisteredParser = new HashMap<>();
 
 	private static final ParserFactory INSTANCE = new ParserFactory();
 

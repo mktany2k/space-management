@@ -20,11 +20,10 @@ public class CommandSelectView extends AbstractServletCommand {
 		
 		final AjaxBusinessDelegate bizDelegate = new AjaxBusinessDelegate(appSession, new ServiceSelectView());
 		final byte[] viewJSON = bizDelegate.getView(viewId);
-		
-		final OutputStream os = response.getOutputStream();
-		os.write(viewJSON);
-		os.flush();
-		os.close();
+        try (OutputStream os = response.getOutputStream()) {
+            os.write(viewJSON);
+            os.flush();
+        }
 		
 		return null;
 	}

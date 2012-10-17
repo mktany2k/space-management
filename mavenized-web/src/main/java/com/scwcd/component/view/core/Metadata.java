@@ -74,7 +74,7 @@ public class Metadata {
      */
     public List<Block> getBlocks() {
         if (blocks == null) {
-            blocks = new ArrayList<Block>();
+            blocks = new ArrayList<>();
         }
         return this.blocks;
     }

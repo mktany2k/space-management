@@ -38,21 +38,17 @@ public class SvgFileListener implements ServletContextListener {
 			final String configPath = ctx.getRealPath(TEMPLATE_DIR);
 			final String contextFile = ctx.getInitParameter(ApplicationServlet.PARAM_CONTEXT);
 			final String contextPath = ctx.getRealPath(contextFile);
-
-			// transform template camel.cfg.xml.tpl
-			final FileWriter writer = new FileWriter(contextPath);
-			final Configuration configuration = new Configuration();
-			configuration.setDirectoryForTemplateLoading(new File(configPath));
-			final Template template = configuration.getTemplate(TEMPLATE_CAMEL);
-			final Map<String, Object> map = new HashMap<String, Object>();
-			map.put("projects", projects);
-			map.put("projectPath", configPath);
-			template.process(map, writer);
-			writer.flush();
-			writer.close();
-		} catch (final IOException e) {
-			e.printStackTrace();
-		} catch (final TemplateException e) {
+            try (FileWriter writer = new FileWriter(contextPath)) {
+                final Configuration configuration = new Configuration();
+                configuration.setDirectoryForTemplateLoading(new File(configPath));
+                final Template template = configuration.getTemplate(TEMPLATE_CAMEL);
+                final Map<String, Object> map = new HashMap<>();
+                map.put("projects", projects);
+                map.put("projectPath", configPath);
+                template.process(map, writer);
+                writer.flush();
+            }
+		} catch (final IOException | TemplateException e) {
 			e.printStackTrace();
 		}
 	}

@@ -1,10 +1,11 @@
 package com.scwcd.enterprise.servlet.listener.svg;
 
 
+import com.scwcd.framework.business.handler.IParser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Hashtable;
+import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.camel.Exchange;
@@ -17,7 +18,6 @@ import org.w3c.dom.Document;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import com.scwcd.framework.business.handler.IParser;
 
 
 public class SvgDeploymentProcessor implements Processor {
@@ -35,7 +35,7 @@ public class SvgDeploymentProcessor implements Processor {
 	
 	private CustomEntityResolver cer;
 
-	private Hashtable<String, Integer> hashtable;
+	private Map<String, Integer> hashtable;
 
 	public void setParser(final IParser parser) {
 		this.parser = parser;
@@ -54,7 +54,7 @@ public class SvgDeploymentProcessor implements Processor {
 		this.projectId = projectId;
 	}
 
-	public void setHashtable(final Hashtable<String, Integer> hashtable) {
+	public void setHashtable(final Map<String, Integer> hashtable) {
 		this.hashtable = hashtable;
 	}
 

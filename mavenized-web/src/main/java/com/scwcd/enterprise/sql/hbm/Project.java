@@ -24,7 +24,7 @@ public class Project {
 	
 	private String updatedBy;
 
-	private Set<Plan> plans = new HashSet<Plan>();
+	private Set<Plan> plans = new HashSet<>();
 
 	public int getProjectId() {
 		return projectId;

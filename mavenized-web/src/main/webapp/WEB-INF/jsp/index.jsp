@@ -1,16 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bootstrap 101 Template</title>
+        <title><fmt:message key="project.name"/></title>
     </head>
     <body>
-
-
         <div class="container">
-
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
                 <h1>Welcome</h1>
@@ -38,5 +36,4 @@
             </div>
         </div> <!-- /container -->
     </body>
-</body>
 </html>

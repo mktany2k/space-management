@@ -31,7 +31,7 @@ public class CommandMaintainProject extends AbstractServletCommand {
 
 		// retrieve all lots related to the project
 		final Set<Plan> plans = project.getPlans();
-		final List<Plan> _plans = new ArrayList<Plan>(plans);
+		final List<Plan> _plans = new ArrayList<>(plans);
 		final int[] planIds = new int[_plans.size()];
 		for (int i = 0; i < _plans.size(); i++) {
 			final Plan plan = _plans.get(i);
