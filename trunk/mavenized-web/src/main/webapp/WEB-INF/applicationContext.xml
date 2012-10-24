@@ -54,7 +54,6 @@
         <property name="url" value="jdbc:hsqldb:mem:osm"/>
         <property name="username" value="sa"/>
     </bean>
-    <!--<bean id="bootstrapDataPopulator" class="com.osm.web.action.auth.BootstrapDataPopulator"/>-->
     
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <!--property name="cacheManager" ref="cacheManager"/-->
