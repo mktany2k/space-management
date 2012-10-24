@@ -55,7 +55,7 @@ public class SampleRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         User userId = (User) principals.fromRealm(getName()).iterator().next();
-        User user = userDAO.getUser(userId.getId());
+        User user = userDAO.get(userId.getId());
         
         if (user == null) {
             return null;
