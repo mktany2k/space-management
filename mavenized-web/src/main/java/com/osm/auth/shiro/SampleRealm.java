@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SampleRealm extends AuthorizingRealm {
 
-    protected UserDao userDAO = null;
+    protected UserDao userDao = null;
 
     public SampleRealm() {
         setName("SampleRealm"); //This name must match the name in the User class's getPrincipals() method
@@ -38,13 +38,13 @@ public class SampleRealm extends AuthorizingRealm {
 
     @Autowired
     public void setUserDAO(UserDao userDAO) {
-        this.userDAO = userDAO;
+        this.userDao = userDAO;
     }
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-        User user = userDAO.findUser(token.getUsername());
+        User user = userDao.findUser(token.getUsername());
         if (user == null) {
             return null;
         }
@@ -55,7 +55,7 @@ public class SampleRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         User userId = (User) principals.fromRealm(getName()).iterator().next();
-        User user = userDAO.get(userId.getId());
+        User user = userDao.get(userId.getId());
         
         if (user == null) {
             return null;
