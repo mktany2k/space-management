@@ -2,7 +2,7 @@ package com.osm.auth.shiro;
 
 import com.osm.model.Role;
 import com.osm.model.User;
-import com.osm.repository.UserDAO;
+import com.osm.repository.UserDao;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SampleRealm extends AuthorizingRealm {
 
-    protected UserDAO userDAO = null;
+    protected UserDao userDAO = null;
 
     public SampleRealm() {
         setName("SampleRealm"); //This name must match the name in the User class's getPrincipals() method
@@ -37,7 +37,7 @@ public class SampleRealm extends AuthorizingRealm {
     }
 
     @Autowired
-    public void setUserDAO(UserDAO userDAO) {
+    public void setUserDAO(UserDao userDAO) {
         this.userDAO = userDAO;
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Data Access Object for User related operations.
  */
-public interface UserDAO {
+public interface UserDao {
 
     User getUser(String userId);
 

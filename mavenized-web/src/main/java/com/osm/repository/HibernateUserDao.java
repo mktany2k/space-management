@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 
 @Repository("userDAO")
 @SuppressWarnings("unchecked")
-public class HibernateUserDao extends HibernateDao implements UserDAO {
+public class HibernateUserDao extends HibernateDao implements UserDao {
 
     @Override
     public User getUser(String userId) {
