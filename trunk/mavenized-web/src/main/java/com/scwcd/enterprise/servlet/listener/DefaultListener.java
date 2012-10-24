@@ -20,10 +20,6 @@ import com.scwcd.process.ajax.core.CommandSelectLot;
 import com.scwcd.process.ajax.core.CommandSelectView;
 import com.scwcd.process.ajax.core.CommandSyncState;
 import com.scwcd.process.ajax.core.CommandUpdateLot;
-import com.scwcd.process.login.core.CommandLogin;
-import com.scwcd.process.login.core.CommandLogout;
-import com.scwcd.process.login.core.CommandPostLogin;
-import com.scwcd.process.login.core.CommandPreLogin;
 import com.scwcd.process.maintenance.core.CommandMaintainProject;
 import com.scwcd.process.plan.core.CommandNewProject;
 import com.scwcd.process.plan.core.CommandOpenProject;
@@ -62,12 +58,6 @@ public class DefaultListener extends FrameworkListener {
 	// register IServletCommand objects
 	private static void registerCommand() {
         final ServletCommandFactory commandFactory = ServletCommandFactory.getInstance();
-
-		// Process_Login
-		commandFactory.register(CommandResource.getOperation(CommandPreLogin.class), new CommandPreLogin());
-		commandFactory.register(CommandResource.getOperation(CommandLogin.class), new CommandLogin());
-		commandFactory.register(CommandResource.getOperation(CommandPostLogin.class), new CommandPostLogin());
-		commandFactory.register(CommandResource.getOperations(CommandLogout.class), new CommandLogout());
 
 		// Process_Plan
 		commandFactory.register(CommandResource.getOperations(CommandOpenProject.class), new CommandOpenProject());

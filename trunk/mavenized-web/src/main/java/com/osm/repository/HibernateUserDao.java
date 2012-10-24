@@ -10,7 +10,7 @@ import org.springframework.util.Assert;
 public class HibernateUserDao extends HibernateDao implements UserDao {
 
     @Override
-    public User getUser(String userId) {
+    public User get(String userId) {
         return (User) getSession().get(User.class, userId);
     }
 
@@ -22,25 +22,25 @@ public class HibernateUserDao extends HibernateDao implements UserDao {
     }
 
     @Override
-    public void createUser(User user) {
+    public void create(User user) {
         getSession().save(user);
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<User> findAll() {
         return getSession().createQuery("from User order by username").list();
     }
 
     @Override
-    public void deleteUser(String userId) {
-        User user = getUser(userId);
+    public void delete(String userId) {
+        User user = get(userId);
         if (user != null) {
             getSession().delete(user);
         }
     }
 
     @Override
-    public void updateUser(User user) {
+    public void update(User user) {
         getSession().update(user);
     }
 }

@@ -9,33 +9,26 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
         <link href="<s:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
-        <style type="text/css">
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
-        
         <script src="<s:url value="/js/jquery-1.8.2.min.js"/>"></script>
         <script src="<s:url value="/js/bootstrap.min.js"/>"></script>
         <decorator:head/>
     </head>
     <body> 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse nav">
             <div class="navbar-inner">
                 <div class="container">
                     <s:a cssClass="brand" action="index" namespace="/"><s:text name="project.name"/></s:a>
                     <shiro:user>
-                        <div class="nav-collapse collapse pull-right">
-                            <ul class="nav">
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <shiro:principal property="username"/><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><s:a action="Logout" namespace="/auth"><i class="icon-off"></i> Logout</s:a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </shiro:user>
                 </div>
             </div>
