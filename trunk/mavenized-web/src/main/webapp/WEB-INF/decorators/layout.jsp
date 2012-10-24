@@ -29,11 +29,35 @@
                                 </li>
                             </ul>
                         </div>
+                        <!--
+                    	<div class="btn-group pull-right">
+                    		<button class="btn"><s:a action="Plan" namespace="/auth">Menu 1</s:a></button>
+                    		<button class="btn">Menu 2</button>
+                    		<button class="btn">Menu 3</button>
+                    	</div>
+                    	-->
                     </shiro:user>
                 </div>
             </div>
         </div>
-        <decorator:body/> 
+        <shiro:user>
+			<ul class="nav nav-tabs">
+				<li class="active"><s:a action="index" namespace="/">Summary</s:a></li>
+				<li><s:a action="index" namespace="/">Maintenance</s:a></li>
+				<li><s:a action="index" namespace="/">Plan</s:a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+				</li>
+			</ul>
+		</shiro:user>
+		<decorator:body/>
         <div class="container">
             <hr>
             <footer>
