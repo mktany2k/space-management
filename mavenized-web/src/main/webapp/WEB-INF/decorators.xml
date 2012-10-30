@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<decorators defaultdir="/WEB-INF/decorators"> 
-    <excludes> 
-        <pattern>/css/*</pattern> 
-        <pattern>/ico/*</pattern> 
-        <pattern>/images/*</pattern> 
-        <pattern>/img/*</pattern> 
-        <pattern>/js/*</pattern> 
-        <pattern>/index.html</pattern> 
-    </excludes> 
- 
-    <decorator name="layout" page="layout.jsp"> 
-        <pattern>/*</pattern> 
-    </decorator> 
-</decorators> 
+<decorators defaultdir="/WEB-INF/decorators">
+    <excludes>
+        <pattern>/css/*</pattern>
+        <pattern>/ico/*</pattern>
+        <pattern>/images/*</pattern>
+        <pattern>/img/*</pattern>
+        <pattern>/js/*</pattern>
+        <pattern>/index.html</pattern>
+    </excludes>
+
+    <decorator name="layout" page="layout.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>
