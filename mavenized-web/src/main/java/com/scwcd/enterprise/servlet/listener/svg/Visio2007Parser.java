@@ -94,43 +94,6 @@ public class Visio2007Parser extends SvgDefaultParser {
 		}
 	}
 
-	/*
-	void configureEffect(final Document document, final String svgId) {
-		// create effect for mouse hover
-//		<defs>
-//			<radialGradient id="selected" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-//				<stop offset="0%" style="stop-color: rgb(200, 200, 200); stop-opacity: 0;"/>
-//				<stop offset="100%" style="stop-color: rgb(0, 0, 255); stop-opacity: 1;"/>
-//			</radialGradient>
-//		</defs>
-		Element defs = document.createElement("defs");
-		Element radialGradient = document.createElement("radialGradient");
-		Element stop1 = document.createElement("stop");
-		Element stop2 = document.createElement("stop");
-		
-		radialGradient.appendChild(stop1);
-		radialGradient.appendChild(stop2);
-		
-		defs.appendChild(radialGradient);
-		
-		radialGradient.setAttribute("id", "selected");
-		radialGradient.setAttribute("cx", "50%");
-		radialGradient.setAttribute("cy", "50%");
-		radialGradient.setAttribute("r", "50%");
-		radialGradient.setAttribute("fx", "50%");
-		radialGradient.setAttribute("fy", "50%");
-		
-		stop1.setAttribute("offset", "66%");
-		stop1.setAttribute("style", "stop-color: #dfdfdf; stop-opacity: 1;");
-		
-		stop2.setAttribute("offset", "100%");
-		stop2.setAttribute("style", "stop-color: #0000ff; stop-opacity: 1;");
-		
-		Element root = (Element) document.getFirstChild();
-		root.appendChild(defs);
-	}
-	*/
-
 	void configureTitleNode(final Document document) {
 		/*
 		 * Remove all title tags manually. NOTE: unable to use 
