@@ -39,13 +39,11 @@ public class DeploymentManager {
 		// retrieve all projects
 		final DAOFactory factory = DAOFactory.getInstance();
 		final DAOProject dao = (DAOProject) factory.getInstance(DAOProject.class);
-		final List<Project> projects = dao.doList();
 
 		// for every projects, create a new processor and a new parser
 		final List<Processor> processors = new ArrayList<>();
-		for (final Project project : projects) {
-			final Set<Plan> plans = project.getPlans();
-			for (final Plan plan : plans) {
+		for (Project project : dao.doList()) {
+			for (Plan plan : project.getPlans()) {
 				hashtable.put(plan.getFilename(), plan.getPlanId());
 			}
 

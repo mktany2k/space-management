@@ -1,6 +1,6 @@
 package com.scwcd.enterprise.servlet.listener.svg;
 
-
+import com.osm.util.Constants;
 import com.scwcd.enterprise.sql.dao.DAOProject;
 import com.scwcd.enterprise.sql.hbm.Project;
 import com.scwcd.framework.sql.core.DAOFactory;
@@ -17,26 +17,24 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-
 public class SvgFileListener implements ServletContextListener {
 
-	private static final String TEMPLATE_CAMEL = "camel.cfg.xml.tpl";
+    private static final String TEMPLATE_CAMEL = "camel.cfg.xml.tpl";
+    private static final String TEMPLATE_DIR = "WEB-INF";
 
-	private static final String TEMPLATE_DIR = "WEB-INF";
+    @Override
+    public void contextInitialized(final ServletContextEvent sce) {
+        try {
+            // retrieve all projects
+            final DAOFactory factory = DAOFactory.getInstance();
+            final DAOProject dao = (DAOProject) factory.getInstance(DAOProject.class);
+            final List<Project> projects = dao.doList();
 
-	@Override
-	public void contextInitialized(final ServletContextEvent sce)  {
-		try {
-			// retrieve all projects
-			final DAOFactory factory = DAOFactory.getInstance();
-			final DAOProject dao = (DAOProject) factory.getInstance(DAOProject.class);
-			final List<Project> projects = dao.doList();
-
-			// initialize servlet context
-			final ServletContext ctx = sce.getServletContext();
-			final String configPath = ctx.getRealPath(TEMPLATE_DIR);
-			final String contextFile = ctx.getInitParameter("contextConfigLocation");
-			final String contextPath = ctx.getRealPath(contextFile);
+            // initialize servlet context
+            final ServletContext ctx = sce.getServletContext();
+            final String configPath = ctx.getRealPath(TEMPLATE_DIR);
+            final String contextFile = ctx.getInitParameter(Constants.Configuration.CONTEXT_CONFIG_LOCATION);
+            final String contextPath = ctx.getRealPath(contextFile);
             try (FileWriter writer = new FileWriter(contextPath)) {
                 final Configuration configuration = new Configuration();
                 configuration.setDirectoryForTemplateLoading(new File(configPath));
@@ -47,12 +45,12 @@ public class SvgFileListener implements ServletContextListener {
                 template.process(map, writer);
                 writer.flush();
             }
-		} catch (final IOException | TemplateException e) {
-			e.printStackTrace();
-		}
-	}
+        } catch (final IOException | TemplateException e) {
+            e.printStackTrace();
+        }
+    }
 
-	@Override
-	public void contextDestroyed(final ServletContextEvent sce) {
-	}
+    @Override
+    public void contextDestroyed(final ServletContextEvent sce) {
+    }
 }
