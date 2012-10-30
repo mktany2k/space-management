@@ -1,6 +1,12 @@
 package com.scwcd.enterprise.servlet.listener.svg;
 
 
+import com.scwcd.enterprise.sql.dao.DAOProject;
+import com.scwcd.enterprise.sql.hbm.Project;
+import com.scwcd.framework.sql.core.DAOFactory;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,13 +16,6 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import com.scwcd.enterprise.servlet.ApplicationServlet;
-import com.scwcd.enterprise.sql.dao.DAOProject;
-import com.scwcd.enterprise.sql.hbm.Project;
-import com.scwcd.framework.sql.core.DAOFactory;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
 
 
 public class SvgFileListener implements ServletContextListener {
@@ -36,7 +35,7 @@ public class SvgFileListener implements ServletContextListener {
 			// initialize servlet context
 			final ServletContext ctx = sce.getServletContext();
 			final String configPath = ctx.getRealPath(TEMPLATE_DIR);
-			final String contextFile = ctx.getInitParameter(ApplicationServlet.PARAM_CONTEXT);
+			final String contextFile = ctx.getInitParameter("contextConfigLocation");
 			final String contextPath = ctx.getRealPath(contextFile);
             try (FileWriter writer = new FileWriter(contextPath)) {
                 final Configuration configuration = new Configuration();
