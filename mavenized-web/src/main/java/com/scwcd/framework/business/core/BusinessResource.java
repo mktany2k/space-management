@@ -1,7 +1,8 @@
 package com.scwcd.framework.business.core;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -18,8 +19,8 @@ public class BusinessResource {
         return INSTANCE;
     }
 
-    private Map<String, String> createMap(final List<String> strings) {
-        Map<String, String> map = new HashMap<>();
+    private static Map<String, String> createMap(final List<String> strings) {
+        Map<String, String> map = Maps.newHashMapWithExpectedSize(strings.size());
 
         for (String string : strings) {
             final String[] pair = string.split(",");
@@ -29,19 +30,17 @@ public class BusinessResource {
         return map;
     }
 
-    public Map<String, String> getCode(final int codeId) {
+    public static Map<String, String> getCode(final int codeId) {
         final ResourceBundle resourceBundle = ResourceBundle.getBundle(RESOURCE);
         final String string = resourceBundle.getString(String.valueOf(codeId));
 
-        ArrayList<String> strings = new ArrayList<>();
-        strings.add(string);
-        return createMap(strings);
+        return createMap(Collections.singletonList(string));
     }
 
-    public Map<String, String> getCode(final int[] codeIds) {
-        ArrayList<String> strings = new ArrayList<>();
+    public static Map<String, String> getCode(final int[] codeIds) {
+        final ResourceBundle resourceBundle = ResourceBundle.getBundle(RESOURCE);
+        List<String> strings = Lists.newArrayListWithExpectedSize(codeIds.length);
         for (int codeId : codeIds) {
-            final ResourceBundle resourceBundle = ResourceBundle.getBundle(RESOURCE);
             final String string = resourceBundle.getString(String.valueOf(codeId));
             strings.add(string);
         }
