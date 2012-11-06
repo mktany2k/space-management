@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.IOUtils;
+import org.joda.time.DateTime;
 
 public class JSONResponseUtility {
 
@@ -19,17 +20,17 @@ public class JSONResponseUtility {
     public static String buildState(final HttpServletRequest request, final String username) {
         final ApplicationSession appSession = (ApplicationSession) request.getSession().getAttribute(
                 ApplicationSession.SESSION_APPLICATION);
-        final Date date = new Date();
+        final Date now = DateTime.now().toDate();
         final SimpleDateFormat sdf = new SimpleDateFormat();
 
         sdf.applyPattern("MMMMM");
-        final String mmmmm = sdf.format(date);
+        final String mmmmm = sdf.format(now);
 
         sdf.applyPattern("M");
-        final String m = sdf.format(date);
+        final String m = sdf.format(now);
 
         sdf.applyPattern("yyyy");
-        final String yyyy = sdf.format(date);
+        final String yyyy = sdf.format(now);
 
         final StringBuilder state = new StringBuilder();
 

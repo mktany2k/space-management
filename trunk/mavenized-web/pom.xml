@@ -26,6 +26,7 @@
         <jsp.api.version>2.2.1</jsp.api.version>
         <jstl.version>1.2</jstl.version>
         <bonecp.version>0.8.0-alpha1</bonecp.version>
+        <jackson.version>2.1.0</jackson.version>
         
         <test.mockito.version>1.9.5</test.mockito.version>
         <test.junit.version>4.10</test.junit.version>
@@ -273,6 +274,11 @@
             <artifactId>fest-assert-core</artifactId>
             <version>${test.fest.assert.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 
