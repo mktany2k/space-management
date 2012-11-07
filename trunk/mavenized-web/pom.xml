@@ -27,6 +27,8 @@
         <jstl.version>1.2</jstl.version>
         <bonecp.version>0.8.0-alpha1</bonecp.version>
         <jackson.version>2.1.0</jackson.version>
+        <webjars.jquery.version>1.8.2</webjars.jquery.version>
+        <webjars.bootstrap.version>2.2.1</webjars.bootstrap.version>
         
         <test.mockito.version>1.9.5</test.mockito.version>
         <test.junit.version>4.10</test.junit.version>
@@ -158,11 +160,6 @@
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <version>${shiro.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
             <version>${struts2.version}</version>
@@ -209,14 +206,19 @@
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
             <version>${shiro.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <artifactId>shiro-core</artifactId>
-            <groupId>org.apache.shiro</groupId>
-            <version>${shiro.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -283,12 +285,14 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>1.8.2</version>
+            <version>${webjars.jquery.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>2.2.1</version>
+            <version>${webjars.bootstrap.version}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
