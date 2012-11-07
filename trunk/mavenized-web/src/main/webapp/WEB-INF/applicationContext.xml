@@ -108,6 +108,7 @@
                 /images/* = anon
                 /auth/Login.action = anon
                 /index.html = anon
+                /webjars/** = anon
                 # /index.action = anon
                 # everything else requires authentication:
                 /** = authc

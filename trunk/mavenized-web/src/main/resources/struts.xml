@@ -28,4 +28,14 @@
             </result>
         </action>
     </package>
+    <package name="setup" namespace="/setup" extends="struts-default">
+        <action name="*" class="DefaultAction">
+            <result>/WEB-INF/jsp/setup/{1}.jsp</result>
+        </action>
+    </package>
+    <package name="admin" namespace="/admin" extends="struts-default">
+        <action name="*" class="DefaultAction">
+            <result>/WEB-INF/jsp/admin/{1}.jsp</result>
+        </action>
+    </package>
 </struts>
