@@ -3,7 +3,7 @@
 <%@ taglib prefix="stl" uri="SvgTagLibrary" %>
 <html>
 	<head>
-		<title><c:out value="${page_title}" escapeXml="false"/></title>
+		<title><fmt:message key="project.name"/></title>
 		<link rel="shortcut icon" href="../images/svg.ico"/>
 		<link rel="stylesheet" href="../css/default.css" type="text/css"/>
 		<script type="text/javascript" src="../js/jquery-1.6.1.min.js"></script>

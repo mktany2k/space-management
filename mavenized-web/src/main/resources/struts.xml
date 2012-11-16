@@ -37,5 +37,8 @@
         <action name="*" class="DefaultAction">
             <result>/WEB-INF/jsp/admin/{1}.jsp</result>
         </action>
+        <action name="plan" class="PlanAction" method="execute">
+            <result name="success">/WEB-INF/jsp/admin/plan.jsp</result>
+        </action>
     </package>
 </struts>

@@ -5,9 +5,13 @@
 <html>
     <head>
         <title><fmt:message key="project.name"/></title>
+        <script>
+	        $(document).ready(function() {
+	        	$("#homeTab").addClass("active");
+	        });
+        </script>
     </head>
     <body>
-    	This should be loaded dynamically. TODO: add event listener to nav-tabs
-		<c:import url="../dat/plan/1-floor.svg" charEncoding="UTF-8"/>
+    	Welcome screen
     </body>
 </html>
