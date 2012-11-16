@@ -119,6 +119,7 @@
     <!--
     -->
     <bean id="DefaultAction" class="com.opensymphony.xwork2.ActionSupport"/>
+    <bean id="PlanAction" class="com.osm.web.action.PlanAction"/>
     <bean id="authentication" class="com.osm.web.action.auth.Authentication">
         <property name="authenticator">
             <bean class="com.osm.auth.shiro.ShiroAuthenticator"/> 

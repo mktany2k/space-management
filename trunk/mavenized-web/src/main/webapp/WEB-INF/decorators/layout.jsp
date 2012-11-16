@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><decorator:title default="Struts-2 CRUD Tutorial: Decorating with SiteMesh"/></title> 
+        <title><decorator:title default="Office Space Management"/></title> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
         <link href="<s:url value="/webjars/bootstrap/2.2.1/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -47,21 +47,27 @@
             </div>
         </div>
         <shiro:user>
-            <ul class="nav nav-tabs">
-                <li class="active"><s:a action="index" namespace="/">Summary</s:a></li>
-                <li><s:a action="index" namespace="/">Maintenance</s:a></li>
-                <li><s:a action="index" namespace="/">Plan</s:a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
+			<div class="nav">
+	            <ul class="nav nav-tabs">
+	                <li id="homeTab"><s:a action="index" namespace="/">Home</s:a></li>
+	                <li id="summaryTab"><s:a action="summary" namespace="/admin">Summary</s:a></li>
+	                <li id="maintenanceTab"><s:a action="maintenance" namespace="/admin">Maintenance</s:a></li>
+	                <li id="planTab"><s:a action="plan" namespace="/admin">Plan</s:a></li>
+	                <li id="administrationTab"><s:a action="administration" namespace="/admin">Administration</s:a></li>
+	                <!--
+	                <li class="dropdown">
+	                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+	                    <ul class="dropdown-menu">
+	                        <li><a href="#">Action</a></li>
+	                        <li><a href="#">Another action</a></li>
+	                        <li><a href="#">Something else here</a></li>
+	                        <li class="divider"></li>
+	                        <li><a href="#">Separated link</a></li>
+	                    </ul>
+	                </li>
+	                -->
+	            </ul>
+			</div>
         </shiro:user>
         <decorator:body/>
         <div class="container">
