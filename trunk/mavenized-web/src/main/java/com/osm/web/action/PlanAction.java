@@ -19,9 +19,7 @@ public class PlanAction extends ActionSupport implements ServletRequestAware {
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 */
 	public String execute() {
-		System.out.println("ContextPath: " + request.getContextPath());
-		request.
-		request.setAttribute("files", new String[] { "a", "b", "c" });
+		// read floor-plan.svg files
 		return ActionSupport.SUCCESS;
 	}
 
