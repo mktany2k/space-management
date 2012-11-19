@@ -35,13 +35,6 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!--
-                                <div class="btn-group pull-right">
-                                    <button class="btn"><s:a action="Plan" namespace="/auth">Menu 1</s:a></button>
-                                    <button class="btn">Menu 2</button>
-                                    <button class="btn">Menu 3</button>
-                                </div>
-                            -->
                     </shiro:user>
                 </div>
             </div>

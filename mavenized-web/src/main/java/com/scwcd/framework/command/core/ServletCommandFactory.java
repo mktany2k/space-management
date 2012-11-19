@@ -1,52 +1,47 @@
 package com.scwcd.framework.command.core;
 
-
-import java.util.HashMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class ServletCommandFactory implements ICommandFactory<IServletCommand> {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ServletCommandFactory.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServletCommandFactory.class);
+    private static final ServletCommandFactory INSTANCE = new ServletCommandFactory();
+    private Map<String, IServletCommand> m_RegisteredCommand = Maps.newHashMap();
 
-	private static final ServletCommandFactory INSTANCE = new ServletCommandFactory();
+    private ServletCommandFactory() {
+    }
 
-	private Map<String, IServletCommand> m_RegisteredCommand = new HashMap<>();
+    public static ServletCommandFactory getInstance() {
+        return INSTANCE;
+    }
 
-	private ServletCommandFactory() {
-	}
+    @Override
+    public void register(final String operation, final IServletCommand command) {
+        LOGGER.info("Registering [" + operation + "] with [" + command + "]");
+        m_RegisteredCommand.put(operation, command);
+    }
 
-	public static ServletCommandFactory getInstance() {
-		return INSTANCE;
-	}
+    public void register(final String[] operations, final IServletCommand command) {
+        for (final String operation : operations) {
+            LOGGER.info("Registering [" + operation + "] with [" + command + "]");
+            m_RegisteredCommand.put(operation, command);
+        }
+    }
 
-	@Override
-	public void register(final String operation, final IServletCommand command) {
-		LOGGER.info("Registering [" + operation + "] with [" + command + "]");
-		m_RegisteredCommand.put(operation, command);
-	}
+    @Override
+    public IServletCommand getInstance(final String operation) {
+        IServletCommand command = m_RegisteredCommand.get(operation);
+        if (command == null) {
+            throw new UnsupportedOperationException(operation);
+        }
+        return command.create();
+    }
 
-	public void register(final String[] operations, final IServletCommand command) {
-		for (final String operation : operations) {
-			LOGGER.info("Registering [" + operation + "] with [" + command + "]");
-			m_RegisteredCommand.put(operation, command);
-		}
-	}
-
-	@Override
-	public IServletCommand getInstance(final String operation) {
-		IServletCommand command = m_RegisteredCommand.get(operation);
-		if (command == null) {
-			throw new UnsupportedOperationException(operation);
-		}
-		return command.create();
-	}
-
-	@Override
-	public String toString() {
-		return m_RegisteredCommand.toString();
-	}
+    @Override
+    public String toString() {
+        return m_RegisteredCommand.toString();
+    }
 }
