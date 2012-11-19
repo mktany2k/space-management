@@ -130,6 +130,6 @@ public class JSONResponseUtility {
     }
 
     private JSONResponseUtility() throws InstantiationException {
-        throw Exceptions.instantiationException();
+        throw Exceptions.newInstantiationException();
     }
 }
