@@ -40,37 +40,23 @@
             </div>
         </div>
         <shiro:user>
-			<div class="nav">
-	            <ul class="nav nav-tabs">
-	                <li id="homeTab"><s:a action="index" namespace="/">Home</s:a></li>
-	                <li id="summaryTab"><s:a action="summary" namespace="/admin">Summary</s:a></li>
-	                <li id="maintenanceTab"><s:a action="maintenance" namespace="/admin">Maintenance</s:a></li>
-	                <li id="planTab"><s:a action="plan" namespace="/admin">Plan</s:a></li>
-	                <li id="administrationTab"><s:a action="administration" namespace="/admin">Administration</s:a></li>
-	                <!--
-	                <li class="dropdown">
-	                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
-	                    <ul class="dropdown-menu">
-	                        <li><a href="#">Action</a></li>
-	                        <li><a href="#">Another action</a></li>
-	                        <li><a href="#">Something else here</a></li>
-	                        <li class="divider"></li>
-	                        <li><a href="#">Separated link</a></li>
-	                    </ul>
-	                </li>
-	                -->
-	            </ul>
-			</div>
+            <div class="nav">
+                <ul class="nav nav-tabs">
+                    <li id="homeTab"><s:a action="index" namespace="/">Home</s:a></li>
+                    <li id="summaryTab"><s:a action="summary" namespace="/admin">Summary</s:a></li>
+                    <li id="maintenanceTab"><s:a action="maintenance" namespace="/admin">Maintenance</s:a></li>
+                    <li id="planTab"><s:a action="plan" namespace="/admin">Plan</s:a></li>
+                    <li id="administrationTab"><s:a action="administration" namespace="/admin">Administration</s:a></li>
+                    </ul>
+                </div>
         </shiro:user>
         <decorator:body/>
         <div class="container">
             <hr>
             <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="span12">
-                            <p>FOOTER &copy; Company 2012</p>
-                        </div>
+                <div class="row">
+                    <div class="span12">
+                        <p>FOOTER &copy; Company 2012</p>
                     </div>
                 </div>
             </footer>
