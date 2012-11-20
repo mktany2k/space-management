@@ -20,19 +20,12 @@
                             </div>
                             <div class="control-group">
                                 <div class="controls">
-                                    <s:textfield key="username" cssClass="span4 input-xlarge" placeholder="getText('username')" required="true"/>
+                                    <s:textfield key="username" cssClass="span4 input-xlarge" placeholder="%{getText('username')}" required="true"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <div class="controls">
-                                    <s:password key="password" cssClass="span4 input-xlarge" placeholder="getText('password')"/>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="controls">
-                                    <label class="checkbox">
-                                        <s:checkbox key="rememberMe" value="0">Remember Me</s:checkbox>
-                                    </label>
+                                    <s:password key="password" cssClass="span4 input-xlarge" placeholder="%{getText('password')}"/>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-info btn-block">Sign in</button>
