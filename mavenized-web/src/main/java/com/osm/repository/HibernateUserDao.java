@@ -22,7 +22,7 @@ public class HibernateUserDao extends HibernateDao implements UserDao {
     }
 
     @Override
-    public void create(User user) {
+    public void save(User user) {
         getSession().save(user);
     }
 

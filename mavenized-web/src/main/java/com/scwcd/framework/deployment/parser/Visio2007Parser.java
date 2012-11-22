@@ -1,6 +1,6 @@
 package com.scwcd.framework.deployment.parser;
 
-
+import com.google.common.collect.Maps;
 import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
@@ -28,256 +28,214 @@ import com.scwcd.enterprise.sql.util.SqlUtility;
 import com.scwcd.framework.deployment.core.WebContextManager;
 import com.scwcd.framework.sql.core.DAOFactory;
 
-
 public class Visio2007Parser extends SvgDefaultParser {
 
-	private static final SimpleNamespaceContext namespace = new SimpleNamespaceContext();
-
-	private static final String CSS = "st1";
-
-	private static final String DEFAULT_LOT_DESC = "Information not available";
-	
-	private static final String DEFAULT_LOT_IMG = "image-not-available.png";
-
-	private static final String MAP_PREFIX = "m_";
+    private static final SimpleNamespaceContext namespace = new SimpleNamespaceContext();
+    private static final String CSS = "st1";
+    private static final String DEFAULT_LOT_DESC = "Information not available";
+    private static final String DEFAULT_LOT_IMG = "image-not-available.png";
+    private static final String MAP_PREFIX = "m_";
 
     @Override
-	public void parse(final Object ... object) {
-		// initialize variables
-		final Document document = (Document) object[0];
-		final int projectId = (Integer) object[1];
-		final int planId = (Integer) object[2];
-		final Set<Lot> generated = new HashSet<>();
-		final Map<String, Lot> map = new HashMap<>();
+    public void parse(final Object... object) {
+        // initialize variables
+        final Document document = (Document) object[0];
+        final int projectId = (Integer) object[1];
+        final int planId = (Integer) object[2];
+        final Set<Lot> generated = new HashSet<>();
+        final Map<String, Lot> map = new HashMap<>();
 
-		// configure document header, i.e. <!-- comments -->, <!DOCTYPE/>
-		configureHeader(document);
-		
-		// configure root node, i.e. <svg/>
-		configureSvgNode(document, projectId, planId);
-		
-		// configure title node, i.e. <title/>
-		configureTitleNode(document);
-		
-		// configure shape node, i.e. <rect/>, <path/>, <group/>
-		configureLot(document, projectId, planId, generated);
-		
-		// before continue to configure CSS node, retrieve lot information from storage and put into map
-		mapLotId(projectId, planId, generated, map);
-		
-		// configure style node, i.e. <style/>
-		configureCss(document, projectId, planId, map);
-	}
+        // configure document header, i.e. <!-- comments -->, <!DOCTYPE/>
+        configureHeader(document);
 
-	static void configureHeader(final Document document) {
-		// remove DOCTYPE and comments
-		while (true) {
-			final Node node = document.getFirstChild();
-			final short type = node.getNodeType();
+        // configure root node, i.e. <svg/>
+        configureSvgNode(document, projectId, planId);
 
-			if (type == Node.ELEMENT_NODE) {
-				break;
-			}
-			
-			document.removeChild(node);
-		}
-	}
+        // configure title node, i.e. <title/>
+        configureTitleNode(document);
 
-	static void configureSvgNode(final Document document, final int projectId, final int planId) {
-		// configure svg element
-		final String svgId = "floor-" + projectId + "-" + planId;
-		final NodeList nodes = document.getElementsByTagName("svg");
-		for (int i = 0; i < nodes.getLength(); i++) {
-			final Element element = (Element) nodes.item(i);
-			element.setAttribute("id", svgId);
-			element.setAttribute("width", "100%");
-			element.setAttribute("height", "100%");
-			element.setAttribute("viewBox", "0 0 2400 1400");
-		}
-	}
+        // configure shape node, i.e. <rect/>, <path/>, <group/>
+        configureLot(document, projectId, planId, generated);
 
-	/*
-	void configureEffect(final Document document, final String svgId) {
-		// create effect for mouse hover
-//		<defs>
-//			<radialGradient id="selected" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-//				<stop offset="0%" style="stop-color: rgb(200, 200, 200); stop-opacity: 0;"/>
-//				<stop offset="100%" style="stop-color: rgb(0, 0, 255); stop-opacity: 1;"/>
-//			</radialGradient>
-//		</defs>
-		Element defs = document.createElement("defs");
-		Element radialGradient = document.createElement("radialGradient");
-		Element stop1 = document.createElement("stop");
-		Element stop2 = document.createElement("stop");
-		
-		radialGradient.appendChild(stop1);
-		radialGradient.appendChild(stop2);
-		
-		defs.appendChild(radialGradient);
-		
-		radialGradient.setAttribute("id", "selected");
-		radialGradient.setAttribute("cx", "50%");
-		radialGradient.setAttribute("cy", "50%");
-		radialGradient.setAttribute("r", "50%");
-		radialGradient.setAttribute("fx", "50%");
-		radialGradient.setAttribute("fy", "50%");
-		
-		stop1.setAttribute("offset", "66%");
-		stop1.setAttribute("style", "stop-color: #dfdfdf; stop-opacity: 1;");
-		
-		stop2.setAttribute("offset", "100%");
-		stop2.setAttribute("style", "stop-color: #0000ff; stop-opacity: 1;");
-		
-		Element root = (Element) document.getFirstChild();
-		root.appendChild(defs);
-	}
-	*/
+        // before continue to configure CSS node, retrieve lot information from storage and put into map
+        mapLotId(projectId, planId, generated, map);
 
-	static void configureTitleNode(final Document document) {
-		/*
-		 * Remove all title tags manually. NOTE: unable to use 
-		 * XPath to retrieve all 'title' tags - reason: unknown
-		 */
-		while (true) {
-			final NodeList nodes = document.getElementsByTagName("title");
-			if (nodes.getLength() == 0) {
-				break;
-			}
+        // configure style node, i.e. <style/>
+        configureCss(document, projectId, planId, map);
+    }
 
-			for (int i = 0; i < nodes.getLength(); i++) {
-				final Node node = nodes.item(i);
-				node.getParentNode().removeChild(node);
-			}
-		}
-	}
+    static void configureHeader(final Document document) {
+        // remove DOCTYPE and comments
+        while (true) {
+            final Node node = document.getFirstChild();
+            final short type = node.getNodeType();
 
-	static void configureLot(final Document document, final int projectId, final int planId, final Set<Lot> generated) {
-		// configure id value for each lot
-		final String plotId = "plot-" + projectId + "-" + planId + "-";
-		final String lotId = "lot-" + projectId + "-" + planId + "-";
-		final XPathFactory factory = XPathFactory.newInstance();
-		final XPath xPath = factory.newXPath();
-		xPath.setNamespaceContext(namespace);
-		
-		try {
-			final NodeList nodes = (NodeList) xPath.evaluate("//*[@class='" + CSS + "']", document, XPathConstants.NODESET);
-			for (int i = 1; i <= nodes.getLength(); i++) {
-				final Element element = (Element) nodes.item(i - 1);
-				final Node groupNode = element.getParentNode().getParentNode();
-				final NamedNodeMap attributes = groupNode.getAttributes();
-				final Node attribute = attributes.getNamedItem("id");
-				attribute.setNodeValue(plotId + i);
-				element.setAttribute("id", lotId + i);
-				
-				final Lot lot = new Lot();
-				lot.setLotKey(new LotKey(projectId, planId, i)); // Lot.LotID is generated
-				lot.setName(lotId + i);
-				lot.setUpdatedBy(SqlUtility.UPDATED_BY);
+            if (type == Node.ELEMENT_NODE) {
+                break;
+            }
 
-				generated.add(lot);
-			}
-		} catch (final XPathExpressionException e) {
-			e.printStackTrace();
-		}
-	}
+            document.removeChild(node);
+        }
+    }
 
-	static void mapLotId(final int projectId, final int planId, final Set<Lot> generated, final Map<String, Lot> map) {
-		final DAOFactory factory = DAOFactory.getInstance();
-		final DAOLot dao = (DAOLot) factory.getInstance(DAOLot.class);
-		
-		final List<Lot> queried = dao.doList(new LotParameter(projectId, planId));
-		final String lotId = "lot-" + projectId + "-" + planId + "-";
-		for (final Lot lot : queried) {
-			map.put(MAP_PREFIX + lotId + lot.getLotKey().getLotId(), lot);
-		}
+    static void configureSvgNode(final Document document, final int projectId, final int planId) {
+        // configure svg element
+        final String svgId = "floor-" + projectId + "-" + planId;
+        final NodeList nodes = document.getElementsByTagName("svg");
+        for (int i = 0; i < nodes.getLength(); i++) {
+            final Element element = (Element) nodes.item(i);
+            element.setAttribute("id", svgId);
+            element.setAttribute("width", "100%");
+            element.setAttribute("height", "100%");
+            element.setAttribute("viewBox", "0 0 2400 1400");
+        }
+    }
 
-		generated.removeAll(queried);
+    static void configureTitleNode(final Document document) {
+        /*
+         * Remove all title tags manually. NOTE: unable to use
+         * XPath to retrieve all 'title' tags - reason: unknown
+         */
+        while (true) {
+            final NodeList nodes = document.getElementsByTagName("title");
+            if (nodes.getLength() == 0) {
+                break;
+            }
 
-		final String projectPath = WebContextManager.getWebContext().getProjectPath() + File.separator 
-								 + "meta" + File.separator
-								 + projectId + File.separator
-								 + planId;
-		final Date now = new Date();
-		for (final Lot lot : generated) {
-			lot.setDescription(DEFAULT_LOT_DESC);
-			lot.setImage(DEFAULT_LOT_IMG);
-			lot.setDtCreated(now);
-			lot.setDtModified(now);
-			dao.doInsert(lot);
+            for (int i = 0; i < nodes.getLength(); i++) {
+                final Node node = nodes.item(i);
+                node.getParentNode().removeChild(node);
+            }
+        }
+    }
 
-			map.put(MAP_PREFIX  + lotId + lot.getLotKey().getLotId(), lot);
-			final File file = new File(projectPath + File.separator + lot.getLotKey().hashCode());
-			file.mkdirs();
-		}
-	}
+    static void configureLot(final Document document, final int projectId, final int planId, final Set<Lot> generated) {
+        // configure id value for each lot
+        final String plotId = "plot-" + projectId + "-" + planId + "-";
+        final String lotId = "lot-" + projectId + "-" + planId + "-";
+        final XPathFactory factory = XPathFactory.newInstance();
+        final XPath xPath = factory.newXPath();
+        xPath.setNamespaceContext(namespace);
 
-	static void configureCss(final Document document, final int projectId, final int planId, final Map<String, Lot> map) {
-		// configure css for whole document
-		final String replacement = ".css-" + projectId + "-" + planId + "-";
-		final XPathFactory factory = XPathFactory.newInstance();
-		final XPath xPath = factory.newXPath();
-		xPath.setNamespaceContext(namespace);
+        try {
+            final NodeList nodes = (NodeList) xPath.evaluate("//*[@class='" + CSS + "']", document, XPathConstants.NODESET);
+            for (int i = 1; i <= nodes.getLength(); i++) {
+                final Element element = (Element) nodes.item(i - 1);
+                final Node groupNode = element.getParentNode().getParentNode();
+                final NamedNodeMap attributes = groupNode.getAttributes();
+                final Node attribute = attributes.getNamedItem("id");
+                attribute.setNodeValue(plotId + i);
+                element.setAttribute("id", lotId + i);
 
-		try {
-			final NodeList nodes = (NodeList) xPath.evaluate("//*[@type='text/css']", document, XPathConstants.NODESET);
-			for (int i = 0; i < nodes.getLength(); i++) {
-				final Node node = nodes.item(i);
-				String textContent = node.getTextContent();
-				textContent = textContent.replaceAll("\\.st", replacement);
-				node.setTextContent(textContent);
-				
-				textContent = textContent.replaceAll("\\s*\\{.*\\}\\s*", "").trim();
-				final StringTokenizer st = new StringTokenizer(textContent, ".");
-				while (st.hasMoreTokens()) {
-					final String cssToken = st.nextToken();
-					final String cssId = cssToken.replaceAll("css-(\\d)*-(\\d)*-", "");
-					final NodeList _nodes = (NodeList) xPath.evaluate("//*[@class='st" + cssId + "']", document, XPathConstants.NODESET);
-					for (int k = 0; k < _nodes.getLength(); k++) {
-						final Element element = (Element) _nodes.item(k);
-						element.setAttribute("class", cssToken);
-						
-						// only for the first CSS style (i.e - st1)
-						if (1 == Integer.parseInt(cssId)) {
-							element.setAttribute("onmouseover", "javascript: hoverSvgLot(evt, this);");
-							element.setAttribute("onmouseout", "javascript: hoverSvgLot(evt, this);");
-							element.setAttribute("onclick", "javascript: selectSvgLot(evt, this);");
-							element.setAttribute("style", "cursor: pointer;");
-							
-							final String lotId = element.getAttribute("id");
-							final Lot lot = map.get(MAP_PREFIX + lotId);
-							element.setAttribute("l-title", lot.getName());
-							element.setAttribute("l-desc", lot.getSummary());
-						}
-					}
-				}
-			}
-		} catch (final XPathExpressionException e) {
-			e.printStackTrace();
-		}
-	}
+                final Lot lot = new Lot();
+                lot.setLotKey(new LotKey(projectId, planId, i)); // Lot.LotID is generated
+                lot.setName(lotId + i);
+                lot.setUpdatedBy(SqlUtility.UPDATED_BY);
 
-	private static final class SimpleNamespaceContext implements NamespaceContext {
+                generated.add(lot);
+            }
+        } catch (final XPathExpressionException e) {
+            e.printStackTrace();
+        }
+    }
 
-		private Map<String, String> namespace = new HashMap<>();
+    static void mapLotId(final int projectId, final int planId, final Set<Lot> generated, final Map<String, Lot> map) {
+        final DAOFactory factory = DAOFactory.getInstance();
+        final DAOLot dao = (DAOLot) factory.getInstance(DAOLot.class);
 
-		private SimpleNamespaceContext() {
-			namespace.put("v", "http://schemas.microsoft.com/visio/2003/SVGExtensions/");
-			namespace.put("xlink", "http://www.w3.org/1999/xlink");
-		}
+        final List<Lot> queried = dao.doList(new LotParameter(projectId, planId));
+        final String lotId = "lot-" + projectId + "-" + planId + "-";
+        for (final Lot lot : queried) {
+            map.put(MAP_PREFIX + lotId + lot.getLotKey().getLotId(), lot);
+        }
 
-		@Override
-		public String getNamespaceURI(final String prefix) {
-			return namespace.get(prefix);
-		}
+        generated.removeAll(queried);
 
-		@Override
-		public String getPrefix(final String namespaceURI) {
-			throw new UnsupportedOperationException("Not supported yet.");
-		}
+        final String projectPath = WebContextManager.getWebContext().getProjectPath() + File.separator
+                + "meta" + File.separator
+                + projectId + File.separator
+                + planId;
+        final Date now = new Date();
+        for (final Lot lot : generated) {
+            lot.setDescription(DEFAULT_LOT_DESC);
+            lot.setImage(DEFAULT_LOT_IMG);
+            lot.setDtCreated(now);
+            lot.setDtModified(now);
+            dao.doInsert(lot);
 
-		@Override
-		public Iterator<?> getPrefixes(final String namespaceURI) {
-			throw new UnsupportedOperationException("Not supported yet.");
-		}
-	}
+            map.put(MAP_PREFIX + lotId + lot.getLotKey().getLotId(), lot);
+            final File file = new File(projectPath + File.separator + lot.getLotKey().hashCode());
+            file.mkdirs();
+        }
+    }
+
+    static void configureCss(final Document document, final int projectId, final int planId, final Map<String, Lot> map) {
+        // configure css for whole document
+        final String replacement = ".css-" + projectId + "-" + planId + "-";
+        final XPathFactory factory = XPathFactory.newInstance();
+        final XPath xPath = factory.newXPath();
+        xPath.setNamespaceContext(namespace);
+
+        try {
+            final NodeList nodes = (NodeList) xPath.evaluate("//*[@type='text/css']", document, XPathConstants.NODESET);
+            for (int i = 0; i < nodes.getLength(); i++) {
+                final Node node = nodes.item(i);
+                String textContent = node.getTextContent();
+                textContent = textContent.replaceAll("\\.st", replacement);
+                node.setTextContent(textContent);
+
+                textContent = textContent.replaceAll("\\s*\\{.*\\}\\s*", "").trim();
+                final StringTokenizer st = new StringTokenizer(textContent, ".");
+                while (st.hasMoreTokens()) {
+                    final String cssToken = st.nextToken();
+                    final String cssId = cssToken.replaceAll("css-(\\d)*-(\\d)*-", "");
+                    final NodeList _nodes = (NodeList) xPath.evaluate("//*[@class='st" + cssId + "']", document, XPathConstants.NODESET);
+                    for (int k = 0; k < _nodes.getLength(); k++) {
+                        final Element element = (Element) _nodes.item(k);
+                        element.setAttribute("class", cssToken);
+
+                        // only for the first CSS style (i.e - st1)
+                        if (1 == Integer.parseInt(cssId)) {
+                            element.setAttribute("onmouseover", "javascript: hoverSvgLot(evt, this);");
+                            element.setAttribute("onmouseout", "javascript: hoverSvgLot(evt, this);");
+                            element.setAttribute("onclick", "javascript: selectSvgLot(evt, this);");
+                            element.setAttribute("style", "cursor: pointer;");
+
+                            final String lotId = element.getAttribute("id");
+                            final Lot lot = map.get(MAP_PREFIX + lotId);
+                            element.setAttribute("l-title", lot.getName());
+                            element.setAttribute("l-desc", lot.getSummary());
+                        }
+                    }
+                }
+            }
+        } catch (final XPathExpressionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static final class SimpleNamespaceContext implements NamespaceContext {
+
+        private Map<String, String> namespace = Maps.newHashMap();
+
+        private SimpleNamespaceContext() {
+            namespace.put("v", "http://schemas.microsoft.com/visio/2003/SVGExtensions/");
+            namespace.put("xlink", "http://www.w3.org/1999/xlink");
+        }
+
+        @Override
+        public String getNamespaceURI(final String prefix) {
+            return namespace.get(prefix);
+        }
+
+        @Override
+        public String getPrefix(final String namespaceURI) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public Iterator<?> getPrefixes(final String namespaceURI) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
 }

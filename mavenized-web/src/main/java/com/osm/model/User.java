@@ -61,16 +61,6 @@ public class User {
         this.username = username;
     }
 
-    @Basic(optional = false)
-    @Index(name = "idx_users_email")
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     /**
      * Returns the password for this user.
      *

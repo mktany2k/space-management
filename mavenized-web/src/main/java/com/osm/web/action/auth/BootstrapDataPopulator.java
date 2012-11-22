@@ -60,7 +60,6 @@ public class BootstrapDataPopulator implements InitializingBean {
         //there must be a better way.
         User user = new User();
         user.setUsername("admin");
-        user.setEmail("sample@shiro.apache.org");
         user.setPassword(new Sha256Hash("admin").toHex());
 
         session.save(user);
