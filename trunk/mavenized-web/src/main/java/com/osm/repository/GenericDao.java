@@ -3,14 +3,14 @@ package com.osm.repository;
 import java.io.Serializable;
 import java.util.List;
 
-public interface GenericDao<E, ID extends Serializable> {
-    E get(ID key);
+public interface GenericDao<T, ID extends Serializable> {
+    T get(ID key);
     
-    void create(E entity);
+    void save(T entity);
     
-    void update(E entity);
+    void update(T entity);
     
     void delete(ID key);
     
-    List<E> findAll();
+    List<T> findAll();
 }
