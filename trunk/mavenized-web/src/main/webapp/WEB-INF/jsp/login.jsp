@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class=" well span4 offset4">
+                <div class=" well offset4 span4">
                     <s:form acceptcharset="UTF-8" validate="true" action="Login" namespace="/auth">
                         <fieldset>
                             <div id="legend">
