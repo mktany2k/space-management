@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><decorator:title default="Office Space Management"/></title> 
+        <title><decorator:title default="Office Space Management"/></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
         <link href="<s:url value="/webjars/bootstrap/2.2.1/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -19,7 +19,7 @@
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span> 
+                        <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
@@ -55,7 +55,7 @@
             <hr>
             <footer>
                 <div class="row">
-                    <div class="span12">
+                    <div class="offset4 span4">
                         <p>FOOTER &copy; Company 2012</p>
                     </div>
                 </div>
