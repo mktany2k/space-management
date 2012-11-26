@@ -27,7 +27,7 @@
         <jstl.version>1.2</jstl.version>
         <bonecp.version>0.8.0-alpha1</bonecp.version>
         <jackson.version>2.1.1</jackson.version>
-        <webjars.jquery.version>1.8.2</webjars.jquery.version>
+        <webjars.jquery.version>1.8.3</webjars.jquery.version>
         <webjars.bootstrap.version>2.2.1</webjars.bootstrap.version>
         
         <test.mockito.version>1.9.5</test.mockito.version>
