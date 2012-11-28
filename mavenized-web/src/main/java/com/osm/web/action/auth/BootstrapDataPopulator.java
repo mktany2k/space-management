@@ -18,73 +18,68 @@
  */
 package com.osm.web.action.auth;
 
-
 import com.google.common.collect.Sets;
 import com.osm.model.Role;
 import com.osm.model.User;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import org.apache.shiro.crypto.hash.Sha256Hash;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * A data populator that creates a set of security tables and test data that can
- * be used by the Shiro Spring sample application to demonstrate the use of the
- * {@link org.apache.shiro.realm.jdbc.JdbcRealm} The tables created by this
- * class follow the default table and column names that
- * {@link org.apache.shiro.realm.jdbc.JdbcRealm} uses.
- * 
+ * A data populator that creates a set of security tables and test data that can be used by the Shiro Spring sample application to
+ * demonstrate the use of the {@link org.apache.shiro.realm.jdbc.JdbcRealm} The tables created by this class follow the default
+ * table and column names that {@link org.apache.shiro.realm.jdbc.JdbcRealm} uses.
  */
 @Component
 public class BootstrapDataPopulator implements InitializingBean {
 
-    private SessionFactory sessionFactory;
+    private static final Logger logger = LoggerFactory.getLogger(BootstrapDataPopulator.class);
+    private EntityManagerFactory managerFactory;
 
     @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public void setManagerFactory(EntityManagerFactory managerFactory) {
+        this.managerFactory = managerFactory;
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        // because we're using an in-memory hsqldb for the sample app, a new one
-        // will be created each time the
-        // app starts, so insert the sample admin user at startup:
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        try {
+            EntityManager manager = managerFactory.createEntityManager();
+            EntityTransaction transaction = manager.getTransaction();
+            transaction.begin();
+            //the whole user creation is ugly.
+            //there must be a better way.
+            User user = new User();
+            user.setUsername("admin");
+            user.setPassword(new Sha256Hash("admin").toHex());
 
-        //the whole user creation is ugly.
-        //there must be a better way.
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword(new Sha256Hash("admin").toHex());
+            manager.persist(user);
 
-        session.save(user);
+            Role role = new Role();
+            role.setName("user");
+            role.setDescription("The default role given to all users.");
 
-        Role role = new Role();
-        role.setName("user");
-        role.setDescription("The default role given to all users.");
+            manager.persist(role);
 
-        session.save(role);
+            role = new Role();
+            role.setName("admin");
+            role.setDescription("The administrator role only given to site admins");
+            manager.persist(role);
 
-        role = new Role();
-        role.setName("admin");
-        role.setDescription("The administrator role only given to site admins");
+            user.setRoles(Sets.newHashSet(role));
+            manager.merge(user);
 
-        session.save(role);
-
-        user.setRoles(Sets.newHashSet(role));
-
-        session.update(user);
-
-        role.setPermissions(Sets.newHashSet("user:*"));
-
-        session.update(role);
-
-        transaction.commit();
-
+            role.setPermissions(Sets.newHashSet("user:*"));
+            manager.merge(role);
+            transaction.commit();
+        } catch (Throwable t) {
+            logger.error(t.getMessage(), t);
+        }
     }
 }

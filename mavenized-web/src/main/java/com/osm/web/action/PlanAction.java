@@ -2,7 +2,9 @@ package com.osm.web.action;
 
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts2.interceptor.ServletRequestAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -18,9 +20,10 @@ public class PlanAction extends ActionSupport implements ServletRequestAware {
 	 * (non-Javadoc)
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 */
-	public String execute() {
+	@Override
+    public String execute() {
 		// read floor-plan.svg files
-		return ActionSupport.SUCCESS;
+		return SUCCESS;
 	}
 
 	@Override
