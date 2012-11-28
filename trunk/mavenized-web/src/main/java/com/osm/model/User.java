@@ -1,5 +1,6 @@
 package com.osm.model;
 
+import com.google.common.collect.Sets;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -30,9 +31,8 @@ public class User {
 
     private String id;
     private String username;
-    private String email;
     private String password;
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles = Sets.newHashSet();
 
     @Id
     @GeneratedValue(generator = "hibernate-uuid")

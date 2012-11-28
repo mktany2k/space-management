@@ -1,58 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jee="http://www.springframework.org/schema/jee"
-       xmlns:lang="http://www.springframework.org/schema/lang"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xmlns:p="http://www.springframework.org/schema/p"
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-          http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
-          http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
           http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <context:annotation-config/>
-    <!-- Scan sample packages for Spring annotations -->
-    <context:component-scan base-package="com.osm.repository"/>
-    <context:component-scan base-package="com.osm.auth.shiro"/>
-    <context:component-scan base-package="com.osm.web.action.auth"/>
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <!-- Scan sample packages for Spring annotations -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!-- Because we're using an in-memory database for demo purposes (which is lost every time the app
-        shuts down), we have to ensure that the HSQLDB DDL is run each time the app starts.  The
-        DDL is auto-generated based on the *.hbm.xml mapping definitions below. -->
-        <!--<property name="schemaUpdate" value="true"/>-->
-        <!-- Scan packages for JPA annotations -->
-        <property name="packagesToScan" value="com.osm.model"/>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                <prop key="hibernate.jdbc.fetch_size">100</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="hibernate.cache.use_second_level_cache">false</prop>
-                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.internal.NoCachingRegionFactory</prop>
-            </props>
+        <property name="persistenceUnitName" value="spring-jpa"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com/osm/model</value>
+            </list>
+        </property>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="true"/>
+                <property name="generateDdl" value="true"/>
+                <property name="database" value="HSQL"/>
+            </bean>
         </property>
     </bean>
-    <!-- Transaction support beans -->
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
+    <context:annotation-config />
+
+    <jpa:repositories base-package="com.osm.repository"/>
+    <context:component-scan base-package="com.osm.web.action.auth"/>
+    <context:component-scan base-package="com.osm.auth.shiro"/>
+
     <tx:annotation-driven/>
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
         <property name="targetDataSource">
-            <ref local="mainDataSource" />
+            <ref local="mainDataSource"/>
         </property>
     </bean>
     <bean id="mainDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
@@ -73,7 +65,6 @@
         <!--property name="cacheManager" ref="cacheManager"/-->
         <!-- Single realm app.  If you have multiple realms, use the 'realms' property instead. -->
         <property name="sessionMode" value="native"/>
-        <!--<property name="realm" ref="jdbcRealm"/>-->
         <property name="realm" ref="sampleRealm"/>
     </bean>
 
@@ -94,7 +85,7 @@
         defined will be automatically acquired and available via its beanName in chain
         definitions, but you can perform overrides or parent/child consolidated configuration
         here if you like: -->
-         <property name="filters">
+        <property name="filters">
             <util:map>
                 <entry key="authc">
                     <bean class="org.apache.shiro.web.filter.authc.PassThruAuthenticationFilter"/>

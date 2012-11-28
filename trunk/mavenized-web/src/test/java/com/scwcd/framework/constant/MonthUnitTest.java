@@ -7,12 +7,12 @@ import org.testng.annotations.Test;
 public class MonthUnitTest {
 
     @Test(dataProvider = "months")
-    public void get_month(int monthInDigit, String monthInString) {
+    public static void get_month(int monthInDigit, String monthInString) {
         Assertions.assertThat(Month.getMonth(monthInDigit)).isEqualTo(monthInString);
     }
 
     @DataProvider(name = "months")
-    public Object[][] getData() {
+    public static Object[][] getData() {
         return new Object[][]{
                     {1, "January"},
                     {2, "February"},
@@ -27,5 +27,8 @@ public class MonthUnitTest {
                     {11, "November"},
                     {12, "December"}
                 };
+    }
+
+    private MonthUnitTest() {
     }
 }
