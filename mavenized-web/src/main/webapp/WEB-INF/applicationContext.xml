@@ -16,7 +16,7 @@
     <!-- Scan sample packages for Spring annotations -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="persistenceUnitName" value="spring-jpa"/>
+        <property name="persistenceUnitName" value="osm"/>
         <property name="packagesToScan">
             <list>
                 <value>com/osm/model</value>

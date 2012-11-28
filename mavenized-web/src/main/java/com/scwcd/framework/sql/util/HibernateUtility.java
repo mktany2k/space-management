@@ -5,10 +5,17 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
+/**
+ * 
+ * @deprecated This class no longer is use. Will remove after 5 Dec 2012.
+ *
+ */
+@Deprecated
 public class HibernateUtility {
 
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 
+	@Deprecated
     private static SessionFactory buildSessionFactory() {
 
         try {
@@ -24,6 +31,7 @@ public class HibernateUtility {
         }
     }
 
+	@Deprecated
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }

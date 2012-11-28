@@ -1,7 +1,6 @@
 package com.osm.model;
 
 import com.google.common.collect.Sets;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;

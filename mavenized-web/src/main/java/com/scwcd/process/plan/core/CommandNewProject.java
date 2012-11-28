@@ -7,6 +7,7 @@ import com.scwcd.framework.deployment.core.WebContextManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@Deprecated
 public class CommandNewProject extends CommandOpenProject {
 
     @Override
