@@ -66,7 +66,7 @@ public class DAOLot implements Saveable<Lot>, Insertable<Lot>, Selectable<LotPar
         return Arrays.asList(lots);
     }
 
-    public List<Lot> doList(final int projectId, final int... planIds) {
+    public static List<Lot> doList(final int projectId, final int... planIds) {
         Session session = HibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
 

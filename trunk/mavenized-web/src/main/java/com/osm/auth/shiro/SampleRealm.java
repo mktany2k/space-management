@@ -18,22 +18,13 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/**
- * The Spring/Hibernate sample application's one and only configured Apache Shiro Realm.
- * <p/>
- * <p>Because a Realm is really just a security-specific DAO, we could have just made Hibernate calls directly in the implementation
- * and named it a 'HibernateRealm' or something similar.</p>
- * <p/>
- * <p>But we've decided to make the calls to the database using a UserDAO, since a DAO would be used in other areas of a 'real'
- * application in addition to here. We felt it better to use that same DAO to show code re-use.</p>
- */
 @Component
 public class SampleRealm extends AuthorizingRealm {
 
     private UserRepository userRepository;
 
     @Autowired()
-    @Resource(name="userRepository")
+    @Resource(name = "userRepository")
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

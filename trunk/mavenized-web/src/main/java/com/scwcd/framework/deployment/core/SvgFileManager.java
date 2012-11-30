@@ -2,7 +2,6 @@ package com.scwcd.framework.deployment.core;
 
 import com.scwcd.enterprise.sql.dao.DAOPlan;
 import com.scwcd.enterprise.sql.hbm.Plan;
-import com.scwcd.enterprise.sql.util.SqlUtility;
 import com.scwcd.framework.sql.core.DAOFactory;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,8 +20,8 @@ class SvgFileManager {
     void insert(final String filename, final int projectId, final Map<String, Integer> hashtable) {
         if (exists) {
             return;
-        } 
-        
+        }
+
         // generate plan id
         final List<Integer> planIds = new ArrayList<>(hashtable.values());
         Collections.sort(planIds);
@@ -37,7 +36,7 @@ class SvgFileManager {
         final Date now = new Date();
         plan.setDtCreated(now);
         plan.setDtModified(now);
-        plan.setUpdatedBy(SqlUtility.UPDATED_BY);
+        plan.setUpdatedBy("SYSTEM");
 
         final DAOFactory factory = DAOFactory.getInstance();
         final DAOPlan dao = (DAOPlan) factory.getInstance(DAOPlan.class);

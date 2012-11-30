@@ -1,11 +1,10 @@
 package com.scwcd.enterprise.servlet.listener.svg;
 
 
-import java.util.Date;
 import com.scwcd.enterprise.sql.dao.DAOPlan;
 import com.scwcd.enterprise.sql.hbm.Plan;
-import com.scwcd.enterprise.sql.util.SqlUtility;
 import com.scwcd.framework.sql.core.DAOFactory;
+import java.util.Date;
 import java.util.Map;
 
 
@@ -21,14 +20,14 @@ class SvgFileManager {
 		if (!exists) {
 			final Plan plan = new Plan();
 			plan.setProjectId(projectId);
-			plan.setPlanId(SqlUtility.INCREMENT_ID);
+			plan.setPlanId(0);
 			plan.setName(filename);
 			plan.setFilename(filename);
-			
+
 			final Date now = new Date();
 			plan.setDtCreated(now);
 			plan.setDtModified(now);
-			plan.setUpdatedBy(SqlUtility.UPDATED_BY);
+			plan.setUpdatedBy("SYSTEM");
 
 			final DAOFactory factory = DAOFactory.getInstance();
 			final DAOPlan dao = (DAOPlan) factory.getInstance(DAOPlan.class);

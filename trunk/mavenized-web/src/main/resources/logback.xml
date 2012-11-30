@@ -7,9 +7,9 @@
         </layout>
     </appender>
 
-    <logger name="org.springframework" level="debug">
+<!--    <logger name="org.springframework.data" level="debug">
         <appender-ref ref="STDOUT" />
-    </logger>
+    </logger>-->
 
     <logger name="org.apache.struts2" level="off">
         <appender-ref ref="STDOUT" />
@@ -23,8 +23,14 @@
         <appender-ref ref="STDOUT" />
     </logger>
 
-    <root level="off">
+    <logger name="org.hibernate" level="debug">
         <appender-ref ref="STDOUT" />
-    </root>
+    </logger>
+
+    <logger name="org.hibernate.ejb" level="off">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <root level="off"/>
 </configuration>
 
