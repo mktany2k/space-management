@@ -1,15 +1,15 @@
 package com.scwcd.process.ajax.core;
 
 
-import java.io.IOException;
-import java.util.Set;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import com.scwcd.enterprise.sql.hbm.Plan;
 import com.scwcd.enterprise.sql.hbm.Project;
 import com.scwcd.enterprise.sql.util.SqlUtility;
 import com.scwcd.framework.command.core.AbstractServletCommand;
 import com.scwcd.framework.command.core.ApplicationSession;
+import java.io.IOException;
+import java.util.Set;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 public class CommandSelectFloor extends AbstractServletCommand {
@@ -17,7 +17,7 @@ public class CommandSelectFloor extends AbstractServletCommand {
 	private static final String JSP = "/WEB-INF/jsp/floors.jsp";
 
 	@Override
-	public String execute(final HttpServletRequest request, final HttpServletResponse response) 
+	public String execute(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException {
 
 		final ApplicationSession appSession = getSession(request);

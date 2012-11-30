@@ -111,9 +111,9 @@
 
     <!--
     -->
-    <bean id="DefaultAction" class="com.opensymphony.xwork2.ActionSupport"/>
+    <bean id="DefaultAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"/>
     <bean id="PlanAction" class="com.osm.web.action.PlanAction"/>
-    <bean id="authentication" class="com.osm.web.action.auth.Authentication">
+    <bean id="authentication" class="com.osm.web.action.auth.Authentication" scope="prototype">
         <property name="authenticator">
             <bean class="com.osm.auth.shiro.ShiroAuthenticator"/>
         </property>

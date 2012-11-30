@@ -24,7 +24,6 @@ import com.scwcd.enterprise.sql.dao.DAOLot;
 import com.scwcd.enterprise.sql.dao.LotParameter;
 import com.scwcd.enterprise.sql.hbm.Lot;
 import com.scwcd.enterprise.sql.hbm.LotKey;
-import com.scwcd.enterprise.sql.util.SqlUtility;
 import com.scwcd.framework.deployment.core.WebContextManager;
 import com.scwcd.framework.sql.core.DAOFactory;
 
@@ -130,7 +129,7 @@ public class Visio2007Parser extends SvgDefaultParser {
                 final Lot lot = new Lot();
                 lot.setLotKey(new LotKey(projectId, planId, i)); // Lot.LotID is generated
                 lot.setName(lotId + i);
-                lot.setUpdatedBy(SqlUtility.UPDATED_BY);
+                lot.setUpdatedBy("SYSTEM");
 
                 generated.add(lot);
             }

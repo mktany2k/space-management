@@ -2,7 +2,6 @@ package com.scwcd.process.plan.core;
 
 import com.scwcd.enterprise.sql.dao.DAOProject;
 import com.scwcd.enterprise.sql.hbm.Project;
-import com.scwcd.enterprise.sql.util.SqlUtility;
 import com.scwcd.framework.business.core.AbstractBusinessService;
 import com.scwcd.framework.sql.core.DAOFactory;
 import java.util.Date;
@@ -38,14 +37,14 @@ class ServiceNewProject extends AbstractBusinessService<Integer> {
 
         final Date now = DateTime.now().toDate();
         final Project project = new Project();
-        project.setProjectId(SqlUtility.INCREMENT_ID);
+        project.setProjectId(0);
         project.setName(name);
         project.setDescription(description);
         project.setParser(parser);
         project.setUnit(unit);
         project.setDtCreated(now);
         project.setDtModified(now);
-        project.setUpdatedBy(SqlUtility.UPDATED_BY);
+        project.setUpdatedBy("SYSTEM");
 
         dao.doSave(project);
 
