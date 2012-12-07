@@ -7,3 +7,4 @@ mavenized-web/target
 .idea/
 *.iml
 nb-configuration.xml
+derby.log

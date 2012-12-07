@@ -23,7 +23,7 @@
         <appender-ref ref="STDOUT" />
     </logger>
 
-    <logger name="org.hibernate" level="debug">
+    <logger name="org.hibernate" level="off">
         <appender-ref ref="STDOUT" />
     </logger>
 

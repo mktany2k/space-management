@@ -304,7 +304,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
+            <artifactId>derbyclient</artifactId>
             <version>${runtime.derby.version}</version>
             <scope>runtime</scope>
         </dependency>
