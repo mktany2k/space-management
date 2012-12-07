@@ -1,12 +1,7 @@
 package com.scwcd.process.ajax.core;
 
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.google.common.collect.Sets;
 import com.scwcd.component.view.core.Block;
 import com.scwcd.component.view.core.Metadata;
 import com.scwcd.component.view.core.View;
@@ -16,11 +11,16 @@ import com.scwcd.enterprise.sql.hbm.Project;
 import com.scwcd.framework.business.core.AbstractBusinessDelegate;
 import com.scwcd.framework.business.core.AbstractBusinessService;
 import com.scwcd.framework.command.core.ApplicationSession;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 
-	private final Set<Integer> planIds = new HashSet<>();
+	private final Set<Integer> planIds = Sets.newHashSet();
 
 	protected AjaxBusinessDelegate(final ApplicationSession session, final AbstractBusinessService<?> service) {
 		super(session, service);
@@ -34,7 +34,7 @@ public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 		if (parameters == null) {
             parameters = new String[0];
         }
-        
+
 		for (final String planId : parameters) {
             planIds.add(Integer.parseInt(planId));
         }
@@ -52,8 +52,8 @@ public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 		final Project project = (Project) appSession.getProject();
 		final Set<Plan> plans = project.getPlans();
 		final Plan[] planArr = plans.toArray(new Plan[plans.size()]);
-		
-		final Set<Plan> _plans = new HashSet<>();
+
+		final Set<Plan> _plans = Sets.newHashSet();
         for (Plan aPlanArr : planArr) {
             for (int j : _planIds) {
                 if (j == aPlanArr.getPlanId()) {
@@ -68,13 +68,13 @@ public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 	byte[] getView(final int viewId) {
 		final ServiceSelectView service = (ServiceSelectView) getService();
 		service.setViewId(viewId);
-		
+
 		service.perform();
-		
+
 		final View view = service.getOutput();
 		final Metadata metadata = view.getMetadata();
 		final List<Block> blocks = metadata.getBlocks();
-		
+
 		final StringBuilder viewDetails = new StringBuilder();
 
 		// start of JSON
@@ -113,9 +113,9 @@ public class AjaxBusinessDelegate extends AbstractBusinessDelegate {
 		service.setProjectId(projectId);
 		service.setPlanId(planId);
 		service.setLotId(lotId);
-		
+
 		service.perform();
-		
+
 		return service.getOutput();
 	}
 

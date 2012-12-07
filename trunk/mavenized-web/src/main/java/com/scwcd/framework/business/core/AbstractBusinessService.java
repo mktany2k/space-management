@@ -26,7 +26,7 @@ public abstract class AbstractBusinessService<O> implements BusinessService {
 		for (int i = 0; i < _codeIds.length; i++) {
 			_codeIds[i] = codeIds.get(i);
 		}
-		return BusinessResource.getInstance().getCode(_codeIds);
+		return BusinessResource.getCode(_codeIds);
 	}
     
 	protected final void setOutput(final O object) {

@@ -1,14 +1,12 @@
 package com.scwcd.framework.sql.core;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Maps;
+import com.scwcd.framework.factory.IFactory;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.scwcd.framework.factory.IFactory;
 
 
 public class DAOFactory implements IFactory<Class<?>, IDataAccessObject> {
@@ -17,7 +15,7 @@ public class DAOFactory implements IFactory<Class<?>, IDataAccessObject> {
 
 	private static final DAOFactory INSTANCE = new DAOFactory();
 
-	private Map<Class<?>, IDataAccessObject> m_RegisteredDAO = new HashMap<>();
+	private Map<Class<?>, IDataAccessObject> m_RegisteredDAO = Maps.newHashMap();
 
 	public static DAOFactory getInstance() {
 		return INSTANCE;

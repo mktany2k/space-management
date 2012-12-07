@@ -116,7 +116,7 @@ public class JSONResponseUtility {
         try {
             baos = new ByteArrayOutputStream();
             is = request.getInputStream();
-            int b = 0;
+            int b;
             while ((b = is.read()) != -1) {
                 baos.write(b);
             }
