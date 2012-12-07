@@ -18,7 +18,6 @@
         <slf4j.version>1.7.2</slf4j.version>
         <logback.version>1.0.9</logback.version>
         <hibernate.version>4.1.8.Final</hibernate.version>
-        <apache.camel.version>2.10.3</apache.camel.version>
         <ehcache.version>2.6.2</ehcache.version>
         <apache.commons.io.version>2.4</apache.commons.io.version>
         <jackson.version>2.1.2</jackson.version>
@@ -114,25 +113,6 @@
             <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-http</artifactId>
-            <version>${apache.camel.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>geronimo-servlet_2.5_spec</artifactId>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>commons-httpclient</artifactId>
-                    <groupId>commons-httpclient</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jaxb-impl</artifactId>
-                    <groupId>com.sun.xml.bind</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

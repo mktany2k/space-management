@@ -1,12 +1,18 @@
 package com.osm.model;
 
+import java.util.Set;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Index;
-
-import javax.persistence.*;
-import java.util.Set;
 
 /**
  * Model object that represents a security role.
@@ -16,7 +22,7 @@ import java.util.Set;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Role {
 
-    private Long id;
+    private String id;
     private String name;
     private String description;
     private Set<String> permissions;
@@ -29,12 +35,13 @@ public class Role {
     }
 
     @Id
-    @GeneratedValue
-    public Long getId() {
+    @GeneratedValue(generator = "hibernate-uuid")
+    @GenericGenerator(name = "hibernate-uuid", strategy = "uuid2")
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
