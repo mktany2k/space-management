@@ -32,9 +32,7 @@ class ServiceListLots extends AbstractBusinessService<List<Lot>> {
 
 	@Override
 	public void perform() {
-		DAOFactory daoFactory = DAOFactory.getInstance();
-		DAOLot dao = (DAOLot) daoFactory.getInstance(DAOLot.class);
-		List<Lot> lots = dao.doList(projectId, planIds);
+        List<Lot> lots = DAOLot.doList(projectId, planIds);
 		
 		setOutput(lots);
 	}

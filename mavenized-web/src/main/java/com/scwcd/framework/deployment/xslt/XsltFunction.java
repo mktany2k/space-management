@@ -49,9 +49,7 @@ public class XsltFunction {
             final File file = new File(projectPath + File.separator + lot.getLotKey().getLotId());
             file.mkdirs();
         } else {
-            Iterator<Lot> it = queried.iterator();
-            while (it.hasNext()) {
-                final Lot _lot = it.next();
+            for (Lot _lot : queried) {
                 if (_lot.equals(lot)) {
                     return _lot;
                 }

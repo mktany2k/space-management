@@ -1,6 +1,7 @@
 package com.scwcd.framework.business.handler;
 
 
+import com.google.common.collect.Maps;
 import java.util.HashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,7 @@ public class FloorPlanHandler {
 
 	private static final FloorPlanHandler INSTANCE = new FloorPlanHandler();
 
-	private final HashMap<String, byte[]> m_FloorPlan = new HashMap<>();
+	private final HashMap<String, byte[]> m_FloorPlan = Maps.newHashMap();
 
 	private FloorPlanHandler() {
 	}
