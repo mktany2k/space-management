@@ -1,4 +1,4 @@
-package com.scwcd.enterprise.sql.hbm;
+package com.osm.model;
 
 
 import java.io.Serializable;
@@ -9,9 +9,9 @@ public class LotKey implements Serializable {
 	private static final long serialVersionUID = 1001L;
 
 	private int projectId;
-	
+
 	private int planId;
-	
+
 	private int lotId;
 
 	public LotKey() {
