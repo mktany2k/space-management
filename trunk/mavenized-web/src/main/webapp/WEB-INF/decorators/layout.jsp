@@ -3,7 +3,7 @@
 <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title><decorator:title default="Office Space Management"/></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

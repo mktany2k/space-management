@@ -9,23 +9,24 @@
     <name>mavenized-web</name>
 
     <properties>
-        <struts2.version>2.3.7</struts2.version>
+        <apache.struts2.version>2.3.7</apache.struts2.version>
         <spring.version>3.2.0.RC2</spring.version>
         <spring.data.jpa.version>1.2.0.RELEASE</spring.data.jpa.version>
         <guava.version>13.0.1</guava.version>
         <joda.time.version>2.1</joda.time.version>
-        <shiro.version>1.2.1</shiro.version>
+        <apache.shiro.version>1.2.1</apache.shiro.version>
         <slf4j.version>1.7.2</slf4j.version>
-        <logback.version>1.0.7</logback.version>
+        <logback.version>1.0.9</logback.version>
         <hibernate.version>4.1.8.Final</hibernate.version>
-        <camel.version>2.10.2</camel.version>
+        <apache.camel.version>2.10.2</apache.camel.version>
         <ehcache.version>2.6.2</ehcache.version>
-        <commons.io.version>2.4</commons.io.version>
+        <apache.commons.io.version>2.4</apache.commons.io.version>
+        <jackson.version>2.1.2</jackson.version>
         <servlet.api.version>3.1-b02</servlet.api.version>
         <jsp.api.version>2.2.1</jsp.api.version>
         <jstl.version>1.2</jstl.version>
-        <bonecp.version>0.8.0-alpha1</bonecp.version>
-        <jackson.version>2.1.1</jackson.version>
+        <derby.version>10.9.1.0</derby.version>
+        <bonecp.version>0.8.0-rc1</bonecp.version>
         <webjars.jquery.version>1.8.3</webjars.jquery.version>
         <webjars.bootstrap.version>2.2.1</webjars.bootstrap.version>
 
@@ -36,7 +37,6 @@
         <test.testng.version>6.8</test.testng.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <runtime.derby.version>10.9.1.0</runtime.derby.version>
     </properties>
 
     <prerequisites>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
-            <version>${struts2.version}</version>
+            <version>${apache.struts2.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>javassist</artifactId>
@@ -62,13 +62,13 @@
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-config-browser-plugin</artifactId>
-            <version>${struts2.version}</version>
+            <version>${apache.struts2.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-junit-plugin</artifactId>
-            <version>${struts2.version}</version>
+            <version>${apache.struts2.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -118,7 +118,7 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-http</artifactId>
-            <version>${camel.version}</version>
+            <version>${apache.camel.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>geronimo-servlet_2.5_spec</artifactId>
@@ -170,7 +170,7 @@
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
-            <version>${struts2.version}</version>
+            <version>${apache.struts2.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -203,29 +203,31 @@
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-sitemesh-plugin</artifactId>
-            <version>${struts2.version}</version>
+            <version>${apache.struts2.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>${shiro.version}</version>
+            <version>${apache.shiro.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
-            <version>${shiro.version}</version>
+            <version>${apache.shiro.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
-            <version>${shiro.version}</version>
+            <version>${apache.shiro.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -237,12 +239,12 @@
             <artifactId>xwork-core</artifactId>
             <groupId>org.apache.struts.xwork</groupId>
             <type>jar</type>
-            <version>${struts2.version}</version>
+            <version>${apache.struts2.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commons.io.version}</version>
+            <version>${apache.commons.io.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -305,7 +307,7 @@
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbyclient</artifactId>
-            <version>${runtime.derby.version}</version>
+            <version>${derby.version}</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
