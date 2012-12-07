@@ -51,35 +51,45 @@ public class BootstrapDataPopulator implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         try {
             EntityManager manager = managerFactory.createEntityManager();
-            EntityTransaction transaction = manager.getTransaction();
-            transaction.begin();
-            //the whole user creation is ugly.
-            //there must be a better way.
-            User user = new User();
-            user.setUsername("admin");
-            user.setPassword(new Sha256Hash("admin").toHex());
+            if (isNewlyCreatedDatabase(manager)) {
 
-            manager.persist(user);
+                EntityTransaction transaction = manager.getTransaction();
+                transaction.begin();
+                //the whole user creation is ugly.
+                //there must be a better way.
+                User user = new User();
+                user.setUsername("admin");
+                user.setPassword(new Sha256Hash("admin").toHex());
 
-            Role role = new Role();
-            role.setName("user");
-            role.setDescription("The default role given to all users.");
+                manager.persist(user);
 
-            manager.persist(role);
+                Role role = new Role();
+                role.setName("user");
+                role.setDescription("The default role given to all users.");
 
-            role = new Role();
-            role.setName("admin");
-            role.setDescription("The administrator role only given to site admins");
-            manager.persist(role);
+                manager.persist(role);
 
-            user.setRoles(Sets.newHashSet(role));
-            manager.merge(user);
+                role = new Role();
+                role.setName("admin");
+                role.setDescription("The administrator role only given to site admins");
+                manager.persist(role);
 
-            role.setPermissions(Sets.newHashSet("user:*"));
-            manager.merge(role);
-            transaction.commit();
+                user.setRoles(Sets.newHashSet(role));
+                manager.merge(user);
+
+                role.setPermissions(Sets.newHashSet("user:*"));
+                manager.merge(role);
+                transaction.commit();
+            }
         } catch (Throwable t) {
             logger.error(t.getMessage(), t);
         }
+    }
+
+    private boolean isNewlyCreatedDatabase(EntityManager manager) {
+        //This can be improve.
+        //More check might be needed. Current implementation is sufficient.
+        Long singleResult = (Long) manager.createQuery("select count(u.username) from User u ").getSingleResult();
+        return singleResult.longValue() <= 0;
     }
 }
