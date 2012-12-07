@@ -1,4 +1,4 @@
-package com.scwcd.enterprise.sql.hbm;
+package com.osm.model;
 
 
 import java.io.Serializable;
@@ -8,15 +8,15 @@ import java.util.Date;
 public class LotPrice implements Serializable {
 
 	private static final long serialVersionUID = 1001L;
-	
+
 	private LotPriceKey lotPriceKey;
-	
+
 	private double pricePerUnit;
-	
+
 	private Date dtCreated;
-	
+
 	private Date dtModified;
-	
+
 	private String updatedBy;
 
 	public LotPriceKey getLotPriceKey() {

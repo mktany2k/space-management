@@ -1,4 +1,4 @@
-package com.scwcd.enterprise.sql.hbm;
+package com.osm.model;
 
 import com.google.common.base.Objects;
 
