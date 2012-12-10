@@ -1,4 +1,3 @@
-<%@ page import="com.scwcd.framework.deployment.core.WebContext"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:if test="${not empty param}">
 	<c:set var="floors" value="${param.floors}" scope="page"/>

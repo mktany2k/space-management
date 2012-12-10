@@ -16,7 +16,7 @@
                                 <legend>Please Sign In</legend>
                             </div>
                             <div class="alert alert-info">
-                                <a class="close" data-dismiss="alert" href="#">×</a>Please use admin/admin to test
+                                <a class="close" data-dismiss="alert" href="#"><i class="icon-remove-sign"></i></a>Please use admin/admin to test
                             </div>
                             <div class="control-group">
                                 <div class="controls">

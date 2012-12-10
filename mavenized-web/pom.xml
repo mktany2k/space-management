@@ -27,7 +27,7 @@
         <derby.version>10.9.1.0</derby.version>
         <bonecp.version>0.8.0-rc1</bonecp.version>
         <webjars.jquery.version>1.8.3</webjars.jquery.version>
-        <webjars.bootstrap.version>2.2.1</webjars.bootstrap.version>
+        <webjars.bootstrap.version>2.2.2</webjars.bootstrap.version>
 
         <test.mockito.version>1.9.5</test.mockito.version>
         <test.junit.version>4.11</test.junit.version>
@@ -63,22 +63,6 @@
             <artifactId>struts2-config-browser-plugin</artifactId>
             <version>${apache.struts2.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-junit-plugin</artifactId>
-            <version>${apache.struts2.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-core</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-test</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
