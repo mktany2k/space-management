@@ -2,6 +2,7 @@ package com.osm.model;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
+import com.osm.util.Constants;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -39,8 +40,8 @@ public class User implements Serializable {
     private Set<Role> roles = Sets.newHashSet();
 
     @Id
-    @GeneratedValue(generator = "hibernate-uuid")
-    @GenericGenerator(name = "hibernate-uuid", strategy = "uuid2")
+    @GeneratedValue(generator = Constants.HibernateGenerator.NAME)
+    @GenericGenerator(name = Constants.HibernateGenerator.NAME, strategy = Constants.HibernateGenerator.STRATEGY)
     public String getId() {
         return id;
     }
