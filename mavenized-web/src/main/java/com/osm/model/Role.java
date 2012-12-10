@@ -1,5 +1,7 @@
 package com.osm.model;
 
+import com.osm.util.Constants;
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -20,8 +22,9 @@ import org.hibernate.annotations.Index;
 @Entity
 @Table(name = "roles")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Role {
+public class Role implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private String id;
     private String name;
     private String description;
@@ -30,13 +33,9 @@ public class Role {
     public Role() {
     }
 
-    public Role(String name) {
-        this.name = name;
-    }
-
     @Id
-    @GeneratedValue(generator = "hibernate-uuid")
-    @GenericGenerator(name = "hibernate-uuid", strategy = "uuid2")
+    @GeneratedValue(generator = Constants.HibernateGenerator.NAME)
+    @GenericGenerator(name = Constants.HibernateGenerator.NAME, strategy = Constants.HibernateGenerator.STRATEGY)
     public String getId() {
         return id;
     }
