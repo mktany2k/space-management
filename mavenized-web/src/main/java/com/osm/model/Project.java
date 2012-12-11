@@ -1,116 +1,120 @@
 package com.osm.model;
 
-
-import java.util.Date;
-import java.util.HashSet;
+import com.google.common.base.Objects;
+import com.google.common.collect.Sets;
+import java.io.Serializable;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDateTime;
 
+@Entity
+public class Project implements Serializable {
 
-public class Project {
+    private static final long serialVersionUID = 1L;
+    private int projectId;
+    private String name;
+    private String description;
+    private String parser;
+    private String unit;
+    private LocalDateTime dtCreated;
+    private LocalDateTime dtModified;
+    private String updatedBy;
+    private Set<Plan> plans = Sets.newHashSet();
 
-	private int projectId;
+    @Id
+    public int getProjectId() {
+        return projectId;
+    }
 
-	private String name;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
+    }
 
-	private String description;
+    public String getName() {
+        return name;
+    }
 
-	private String parser;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	private String unit;
+    public String getDescription() {
+        return description;
+    }
 
-	private Date dtCreated;
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	private Date dtModified;
+    public void setParser(String parser) {
+        this.parser = parser;
+    }
 
-	private String updatedBy;
+    public String getParser() {
+        return parser;
+    }
 
-	private Set<Plan> plans = new HashSet<>();
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
 
-	public int getProjectId() {
-		return projectId;
-	}
+    public String getUnit() {
+        return unit;
+    }
 
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
-	}
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    public LocalDateTime getDtCreated() {
+        return dtCreated;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setDtCreated(LocalDateTime dtCreated) {
+        this.dtCreated = dtCreated;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(name = "modified_date", nullable = false)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    public LocalDateTime getDtModified() {
+        return dtModified;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setDtModified(LocalDateTime dtModified) {
+        this.dtModified = dtModified;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
 
-	public void setParser(String parser) {
-		this.parser = parser;
-	}
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 
-	public String getParser() {
-		return parser;
-	}
+    public void setPlans(Set<Plan> plans) {
+        this.plans = plans;
+    }
 
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
+    @Transient
+    public Set<Plan> getPlans() {
+        return plans;
+    }
 
-	public String getUnit() {
-		return unit;
-	}
-
-	public Date getDtCreated() {
-		return dtCreated;
-	}
-
-	public void setDtCreated(Date dtCreated) {
-		this.dtCreated = dtCreated;
-	}
-
-	public Date getDtModified() {
-		return dtModified;
-	}
-
-	public void setDtModified(Date dtModified) {
-		this.dtModified = dtModified;
-	}
-
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-
-	public void setPlans(Set<Plan> plans) {
-		this.plans = plans;
-	}
-
-	public Set<Plan> getPlans() {
-		return plans;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sbString = new StringBuilder();
-		sbString.append("Project[");
-		sbString.append(projectId).append(", ");
-		sbString.append(name).append(", ");
-		sbString.append(description).append(", ");
-		sbString.append(parser).append(", ");
-		sbString.append(unit).append(", ");
-		sbString.append(updatedBy).append(", ");
-		sbString.append(dtCreated).append(", ");
-		sbString.append(dtModified).append(", ");
-		sbString.append(plans).append("]");
-		return sbString.toString();
-	}
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(this)
+                .addValue(projectId)
+                .addValue(name)
+                .addValue(description)
+                .addValue(parser)
+                .addValue(unit)
+                .addValue(updatedBy)
+                .addValue(dtCreated)
+                .addValue(dtModified)
+                .addValue(plans)
+                .toString();
+    }
 }
