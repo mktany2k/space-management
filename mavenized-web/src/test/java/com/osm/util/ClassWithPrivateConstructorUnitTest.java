@@ -10,6 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class ClassWithPrivateConstructorUnitTest {
+
     @Test(dataProvider = "private classes")
     public void cannot_instantiate_via_reflection(Class<?> classWithPrivateConstructor) {
         try {
@@ -40,5 +41,4 @@ public class ClassWithPrivateConstructorUnitTest {
                     {Constants.HibernateGenerator.class}
                 };
     }
-
 }
