@@ -1,0 +1,15 @@
+#summary How to run the application
+#labels Phase-Deploy
+
+= Introduction =
+
+*Preview* This is help you start running OSM.
+
+
+= Details =
+
+In order to run OSM, please follow these steps:
+  # Checkout the code from repository
+  # Install latest version of [http://db.apache.org/derby/derby_downloads.html Derby Database] (Currently OSM run on version 10.9.1.0). The reason is I don't want to repopulate initial data every time restart this app.
+  # go to mavenized-web folder.
+  # run mvn tomcat7:run.
