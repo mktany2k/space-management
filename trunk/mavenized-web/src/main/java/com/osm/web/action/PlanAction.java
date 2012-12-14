@@ -1,11 +1,9 @@
 package com.osm.web.action;
 
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
-
 import com.opensymphony.xwork2.ActionSupport;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.interceptor.ServletRequestAware;
 
 
 public class PlanAction extends ActionSupport implements ServletRequestAware {
@@ -16,7 +14,7 @@ public class PlanAction extends ActionSupport implements ServletRequestAware {
 
 	/*
 	 * Get the number of .svg files in /WEB-INF/dat.
-	 * 
+	 *
 	 * (non-Javadoc)
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 */

@@ -1,10 +1,8 @@
 package com.osm.repository;
 
-
-import org.springframework.data.repository.CrudRepository;
 import com.osm.model.Lot;
 import com.osm.model.LotKey;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-
-public interface LotRepository extends CrudRepository<Lot, LotKey> {
+public interface LotRepository extends JpaRepository<Lot, LotKey> {
 }

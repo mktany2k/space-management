@@ -38,6 +38,7 @@ public class ClassWithPrivateConstructorUnitTest {
     public Object[][] private_classes() {
         return new Object[][]{
                     {Exceptions.class},
+                    {Constants.class},
                     {Constants.HibernateGenerator.class}
                 };
     }

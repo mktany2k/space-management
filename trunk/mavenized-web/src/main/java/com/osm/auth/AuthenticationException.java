@@ -2,6 +2,8 @@ package com.osm.auth;
 
 public class AuthenticationException extends org.apache.shiro.authc.AuthenticationException {
 
+    private static final long serialVersionUID = 1L;
+
     public AuthenticationException() {
         super();
     }
