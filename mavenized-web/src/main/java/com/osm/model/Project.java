@@ -2,35 +2,45 @@ package com.osm.model;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
+import com.osm.util.Constants;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
 
 @Entity
+@Table(name = "projects")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private int projectId;
+    private String projectId;
     private String name;
     private String description;
     private String parser;
     private String unit;
-    private LocalDateTime dtCreated;
-    private LocalDateTime dtModified;
+    private LocalDateTime creationDate;
+    private LocalDateTime modificationDate;
     private String updatedBy;
     private Set<Plan> plans = Sets.newHashSet();
 
     @Id
-    public int getProjectId() {
+    @GeneratedValue(generator = Constants.HibernateGenerator.NAME)
+    @GenericGenerator(name = Constants.HibernateGenerator.NAME, strategy = Constants.HibernateGenerator.STRATEGY)
+    public String getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(int projectId) {
+    public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
 
@@ -68,22 +78,22 @@ public class Project implements Serializable {
 
     @Column(name = "created_date", nullable = false, updatable = false)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-    public LocalDateTime getDtCreated() {
-        return dtCreated;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public void setDtCreated(LocalDateTime dtCreated) {
-        this.dtCreated = dtCreated;
+    public void setCreationDate(LocalDateTime dtCreated) {
+        this.creationDate = dtCreated;
     }
 
     @Column(name = "modified_date", nullable = false)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-    public LocalDateTime getDtModified() {
-        return dtModified;
+    public LocalDateTime getModificationDate() {
+        return modificationDate;
     }
 
-    public void setDtModified(LocalDateTime dtModified) {
-        this.dtModified = dtModified;
+    public void setModificationDate(LocalDateTime dtModified) {
+        this.modificationDate = dtModified;
     }
 
     public String getUpdatedBy() {
@@ -112,8 +122,8 @@ public class Project implements Serializable {
                 .addValue(parser)
                 .addValue(unit)
                 .addValue(updatedBy)
-                .addValue(dtCreated)
-                .addValue(dtModified)
+                .addValue(creationDate)
+                .addValue(modificationDate)
                 .addValue(plans)
                 .toString();
     }

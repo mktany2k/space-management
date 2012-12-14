@@ -46,9 +46,11 @@
                     <li id="summaryTab"><s:a action="summary" namespace="/admin">Summary</s:a></li>
                     <li id="maintenanceTab"><s:a action="maintenance" namespace="/admin">Maintenance</s:a></li>
                     <li id="planTab"><s:a action="plan" namespace="/admin">Plan</s:a></li>
+                    <shiro:hasRole name="admin">
                     <li id="administrationTab"><s:a action="administration" namespace="/admin">Administration</s:a></li>
-                    </ul>
-                </div>
+                    </shiro:hasRole>
+                </ul>
+            </div>
         </shiro:user>
         <decorator:body/>
         <div class="container">

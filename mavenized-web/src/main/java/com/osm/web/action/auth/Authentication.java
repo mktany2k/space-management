@@ -18,7 +18,7 @@ public class Authentication extends ActionSupport {
             return INPUT;
         }
 
-        if (Strings.isNullOrEmpty(getPassword())) {
+        if (Strings.isNullOrEmpty(password)) {
             return INPUT;
         }
 
@@ -50,15 +50,11 @@ public class Authentication extends ActionSupport {
 
     private String password;
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
     public void setAuthenticator(final Authenticator authenticator) {
         this.authenticator = authenticator;
-    }    
+    }
 }

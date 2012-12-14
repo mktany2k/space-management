@@ -1,7 +1,11 @@
 package com.osm.util;
 
-public interface Constants {
+public final class Constants {
 
+    private Constants() throws InstantiationException {
+        throw Exceptions.newInstantiationException();
+    }
+    
     public static final class HibernateGenerator {
 
         public static final String NAME = "hibernate-uuid";
