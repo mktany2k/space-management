@@ -1,5 +1,6 @@
 package com.osm.model;
 
+import com.google.common.base.Objects;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -128,21 +129,19 @@ public class Lot implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sbString = new StringBuilder();
-        sbString.append("Lot[");
-        sbString.append(lotKey).append(", ");
-        sbString.append(name).append(", ");
-        sbString.append(description).append(", ");
-        sbString.append(accountCode).append(", ");
-        sbString.append(image).append(", ");
-        sbString.append(size).append(", ");
-        sbString.append(updatedBy).append(", ");
-        sbString.append(dtCreated).append(", ");
-        sbString.append(dtModified).append(", ");
-        sbString.append(hashCode()).append(", ");
-        sbString.append(plan).append(", ");
-        sbString.append(lotPrice).append("]");
-        return sbString.toString();
+        return Objects.toStringHelper(this)
+                .addValue(lotKey)
+                .addValue(name)
+                .addValue(description)
+                .addValue(accountCode)
+                .addValue(image)
+                .addValue(updatedBy)
+                .addValue(dtCreated)
+                .addValue(dtModified)
+                .addValue(hashCode())
+                .addValue(plan)
+                .addValue(lotPrice)
+                .toString();
     }
 
     @Override
