@@ -31,7 +31,7 @@ public class Project implements Serializable {
     private LocalDateTime creationDate;
     private LocalDateTime modificationDate;
     private String updatedBy;
-    private Set<Plan> plans = Sets.newHashSet();
+    private Set<Plan> plans = Sets.newHashSet();//temporarily disable.
 
     @Id
     @GeneratedValue(generator = Constants.HibernateGenerator.NAME)

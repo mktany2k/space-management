@@ -9,16 +9,16 @@
     <name>mavenized-web</name>
 
     <properties>
-        <apache.struts2.version>2.3.7</apache.struts2.version>
+        <apache.struts2.version>2.3.8</apache.struts2.version>
         <spring.version>3.2.0.RELEASE</spring.version>
         <spring.data.jpa.version>1.2.0.RELEASE</spring.data.jpa.version>
         <spring.data.commons.core.version>1.4.0.RELEASE</spring.data.commons.core.version>
-        <guava.version>13.0.1</guava.version>
+        <guava.version>14.0-rc1</guava.version>
         <joda.time.version>2.1</joda.time.version>
         <apache.shiro.version>1.2.1</apache.shiro.version>
         <slf4j.version>1.7.2</slf4j.version>
         <logback.version>1.0.9</logback.version>
-        <hibernate.version>4.1.8.Final</hibernate.version>
+        <hibernate.version>4.1.9.Final</hibernate.version>
         <ehcache.version>2.6.2</ehcache.version>
         <apache.commons.lang3.version>3.1</apache.commons.lang3.version>
         <jackson.version>2.1.2</jackson.version>
@@ -30,6 +30,7 @@
         <bonecp.version>0.8.0-rc1</bonecp.version>
         <webjars.jquery.version>1.8.3</webjars.jquery.version>
         <webjars.bootstrap.version>2.2.2</webjars.bootstrap.version>
+        <funcito.version>1.2.0</funcito.version>
 
         <test.mockito.version>1.9.5</test.mockito.version>
         <test.junit.version>4.11</test.junit.version>
@@ -299,6 +300,11 @@
             <groupId>org.jadira.usertype</groupId>
             <artifactId>usertype.core</artifactId>
             <version>3.0.0.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.funcito</groupId>
+            <artifactId>funcito</artifactId>
+            <version>${funcito.version}</version>
         </dependency>
     </dependencies>
 
