@@ -1,108 +1,123 @@
 package com.osm.model;
 
-
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
+import org.joda.time.LocalDateTime;
 
+public class Plan implements Serializable {
 
-public class Plan {
+    private static final long serialVersionUID = 1L;
+    private int projectId;
+    private int planId;
+    private String name;
+    private String description;
+    private String filename;
+    private LocalDateTime dtCreated;
+    private LocalDateTime dtModified;
+    private String updatedBy;
 
-	private int projectId;
+    public int getProjectId() {
+        return projectId;
+    }
 
-	private int planId;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
+    }
 
-	private String name;
+    public int getPlanId() {
+        return planId;
+    }
 
-	private String description;
+    public void setPlanId(int planId) {
+        this.planId = planId;
+    }
 
-	private String filename;
+    public String getName() {
+        return name;
+    }
 
-	private Date dtCreated;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	private Date dtModified;
+    public String getDescription() {
+        return description;
+    }
 
-	private String updatedBy;
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public int getProjectId() {
-		return projectId;
-	}
+    public String getFilename() {
+        return filename;
+    }
 
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
-	}
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
-	public int getPlanId() {
-		return planId;
-	}
+    public LocalDateTime getDtCreated() {
+        return dtCreated;
+    }
 
-	public void setPlanId(int planId) {
-		this.planId = planId;
-	}
+    public void setDtCreated(Date dtCreated) {
+        this.dtCreated = LocalDateTime.fromDateFields(dtCreated);
+    }
 
-	public String getName() {
-		return name;
-	}
+    public LocalDateTime getDtModified() {
+        return dtModified;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setDtModified(Date dtModified) {
+        this.dtModified = LocalDateTime.fromDateFields(dtModified);
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setDtCreated(LocalDateTime dtCreated) {
+        this.dtCreated = dtCreated;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDtModified(LocalDateTime dtModified) {
+        this.dtModified = dtModified;
+    }
 
-	public String getFilename() {
-		return filename;
-	}
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
 
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 
-	public Date getDtCreated() {
-		return dtCreated;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(projectId, planId);
+    }
 
-	public void setDtCreated(Date dtCreated) {
-		this.dtCreated = dtCreated;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Plan other = (Plan) obj;
+        return Objects.equals(projectId, other.projectId)
+                && Objects.equals(planId, other.planId);
+    }
 
-	public Date getDtModified() {
-		return dtModified;
-	}
-
-	public void setDtModified(Date dtModified) {
-		this.dtModified = dtModified;
-	}
-
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-
-	@Override
-	public int hashCode() {
-		return (projectId * 100000000) + (planId * 100000);
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sbString = new StringBuilder();
-		sbString.append("Plan[");
-		sbString.append(projectId).append(", ");
-		sbString.append(planId).append(", ");
-		sbString.append(name).append(", ");
-		sbString.append(description).append(", ");
-		sbString.append(filename).append(", ");
-		sbString.append(dtCreated).append(", ");
-		sbString.append(dtModified).append(", ");
-		sbString.append(updatedBy).append("]");
-		return sbString.toString();
-	}
+    @Override
+    public String toString() {
+        return com.google.common.base.Objects.toStringHelper(this)
+                .addValue(projectId)
+                .addValue(planId)
+                .addValue(name)
+                .addValue(description)
+                .addValue(filename)
+                .addValue(dtCreated)
+                .addValue(dtModified)
+                .addValue(updatedBy)
+                .toString();
+    }
 }
