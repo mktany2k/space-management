@@ -20,12 +20,14 @@
                             </div>
                             <div class="control-group">
                                 <div class="controls">
-                                    <s:textfield key="username" cssClass="span4 input-xlarge" placeholder="%{getText('username')}" required="true"/>
+                                    <s:textfield key="username" cssClass="span4 input-xlarge" placeholder="%{getText('username')}"
+                                                 required="true" autofocus="autofocus"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <div class="controls">
-                                    <s:password key="password" cssClass="span4 input-xlarge" placeholder="%{getText('password')}"/>
+                                    <s:password key="password" cssClass="span4 input-xlarge" placeholder="%{getText('password')}"
+                                                required="true"/>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-info btn-block">Sign in</button>
