@@ -27,22 +27,20 @@
                     </div>
                 </div>
                 <div class="span9">
-                    <div class="well">
-                        <table class="table table-condensed table-hover">
-                            <thead>
+                    <table class="table table-striped table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="span12">Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <s:iterator value="users" id="user">
                                 <tr>
-                                    <th class="span2">Username</th>
+                                    <td><strong><s:property value="username"/></strong></td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <s:iterator value="users" id="user">
-                                    <tr>
-                                        <td><strong><s:property value="username"/></strong></td>
-                                    </tr>
-                                </s:iterator>
-                            </tbody>
-                        </table>
-                    </div>
+                            </s:iterator>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
