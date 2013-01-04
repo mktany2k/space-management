@@ -3,7 +3,7 @@
 <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="osm">
     <head>
         <title><decorator:title default="Office Space Management"/></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,6 +13,7 @@
         <script src="<s:url value="/webjars/jquery/1.8.3/jquery.js"/>"></script>
         <script src="<s:url value="/webjars/bootstrap/2.2.2/js/bootstrap.min.js"/>"></script>
         <script src="<s:url value="/webjars/angularjs/1.1.1/angular.min.js"/>"></script>
+        <script src="<s:url value="/js/osm.js"/>"></script>
         <decorator:head/>
     </head>
     <body>
@@ -31,7 +32,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <shiro:principal property="username"/><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><s:a action="Logout" namespace="/auth"><i class="icon-off"></i> Logout</s:a></li>
+                                        <li><s:a action="logout" namespace="/auth"><i class="icon-off"></i> Logout</s:a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -48,7 +49,7 @@
                     <li id="maintenanceTab"><s:a action="maintenance" namespace="/admin">Maintenance</s:a></li>
                     <li id="planTab"><s:a action="plan" namespace="/admin">Plan</s:a></li>
                     <shiro:hasRole name="admin">
-                    <li id="administrationTab"><s:a action="listUser" namespace="/admin">Administration</s:a></li>
+                    <li id="administrationTab"><s:a action="list" namespace="/user">Administration</s:a></li>
                     </shiro:hasRole>
                 </ul>
             </div>

@@ -4,7 +4,9 @@ import com.osm.auth.AuthenticationException;
 import com.osm.auth.Authenticator;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ShiroAuthenticator implements Authenticator {
 
     @Override
@@ -12,7 +14,7 @@ public class ShiroAuthenticator implements Authenticator {
         try {
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
             SecurityUtils.getSubject().login(token);
-        } catch (org.apache.shiro.authc.AccountException e) {
+        } catch (Exception e) {
             throw new AuthenticationException(e);
         }
     }

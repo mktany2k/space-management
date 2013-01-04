@@ -77,9 +77,9 @@
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/login.action"/>
+        <property name="loginUrl" value="/signin.action"/>
         <property name="successUrl" value="/index.action"/>
-        <property name="unauthorizedUrl" value="/login.action"/>
+        <property name="unauthorizedUrl" value="/signin.action"/>
         <!-- The 'filters' property is not necessary since any declared javax.servlet.Filter bean
         defined will be automatically acquired and available via its beanName in chain
         definitions, but you can perform overrides or parent/child consolidated configuration
@@ -98,7 +98,7 @@
                 /ico/* = anon
                 /img/* = anon
                 /images/* = anon
-                /auth/Login.action = anon
+                /auth/login.action = anon
                 /index.html = anon
                 /webjars/** = anon
                 # /index.action = anon
