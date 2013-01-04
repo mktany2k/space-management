@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
 import com.osm.util.Constants;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -84,6 +85,14 @@ public class Project implements Serializable {
 
     public void setCreationDate(LocalDateTime dtCreated) {
         this.creationDate = dtCreated;
+    }
+
+    public void setCreationDate(Date dtCreated) {
+        this.creationDate = LocalDateTime.fromDateFields(dtCreated);
+    }
+
+    public void setModificationDate(Date dtModified) {
+        this.modificationDate = LocalDateTime.fromDateFields(dtModified);
     }
 
     @Column(name = "modified_date", nullable = false)

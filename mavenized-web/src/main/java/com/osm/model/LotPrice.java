@@ -1,74 +1,74 @@
 package com.osm.model;
 
-
 import java.io.Serializable;
 import java.util.Date;
-
+import org.joda.time.LocalDateTime;
 
 public class LotPrice implements Serializable {
 
-	private static final long serialVersionUID = 1001L;
+    private static final long serialVersionUID = 1L;
+    private LotPriceKey lotPriceKey;
+    private double pricePerUnit;
+    private LocalDateTime dtCreated;
+    private LocalDateTime dtModified;
+    private String updatedBy;
 
-	private LotPriceKey lotPriceKey;
+    public LotPriceKey getLotPriceKey() {
+        return lotPriceKey;
+    }
 
-	private double pricePerUnit;
+    public void setLotPriceKey(LotPriceKey lotPriceKey) {
+        this.lotPriceKey = lotPriceKey;
+    }
 
-	private Date dtCreated;
+    public double getPricePerUnit() {
+        return pricePerUnit;
+    }
 
-	private Date dtModified;
+    public void setPricePerUnit(double pricePerUnit) {
+        this.pricePerUnit = pricePerUnit;
+    }
 
-	private String updatedBy;
+    public LocalDateTime getDtCreated() {
+        return dtCreated;
+    }
 
-	public LotPriceKey getLotPriceKey() {
-		return lotPriceKey;
-	}
+    public void setDtCreated(Date dtCreated) {
+        this.dtCreated = LocalDateTime.fromDateFields(dtCreated);
+    }
 
-	public void setLotPriceKey(LotPriceKey lotPriceKey) {
-		this.lotPriceKey = lotPriceKey;
-	}
+    public LocalDateTime getDtModified() {
+        return dtModified;
+    }
 
-	public double getPricePerUnit() {
-		return pricePerUnit;
-	}
+    public void setDtModified(Date dtModified) {
+        this.dtModified = LocalDateTime.fromDateFields(dtModified);
+    }
 
-	public void setPricePerUnit(double pricePerUnit) {
-		this.pricePerUnit = pricePerUnit;
-	}
+    public void setDtCreated(LocalDateTime dtCreated) {
+        this.dtCreated = dtCreated;
+    }
 
-	public Date getDtCreated() {
-		return dtCreated;
-	}
+    public void setDtModified(LocalDateTime dtModified) {
+        this.dtModified = dtModified;
+    }
 
-	public void setDtCreated(Date dtCreated) {
-		this.dtCreated = dtCreated;
-	}
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
 
-	public Date getDtModified() {
-		return dtModified;
-	}
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 
-	public void setDtModified(Date dtModified) {
-		this.dtModified = dtModified;
-	}
-
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sbString = new StringBuilder();
-		sbString.append("LotPrice[");
-		sbString.append(lotPriceKey).append(", ");
-		sbString.append(pricePerUnit).append(", ");
-		sbString.append(updatedBy).append(", ");
-		sbString.append(dtCreated).append(", ");
-		sbString.append(dtModified).append(", ");
-		sbString.append(hashCode()).append("]");
-		return sbString.toString();
-	}
+    @Override
+    public String toString() {
+        return com.google.common.base.Objects.toStringHelper(this)
+                .addValue(lotPriceKey)
+                .addValue(pricePerUnit)
+                .addValue(updatedBy)
+                .addValue(dtCreated)
+                .addValue(dtModified)
+                .toString();
+    }
 }

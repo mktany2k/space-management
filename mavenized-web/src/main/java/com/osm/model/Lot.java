@@ -5,10 +5,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.LocalDateTime;
 
 public class Lot implements Serializable {
 
-    private static final long serialVersionUID = 1001L;
+    private static final long serialVersionUID = 1L;
     private LotKey lotKey;
     private String lot;
     private String name;
@@ -17,8 +18,8 @@ public class Lot implements Serializable {
     private double size;
     private String accountCode;
     private String image;
-    private Date dtCreated;
-    private Date dtModified;
+    private LocalDateTime dtCreated;
+    private LocalDateTime dtModified;
     private String updatedBy;
 
     public void setLot(String lot) {
@@ -85,19 +86,27 @@ public class Lot implements Serializable {
         return image;
     }
 
-    public Date getDtCreated() {
+    public LocalDateTime getDtCreated() {
         return dtCreated;
     }
 
     public void setDtCreated(Date dtCreated) {
-        this.dtCreated = dtCreated;
+        this.dtCreated = LocalDateTime.fromDateFields(dtCreated);
     }
 
-    public Date getDtModified() {
+    public LocalDateTime getDtModified() {
         return dtModified;
     }
 
     public void setDtModified(Date dtModified) {
+        this.dtModified = LocalDateTime.fromDateFields(dtModified);
+    }
+
+    public void setDtCreated(LocalDateTime dtCreated) {
+        this.dtCreated = dtCreated;
+    }
+
+    public void setDtModified(LocalDateTime dtModified) {
         this.dtModified = dtModified;
     }
 

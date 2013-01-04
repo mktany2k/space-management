@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,42 +31,15 @@
                         <table class="table table-condensed table-hover">
                             <thead>
                                 <tr>
-                                    <th class="span1"><input type="checkbox"></th>
-                                    <th class="span2"></th>
-                                    <th class="span2"></th>
-                                    <th class="span9"></th>
-                                    <th class="span2"></th>
+                                    <th class="span2">Username</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><input type="checkbox"> <a href="#"><i class="icon-star-empty"></i></a></td>
-                                    <td><strong>John Doe</strong></td>
-                                    <td><span class="label pull-right">Notifications</span></td>
-                                    <td><strong>Message body goes here</strong></td>
-                                    <td><strong>11:23 PM</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"> <a href="#"><i class="icon-star-empty"></i></a></td>
-                                    <td>John Doe</td>
-                                    <td><span class="label pull-right">Notifications</span></td>
-                                    <td>Message body goes here</td>
-                                    <td>Sept4</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"> <a href="#"><i class="icon-star"></i></a></td>
-                                    <td><strong>John Doe</strong></td>
-                                    <td><span class="label pull-right">Notifications</span></td>
-                                    <td><strong>Message body goes here</strong></td>
-                                    <td><strong>Sept3</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"> <a href="#"><i class="icon-star"></i></a></td>
-                                    <td><strong>John Doe</strong></td>
-                                    <td><span class="label pull-right">Notifications</span></td>
-                                    <td><strong>Message body goes here</strong></td>
-                                    <td><strong>Sept3</strong></td>
-                                </tr>
+                                <s:iterator value="users" id="user">
+                                    <tr>
+                                        <td><strong><s:property value="username"/></strong></td>
+                                    </tr>
+                                </s:iterator>
                             </tbody>
                         </table>
                     </div>

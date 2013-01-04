@@ -3,7 +3,7 @@
 <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
     <head>
         <title><decorator:title default="Office Space Management"/></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,6 +12,7 @@
         <link href="<s:url value="/webjars/bootstrap/2.2.2/css/bootstrap-responsive.min.css"/>" rel="stylesheet">
         <script src="<s:url value="/webjars/jquery/1.8.3/jquery.js"/>"></script>
         <script src="<s:url value="/webjars/bootstrap/2.2.2/js/bootstrap.min.js"/>"></script>
+        <script src="<s:url value="/webjars/angularjs/1.1.1/angular.min.js"/>"></script>
         <decorator:head/>
     </head>
     <body>
@@ -47,7 +48,7 @@
                     <li id="maintenanceTab"><s:a action="maintenance" namespace="/admin">Maintenance</s:a></li>
                     <li id="planTab"><s:a action="plan" namespace="/admin">Plan</s:a></li>
                     <shiro:hasRole name="admin">
-                    <li id="administrationTab"><s:a action="administration" namespace="/admin">Administration</s:a></li>
+                    <li id="administrationTab"><s:a action="listUser" namespace="/admin">Administration</s:a></li>
                     </shiro:hasRole>
                 </ul>
             </div>
