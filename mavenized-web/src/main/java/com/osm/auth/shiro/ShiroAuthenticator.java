@@ -23,4 +23,9 @@ public class ShiroAuthenticator implements Authenticator {
     public void logout() {
         SecurityUtils.getSubject().logout();
     }
+
+    @Override
+    public boolean isAuthenticated() {
+        return SecurityUtils.getSubject().isAuthenticated();
+    }
 }
