@@ -3,6 +3,7 @@ package com.osm.web.action.auth;
 import com.google.common.collect.Sets;
 import com.osm.model.Role;
 import com.osm.model.User;
+import java.lang.invoke.MethodHandles;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class BootstrapDataPopulator implements InitializingBean {
 
-    private static final Logger logger = LoggerFactory.getLogger(BootstrapDataPopulator.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private EntityManagerFactory managerFactory;
 
     @Autowired
