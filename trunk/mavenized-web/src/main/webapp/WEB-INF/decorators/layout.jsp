@@ -10,10 +10,6 @@
         <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
         <link href="<s:url value="/webjars/bootstrap/2.2.2/css/bootstrap.min.css"/>" rel="stylesheet">
         <link href="<s:url value="/webjars/bootstrap/2.2.2/css/bootstrap-responsive.min.css"/>" rel="stylesheet">
-        <script src="<s:url value="/webjars/jquery/1.8.3/jquery.js"/>"></script>
-        <script src="<s:url value="/webjars/bootstrap/2.2.2/js/bootstrap.min.js"/>"></script>
-        <script src="<s:url value="/webjars/angularjs/1.1.1/angular.min.js"/>"></script>
-        <script src="<s:url value="/js/osm.js"/>"></script>
         <decorator:head/>
     </head>
     <body>
@@ -48,9 +44,9 @@
                     <li id="summaryTab"><s:a action="summary" namespace="/admin">Summary</s:a></li>
                     <li id="maintenanceTab"><s:a action="maintenance" namespace="/admin">Maintenance</s:a></li>
                     <li id="planTab"><s:a action="plan" namespace="/admin">Plan</s:a></li>
-                    <shiro:hasRole name="admin">
-                    <li id="administrationTab"><s:a action="list" namespace="/user">Administration</s:a></li>
-                    </shiro:hasRole>
+                        <shiro:hasRole name="admin">
+                        <li id="administrationTab"><s:a action="list" namespace="/user">Administration</s:a></li>
+                        </shiro:hasRole>
                 </ul>
             </div>
         </shiro:user>
@@ -65,5 +61,9 @@
                 </div>
             </footer>
         </div>
+        <script src="<s:url value="/webjars/jquery/1.9.0/jquery.js"/>"></script>
+        <script src="<s:url value="/webjars/bootstrap/2.2.2/js/bootstrap.min.js"/>"></script>
+        <script src="<s:url value="/webjars/angularjs/1.1.1/angular.min.js"/>"></script>
+        <script src="<s:url value="/js/osm.js"/>"></script>
     </body>
 </html>
