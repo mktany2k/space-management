@@ -1,6 +1,6 @@
 package com.osm.auth;
 
-public class AuthenticationException extends org.apache.shiro.authc.AuthenticationException {
+public class AuthenticationException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
@@ -8,15 +8,15 @@ public class AuthenticationException extends org.apache.shiro.authc.Authenticati
         super();
     }
 
-    public AuthenticationException(String message) {
+    public AuthenticationException(final String message) {
         super(message);
     }
 
-    public AuthenticationException(Throwable cause) {
+    public AuthenticationException(final Throwable cause) {
         super(cause);
     }
 
-    public AuthenticationException(String message, Throwable cause) {
+    public AuthenticationException(final String message, final Throwable cause) {
         super(message, cause);
     }
 }
