@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SampleRealm extends AuthorizingRealm {
+public class OsmRealm extends AuthorizingRealm {
 
     private UserRepository userRepository;
 
@@ -29,8 +29,8 @@ public class SampleRealm extends AuthorizingRealm {
         this.userRepository = userRepository;
     }
 
-    public SampleRealm() {
-        setName("SampleRealm"); //This name must match the name in the User class's getPrincipals() method
+    public OsmRealm() {
+        setName("OsmRealm"); //This name must match the name in the User class's getPrincipals() method
         setCredentialsMatcher(new HashedCredentialsMatcher(Sha256Hash.ALGORITHM_NAME));
     }
 
