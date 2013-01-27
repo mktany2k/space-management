@@ -13,16 +13,15 @@ import org.springframework.stereotype.Component;
 
 @Component("user")
 @Scope("prototype")
-public class UserAction extends ActionSupport {
+public final class UserAction extends ActionSupport {
 
     private static final long serialVersionUID = 1L;
     private UserRepository userRepository;
 
     @Actions({
-        @Action(value = "/admin/listUser", results = {
-            @Result(name = SUCCESS, location = "/WEB-INF/jsp/admin/administration.jsp")}),
         @Action(value = "/user/list", results = {
-            @Result(name = SUCCESS, location = "/WEB-INF/jsp/admin/administration.jsp")})
+            @Result(name = SUCCESS, location = "/WEB-INF/jsp/admin/administration.jsp")
+        })
     })
     public String list() throws Exception {
         return SUCCESS;
@@ -34,7 +33,6 @@ public class UserAction extends ActionSupport {
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
-        System.err.println(">>>>>"+userRepository.getClass().getName()+"<<<<<");
         this.userRepository = userRepository;
     }
 }
