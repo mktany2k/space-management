@@ -7,6 +7,7 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
     <constant name="struts.ui.theme" value="css_xhtml"/>
     <constant name="struts.custom.i18n.resources" value="global" />
+    <constant name="struts.convention.action.alwaysMapExecute" value="false" />
 
     <package name="default" namespace="/" extends="struts-default">
         <action name="index" class="DefaultAction">
@@ -14,21 +15,6 @@
         </action>
         <action name="signin" class="DefaultAction">
             <result>/WEB-INF/jsp/login.jsp</result>
-        </action>
-    </package>
-    <package name="auth" namespace="/auth" extends="struts-default">
-        <action name="login" class="authentication" method="login">
-            <result name="input">/WEB-INF/jsp/login.jsp</result>
-            <result name="success" type="redirectAction">
-                <param name="namespace">/</param>
-                <param name="actionName">index</param>
-            </result>
-        </action>
-        <action name="logout" class="authentication" method="logout">
-            <result name="success" type="redirectAction">
-                <param name="namespace">/</param>
-                <param name="actionName">index</param>
-            </result>
         </action>
     </package>
     <package name="setup" namespace="/setup" extends="struts-default">

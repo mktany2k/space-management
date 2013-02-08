@@ -4,13 +4,15 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:repository="http://www.springframework.org/schema/data/repository"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-          http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+          http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd
+          http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd">
 
 
     <!-- Scan sample packages for Spring annotations -->
@@ -112,9 +114,4 @@
     -->
     <bean id="DefaultAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"/>
     <bean id="PlanAction" class="com.osm.web.action.PlanAction"/>
-    <bean id="authentication" class="com.osm.web.action.auth.Authentication" scope="prototype">
-        <property name="authenticator">
-            <bean class="com.osm.auth.shiro.ShiroAuthenticator"/>
-        </property>
-    </bean>
 </beans>
