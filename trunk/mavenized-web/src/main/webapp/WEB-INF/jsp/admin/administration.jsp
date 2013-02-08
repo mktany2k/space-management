@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="span9">
+                <div class="span9" ng-controller="userController">
                     <table class="table table-striped table-condensed table-hover table-bordered">
                         <thead>
                             <tr>
@@ -34,17 +34,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <s:iterator value="users" id="user">
-                                <tr>
-                                    <td><strong><s:property value="username"/></strong></td>
-                                </tr>
-                            </s:iterator>
+                            <tr ng-repeat="user in users">
+                                <td><strong>{{user.username}}</strong></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
         <script>
             $(document).ready(function() {
                 $("#administrationTab").addClass("active");

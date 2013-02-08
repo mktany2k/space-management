@@ -113,5 +113,5 @@
     <!--
     -->
     <bean id="DefaultAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"/>
-    <bean id="PlanAction" class="com.osm.web.action.PlanAction"/>
+    <bean id="PlanAction" class="com.osm.web.action.PlanAction" scope="prototype"/>
 </beans>
