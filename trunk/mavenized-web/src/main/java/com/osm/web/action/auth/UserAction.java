@@ -13,10 +13,11 @@ import org.springframework.stereotype.Component;
 
 @Component("user")
 @Scope("prototype")
-public final class UserAction extends ActionSupport {
+public class UserAction extends ActionSupport {
 
     private static final long serialVersionUID = 1L;
     private UserRepository userRepository;
+    private Collection<User> users;
 
     @Actions({
         @Action(value = "/user/list", results = {
@@ -24,11 +25,12 @@ public final class UserAction extends ActionSupport {
         })
     })
     public String list() throws Exception {
+        users = userRepository.findAll();
         return SUCCESS;
     }
 
     public Collection<User> getUsers() {
-        return userRepository.findAll();
+        return users;
     }
 
     @Autowired

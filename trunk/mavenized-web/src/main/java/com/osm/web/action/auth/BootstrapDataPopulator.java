@@ -79,7 +79,8 @@ public class BootstrapDataPopulator implements InitializingBean {
 
     private boolean isNewlyCreatedDatabase(EntityManager manager) {
         //This can be improve.
-        //More check might be needed. Current implementation is sufficient.
+        //More check might be needed.
+        //Current implementation is sufficient.
         Long singleResult = (Long) manager.createQuery("select count(u.username) from User u ").getSingleResult();
         return singleResult.longValue() <= 0;
     }

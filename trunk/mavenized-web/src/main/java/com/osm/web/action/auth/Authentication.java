@@ -4,16 +4,33 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.osm.auth.AuthenticationException;
 import com.osm.auth.Authenticator;
 import java.lang.invoke.MethodHandles;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Actions;
+import org.apache.struts2.convention.annotation.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component("authentication")
+@Scope("prototype")
 public class Authentication extends ActionSupport {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static final long serialVersionUID = 1L;
-    private Authenticator authenticator;
+    private transient Authenticator authenticator;
+    private String username;
+    private String password;
 
+    @Actions({
+        @Action(value = "/auth/login", results = {
+            @Result(name = SUCCESS, type = "redirectAction",
+                    params = {"namespace", "/", "actionName", "index"},
+                    location = "/WEB-INF/jsp/admin/administration.jsp"),
+            @Result(name = INPUT, location = "/WEB-INF/jsp/login.jsp")
+        })
+    })
     public String login() throws Exception {
         LOGGER.debug("authenticating {}", username);
         try {
@@ -27,11 +44,17 @@ public class Authentication extends ActionSupport {
         return SUCCESS;
     }
 
+    @Actions({
+        @Action(value = "/auth/logout", results = {
+            @Result(name = SUCCESS, type = "redirectAction",
+                    params = {"namespace", "/", "actionName", "index"},
+                    location = "/WEB-INF/jsp/admin/administration.jsp")
+        })
+    })
     public String logout() {
         authenticator.logout();
         return SUCCESS;
     }
-    private String username;
 
     public String getUsername() {
         return username;
@@ -40,7 +63,6 @@ public class Authentication extends ActionSupport {
     public void setUsername(String username) {
         this.username = username;
     }
-    private String password;
 
     public void setPassword(String password) {
         this.password = password;
