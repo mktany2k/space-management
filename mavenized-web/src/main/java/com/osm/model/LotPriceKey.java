@@ -1,6 +1,6 @@
 package com.osm.model;
 
-import com.google.common.base.Objects;
+import java.util.Objects;
 
 public class LotPriceKey extends LotKey {
 
@@ -29,8 +29,20 @@ public class LotPriceKey extends LotKey {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LotPriceKey other = (LotPriceKey) obj;
+        return Objects.equals(priceId, other.priceId);
+    }
+
+    @Override
     public String toString() {
-        return Objects.toStringHelper(this)
+        return com.google.common.base.Objects.toStringHelper(this)
                 .addValue(getProjectId())
                 .addValue(getPlanId())
                 .addValue(getLotId())

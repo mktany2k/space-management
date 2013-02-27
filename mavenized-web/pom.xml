@@ -16,11 +16,11 @@
         <apache.commons.lang3.version>3.1</apache.commons.lang3.version>
         <bonecp.version>0.8.0-rc1</bonecp.version>
         <derby.version>10.9.1.0</derby.version>
-        <ehcache.version>2.6.3</ehcache.version>
+        <ehcache.version>2.6.5</ehcache.version>
         <funcito.version>1.2.0</funcito.version>
-        <guava.version>14.0-rc3</guava.version>
+        <guava.version>14.0</guava.version>
         <hibernate.version>4.2.0.CR1</hibernate.version>
-        <jackson.version>2.1.3</jackson.version>
+        <jackson.version>2.1.4</jackson.version>
         <javax.jsp.api.version>2.2.1</javax.jsp.api.version>
         <javax.jstl.version>1.2</javax.jstl.version>
         <javax.persistence.version>2.0.0</javax.persistence.version>
@@ -32,7 +32,7 @@
         <spring.data.commons.version>1.5.0.RELEASE</spring.data.commons.version>
         <spring.data.jpa.version>1.3.0.RELEASE</spring.data.jpa.version>
         <usertype.core.version>3.1.0.CR1</usertype.core.version>
-        <webjars.angularjs.version>1.1.2</webjars.angularjs.version>
+        <webjars.angularjs.version>1.1.3</webjars.angularjs.version>
         <webjars.angular-ui.version>0.3.2-1</webjars.angular-ui.version>
         <webjars.bootstrap.version>2.3.0</webjars.bootstrap.version>
         <webjars.jquery.version>1.9.1</webjars.jquery.version>
@@ -40,10 +40,10 @@
         <test.mockito.version>1.9.5</test.mockito.version>
         <test.junit.version>4.11</test.junit.version>
         <test.hamcrest.version>1.3</test.hamcrest.version>
-        <test.fest.assert.version>2.0M8</test.fest.assert.version>
+        <test.fest.assert.version>2.0M10</test.fest.assert.version>
         <test.testng.version>6.8</test.testng.version>
         
-        <tomcat.version>7.0.35</tomcat.version>
+        <tomcat.version>7.0.37</tomcat.version>
         <line.length>132</line.length>
         <jdk.version>1.7</jdk.version>
     </properties>
@@ -141,6 +141,24 @@
             <artifactId>struts2-spring-plugin</artifactId>
             <version>${apache.struts2.version}</version>
             <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.glassfish.web</groupId>
@@ -179,6 +197,12 @@
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
             <version>${apache.shiro.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -224,6 +248,34 @@
                     <artifactId>spring-tx</artifactId>
                     <groupId>org.springframework</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>spring-aop</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-context</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-orm</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-core</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-beans</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -243,12 +295,24 @@
             <artifactId>ehcache-core</artifactId>
             <version>${ehcache.version}</version>
             <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.jolbox</groupId>
             <artifactId>bonecp-spring</artifactId>
             <version>${bonecp.version}</version>
             <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.easytesting</groupId>
@@ -272,6 +336,12 @@
             <artifactId>bootstrap</artifactId>
             <version>${webjars.bootstrap.version}</version>
             <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.webjars</groupId>
+                    <artifactId>jquery</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -280,16 +350,16 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>angular-ui</artifactId>
-            <version>${webjars.angular-ui.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${test.testng.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
@@ -306,6 +376,40 @@
             <artifactId>spring-data-commons</artifactId>
             <groupId>org.springframework.data</groupId>
             <version>${spring.data.commons.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-tx</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-aop</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-context</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-orm</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-core</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-beans</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <artifactId>commons-lang3</artifactId>
@@ -321,6 +425,12 @@
             <groupId>org.jadira.usertype</groupId>
             <artifactId>usertype.core</artifactId>
             <version>${usertype.core.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-entitymanager</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.googlecode.funcito</groupId>
@@ -338,22 +448,6 @@
             <version>${apache.struts2.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-testng-plugin</artifactId>
-            <version>${apache.struts2.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-test</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.testng</groupId>
-                    <artifactId>testng</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
@@ -364,6 +458,18 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <groupId>org.hibernate.common</groupId>
+            <version>4.0.1.Final</version>
+            <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss.logging</groupId>
+                    <artifactId>jboss-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -381,7 +487,7 @@
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
-                    <version>2.0</version>
+                    <version>2.1</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.apache.tomcat.embed</groupId>
@@ -530,6 +636,11 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-help-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>2.6</version>
                     <configuration>
@@ -554,22 +665,24 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
                     <version>1.2</version>
+                    <configuration>
+                        <rules>
+                            <requireJavaVersion>
+                                <version>[1.7.0,)</version>
+                            </requireJavaVersion>
+                            <requireMavenVersion>
+                                <version>[3.0,)</version>
+                            </requireMavenVersion>
+                            <DependencyConvergence/>
+                        </rules>
+                    </configuration>
                     <executions>
                         <execution>
-                            <id>enforce-java</id>
+                            <id>enforce</id>
                             <goals>
                                 <goal>enforce</goal>
                             </goals>
-                            <configuration>
-                                <rules>
-                                    <requireJavaVersion>
-                                        <version>[1.7.0,)</version>
-                                    </requireJavaVersion>
-                                    <requireMavenVersion>
-                                        <version>[3.0,)</version>
-                                    </requireMavenVersion>
-                                </rules>
-                            </configuration>
+                            <phase>validate</phase>
                         </execution>
                     </executions>
                 </plugin>
@@ -613,16 +726,16 @@
                             <plugin>
                                 <groupId>org.apache.maven.plugins</groupId>
                                 <artifactId>maven-checkstyle-plugin</artifactId>
-                                <version>2.9.1</version>
+                                <version>2.10</version>
                             </plugin>
                             <plugin>
                                 <groupId>org.apache.maven.plugins</groupId>
                                 <artifactId>maven-pmd-plugin</artifactId>
-                                <version>2.7.1</version>
+                                <version>3.0</version>
                                 <configuration>
                                     <lineLength>${line.length}</lineLength>
                                     <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
-                                    <targetJdk>${jdk.version}}</targetJdk>
+                                    <targetJdk>${jdk.version}</targetJdk>
                                 </configuration>
                             </plugin>
                         </reportPlugins>
