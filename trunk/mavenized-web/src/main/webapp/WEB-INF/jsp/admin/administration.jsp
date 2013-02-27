@@ -26,19 +26,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="span9" ng-controller="userController">
-                    <table class="table table-striped table-condensed table-hover table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="span12">Username</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="user in users">
-                                <td><strong>{{user.username}}</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div ng-app="osm">
+                    <div class="span9" ng-controller="userController">
+                        <table class="table table-striped table-condensed table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="span12">Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in users">
+                                    <td><strong>{{user.username}}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
