@@ -37,9 +37,9 @@ public class ClassWithPrivateConstructorUnitTest {
     @DataProvider(name = "private classes", parallel = true)
     public Object[][] private_classes() {
         return new Object[][]{
-                    {Exceptions.class},
-                    {Constants.class},
-                    {Constants.HibernateGenerator.class}
-                };
+            {Exceptions.class},
+            {Constants.class},
+            {Constants.HibernateGenerator.class}
+        };
     }
 }
