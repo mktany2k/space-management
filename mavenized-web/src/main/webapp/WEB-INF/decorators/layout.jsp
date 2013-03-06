@@ -8,10 +8,10 @@
         <title><decorator:title default="Office Space Management"/></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
-        <link href="<s:url value="/webjars/bootstrap/2.3.0/css/bootstrap.min.css"/>" rel="stylesheet">
-        <link href="<s:url value="/webjars/bootstrap/2.3.0/css/bootstrap-responsive.min.css"/>" rel="stylesheet">
+        <link href="<s:url value="/webjars/bootstrap/2.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
+        <link href="<s:url value="/webjars/bootstrap/2.3.1/css/bootstrap-responsive.min.css"/>" rel="stylesheet">
         <script src="<s:url value="/webjars/jquery/1.9.1/jquery.min.js"/>"></script>
-        <script src="<s:url value="/webjars/bootstrap/2.3.0/js/bootstrap.min.js"/>"></script>
+        <script src="<s:url value="/webjars/bootstrap/2.3.1/js/bootstrap.min.js"/>"></script>
         <script src="<s:url value="/webjars/angularjs/1.1.3/angular.min.js"/>"></script>
         <script src="<s:url value="/js/osm.js"/>"></script>
         <decorator:head/>
