@@ -26,7 +26,7 @@
         <javax.jstl.version>1.2</javax.jstl.version>
         <javax.persistence.version>2.0.0</javax.persistence.version>
         <javax.servlet.api.version>3.0.1</javax.servlet.api.version>
-        <joda.time.version>2.1</joda.time.version>
+        <joda.time.version>2.2</joda.time.version>
         <logback.version>1.0.9</logback.version>
         <slf4j.version>1.7.2</slf4j.version>
         <spring.version>3.2.1.RELEASE</spring.version>
@@ -47,14 +47,14 @@
         <tomcat.version>7.0.37</tomcat.version>
         <line.length>132</line.length>
         <jdk.version>1.7</jdk.version>
-        <maven.plugin.pmd.version>3.0</maven.plugin.pmd.version>
+        <maven.plugin.pmd.version>3.0.1</maven.plugin.pmd.version>
         <maven.plugin.enforcer.version>1.2</maven.plugin.enforcer.version>
         <maven.plugin.checkstyle.version>2.10</maven.plugin.checkstyle.version>
         <maven.plugin.findbugs.version>2.5.2</maven.plugin.findbugs.version>
         <maven.plugin.jxr.version>2.3</maven.plugin.jxr.version>
         <maven.plugin.war.version>2.3</maven.plugin.war.version>
         <maven.plugin.tomcat.version>2.1</maven.plugin.tomcat.version>
-        <maven.plugin.surefire.version>2.13</maven.plugin.surefire.version>
+        <maven.plugin.surefire.version>2.14</maven.plugin.surefire.version>
         <maven.plugin.compiler.version>3.0</maven.plugin.compiler.version>
     </properties>
 
