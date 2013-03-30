@@ -24,9 +24,9 @@
                             </div>
                         </s:if>
                         <s:textfield key="username" cssClass="span4 input-xlarge" placeholder="%{getText('username')}"
-                                     required="true" autofocus="autofocus" />
+                                     requiredLabel="true" autofocus="autofocus" required="true"/>
                         <s:password key="password" cssClass="span4 input-xlarge" placeholder="%{getText('password')}"
-                                    required="true" showPassword="false"/>
+                                    requiredLabel="true" showPassword="false" required="true"/>
                         <button type="submit" class="btn btn-info btn-block">Sign in</button>
                     </s:form>
                 </div>
