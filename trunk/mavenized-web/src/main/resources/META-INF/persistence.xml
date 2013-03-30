@@ -5,7 +5,6 @@
              version="2.0">
     <persistence-unit name="osm">
         <properties>
-            <!--<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />-->
             <property name="hibernate.show_sql" value="false" />
             <property name="hibernate.jdbc.fetch_size" value="100"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

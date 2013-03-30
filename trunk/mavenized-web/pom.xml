@@ -44,7 +44,7 @@
         <test.fest.assert.version>2.0M10</test.fest.assert.version>
         <test.testng.version>6.8</test.testng.version>
         
-        <tomcat.version>7.0.37</tomcat.version>
+        <tomcat.version>7.0.39</tomcat.version>
         <line.length>132</line.length>
         <jdk.version>1.7</jdk.version>
         <maven.plugin.pmd.version>3.0.1</maven.plugin.pmd.version>
