@@ -24,11 +24,12 @@ public class ClassWithPrivateConstructorUnitTest {
                 }
             });
             constructor.newInstance();
-            fail(String.format("The class %s shouldn't be instantiated", classWithPrivateConstructor.getName()));
+            fail(String.format("The class %s shouldn't be instantiatable", classWithPrivateConstructor.getName()));
         } catch (InvocationTargetException ex) {
-            assertThat(ex.getCause()).isNotNull()
-                    .isInstanceOf(InstantiationException.class)
-                    .hasMessage(String.format("The class %s shouldn't be instantiated", classWithPrivateConstructor.getName()));
+            assertThat(ex.getCause())
+                .isNotNull()
+                .isInstanceOf(InstantiationException.class)
+                .hasMessage(String.format("The class %s shouldn't be instantiated", classWithPrivateConstructor.getName()));
         } catch (ReflectiveOperationException | SecurityException ex) {
             fail(ex.getMessage(), ex);
         }

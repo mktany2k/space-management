@@ -15,7 +15,6 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -80,7 +79,6 @@ public class Project implements Serializable {
     }
 
     @Column(name = "created_date", nullable = false, updatable = false)
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     @CreatedDate
     public LocalDateTime getCreationDate() {
         return creationDate;
@@ -99,7 +97,6 @@ public class Project implements Serializable {
     }
 
     @Column(name = "modified_date", nullable = false)
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     @LastModifiedDate
     public LocalDateTime getModificationDate() {
         return modificationDate;

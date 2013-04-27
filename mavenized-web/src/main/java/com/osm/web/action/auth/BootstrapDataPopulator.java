@@ -77,7 +77,7 @@ public class BootstrapDataPopulator implements InitializingBean {
         }
     }
 
-    private boolean isNewlyCreatedDatabase(EntityManager manager) {
+    private static boolean isNewlyCreatedDatabase(final EntityManager manager) {
         //This can be improve.
         //More check might be needed.
         //Current implementation is sufficient.
