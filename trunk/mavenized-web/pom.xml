@@ -19,15 +19,15 @@
         <ehcache.version>2.6.5</ehcache.version>
         <funcito.version>1.2.0</funcito.version>
         <guava.version>14.0.1</guava.version>
-        <hibernate.version>4.2.0.Final</hibernate.version>
+        <hibernate.version>4.2.1.Final</hibernate.version>
         <hibernate.commons.annotations.version>4.0.1.Final</hibernate.commons.annotations.version>
-        <jackson.version>2.1.4</jackson.version>
+        <jackson.version>2.2.0</jackson.version>
         <javax.jsp.api.version>2.2.1</javax.jsp.api.version>
         <javax.jstl.version>1.2</javax.jstl.version>
         <javax.persistence.version>2.0.0</javax.persistence.version>
         <javax.servlet.api.version>3.0.1</javax.servlet.api.version>
         <joda.time.version>2.2</joda.time.version>
-        <logback.version>1.0.11</logback.version>
+        <logback.version>1.0.12</logback.version>
         <slf4j.version>1.7.5</slf4j.version>
         <spring.version>3.2.2.RELEASE</spring.version>
         <spring.data.commons.version>1.5.1.RELEASE</spring.data.commons.version>
@@ -530,6 +530,11 @@
                     <artifactId>jboss-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
         </dependency>
     </dependencies>
 
