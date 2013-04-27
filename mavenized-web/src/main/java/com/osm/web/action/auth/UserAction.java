@@ -4,14 +4,14 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.osm.model.User;
 import com.osm.repository.UserRepository;
 import java.util.Collection;
+import javax.inject.Named;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Actions;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
-@Component("user")
+@Named("user")
 @Scope("prototype")
 public class UserAction extends ActionSupport {
 

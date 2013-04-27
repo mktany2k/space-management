@@ -4,12 +4,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.osm.auth.AuthenticationException;
 import com.osm.auth.Authenticator;
 import java.lang.invoke.MethodHandles;
+import javax.inject.Inject;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Actions;
 import org.apache.struts2.convention.annotation.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -72,7 +72,7 @@ public class Authentication extends ActionSupport {
         return password;
     }
 
-    @Autowired
+    @Inject
     public void setAuthenticator(final Authenticator authenticator) {
         this.authenticator = authenticator;
     }
