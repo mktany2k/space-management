@@ -81,7 +81,6 @@ public class BootstrapDataPopulator implements InitializingBean {
         //This can be improve.
         //More check might be needed.
         //Current implementation is sufficient.
-        Long singleResult = (Long) manager.createQuery("select count(u.username) from User u ").getSingleResult();
-        return singleResult.longValue() <= 0;
+        return (Long) manager.createQuery("select count(u.username) from User u ").getSingleResult() <= 0;
     }
 }
