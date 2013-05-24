@@ -12,7 +12,7 @@
         <link href="<s:url value="/webjars/bootstrap/2.3.1/css/bootstrap-responsive.min.css"/>" rel="stylesheet">
         <script src="<s:url value="/webjars/jquery/2.0.0/jquery.min.js"/>"></script>
         <script src="<s:url value="/webjars/bootstrap/2.3.1/js/bootstrap.min.js"/>"></script>
-        <script src="<s:url value="/webjars/angularjs/1.1.4/angular.min.js"/>"></script>
+        <script src="<s:url value="/webjars/angularjs/1.1.5/angular.min.js"/>"></script>
         <script src="<s:url value="/js/osm.js"/>"></script>
         <decorator:head/>
     </head>
