@@ -37,7 +37,7 @@ public class Authentication extends ActionSupport {
             authenticator.login(username, password);
             LOGGER.debug("user {} is authenticated", username);
         } catch (AuthenticationException e) {
-            LOGGER.debug("authentication error: {}", e.getMessage());
+            LOGGER.debug("authentication error", e);
             addActionError(getText("invalid.login"));
             return INPUT;
         }
