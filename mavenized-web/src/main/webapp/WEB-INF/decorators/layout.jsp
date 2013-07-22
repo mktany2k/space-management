@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="<s:url value="/ico/favicon.ico"/>">
         <link href="<s:url value="/webjars/bootstrap/2.3.2/css/bootstrap.min.css"/>" rel="stylesheet">
         <link href="<s:url value="/webjars/bootstrap/2.3.2/css/bootstrap-responsive.min.css"/>" rel="stylesheet">
-        <script src="<s:url value="/webjars/jquery/2.0.2/jquery.min.js"/>"></script>
+        <script src="<s:url value="/webjars/jquery/2.0.3/jquery.min.js"/>"></script>
         <script src="<s:url value="/webjars/bootstrap/2.3.2/js/bootstrap.min.js"/>"></script>
         <script src="<s:url value="/webjars/angularjs/1.1.5/angular.min.js"/>"></script>
         <script src="<s:url value="/js/osm.js"/>"></script>
